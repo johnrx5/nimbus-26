@@ -1,0 +1,75 @@
+---
+const features = [
+  {
+    title: 'Improved Adherence & Persistence',
+    description: 'Integrated clinical management keeps employees on track throughout their journey.',
+  },
+  {
+    title: 'Reduced Side Effects & Discontinuation',
+    description: 'Clinician-managed dosing and nutrition support minimize the friction that causes drop-off.',
+  },
+  {
+    title: 'Independent Clinical Decisions',
+    description: 'Care decisions are made on clinical merit, free from financial incentives or formulary pressure.',
+  },
+  {
+    title: 'Flat, Predictable Employer Cost',
+    description: 'One rate covers any drug, any dose, any clinical adjustment, no surprises.',
+  },
+];
+---
+
+<section class="bg-cream pt-24 pb-10 px-[10px]">
+  <div class="max-w-[1200px] mx-auto">
+    <!-- Top: Heading + Subtitle + CTA -->
+    <div class="text-center mb-12" data-animate>
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <div class="w-12 h-[2px] bg-teal"></div>
+        <span class="font-montserrat text-teal text-sm font-semibold tracking-[0.15em] uppercase">Nutrition</span>
+        <div class="w-12 h-[2px] bg-teal"></div>
+      </div>
+
+      <h2 class="font-fraunces text-dark text-[clamp(40px,5vw,72px)] leading-[1.05] tracking-[-0.02em] mb-6">
+        Food for <em class="text-terracotta not-italic italic">GLP-1s.</em>
+      </h2>
+
+      <p class="font-inter text-dark/70 text-base leading-[1.6] max-w-[550px] mx-auto mb-8">
+        Nutrition designed to complement your GLP-1 therapy. Meals that support your metabolism, reduce side effects, and keep results lasting.
+      </p>
+
+      <a href="/get-started" class="inline-block bg-terracotta hover:bg-terracotta-hover text-cream font-montserrat font-medium text-sm rounded-full px-8 py-4 transition-colors">
+        Find your path
+      </a>
+    </div>
+
+    <!-- Food Image -->
+    <div class="mb-16" data-animate="scale-in">
+      <img
+        src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1200&q=80&auto=format&fit=crop"
+        alt="Healthy meal prep with fresh vegetables, grains, and lean proteins"
+        class="w-full rounded-2xl object-cover aspect-[16/9]"
+      />
+    </div>
+
+    <!-- Bottom: Statement + Feature Grid -->
+    <div>
+      <h3 class="font-fraunces text-dark text-[clamp(28px,3.2vw,42px)] leading-[1.2] tracking-[-0.02em] mb-12 max-w-[600px]" data-animate>
+        Medication initiates the signal.<br />
+        Food makes it <span class="text-teal">sustainable.</span>
+      </h3>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" data-stagger>
+        {features.map(feature => (
+          <div class="border-t-2 border-teal/20 pt-6">
+            <h4 class="font-inter text-dark text-base font-bold leading-[1.3] mb-3">
+              {feature.title}
+            </h4>
+            <p class="font-inter text-dark/60 text-sm leading-[1.6]">
+              {feature.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,61 @@
+---
+import solutionImg from '../assets/[7] Photography/iStock-1010651440.jpg';
+
+const features = [
+  {
+    title: 'Improved Adherence & Persistence',
+    description: 'Integrated clinical management keeps employees on track throughout their journey.',
+  },
+  {
+    title: 'Reduced Side Effects & Discontinuation',
+    description: 'Clinician-managed dosing and nutrition support minimize the friction that causes drop-off.',
+  },
+  {
+    title: 'Independent Clinical Decisions',
+    description: 'Care decisions are made on clinical merit, free from financial incentives or formulary pressure.',
+  },
+  {
+    title: 'Flat, Predictable Employer Cost',
+    description: 'One rate covers any drug, any dose, any clinical adjustment, no surprises.',
+  },
+];
+---
+
+<section class="bg-cream px-[10px]">
+  <div class="bg-[#EAE4DD] rounded-3xl py-24 px-10 md:px-16">
+    <div class="max-w-[1200px] mx-auto">
+
+      <!-- Header -->
+      <div class="text-center mb-12" data-animate>
+        <p class="font-inter text-dark/50 text-base mb-3">The solution</p>
+        <h2 class="font-fraunces text-dark text-[clamp(40px,5vw,72px)] leading-[1.05] tracking-[-0.02em]">
+          One program.<br />
+          One provider.<br />
+          One predictable cost.
+        </h2>
+      </div>
+
+      <!-- Image -->
+      <div class="max-w-[1200px] mx-auto rounded-2xl overflow-hidden mb-14" data-animate data-delay="1">
+        <img src={solutionImg.src} alt="Family playing together" class="w-full h-auto object-cover" />
+      </div>
+
+      <!-- Subheading -->
+      <h3 class="font-fraunces text-dark text-[clamp(28px,3.5vw,44px)] leading-[1.15] tracking-[-0.02em] mb-12 max-w-[700px]" data-animate data-delay="2">
+        Medication initiates the signal.<br />
+        Food makes it sustainable.
+      </h3>
+
+      <!-- 4-Column Features -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-10" data-animate data-delay="3">
+        {features.map(f => (
+          <div>
+            <h4 class="font-inter text-dark text-sm font-bold mb-3">{f.title}</h4>
+            <p class="font-inter text-dark/50 text-sm leading-[1.6]">{f.description}</p>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>

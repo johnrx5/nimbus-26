@@ -1,0 +1,121 @@
+---
+import img1 from '../assets/[7] Photography/iStock-1766905173.jpg';
+import img2 from '../assets/[7] Photography/iStock-2203624688.jpg';
+import img3 from '../assets/[7] Photography/iStock-1157992539.jpg';
+import img4 from '../assets/[7] Photography/iStock-2210163746.jpg';
+
+const cards = [
+  {
+    number: '01',
+    image: img1.src,
+    title: 'Clinician Prescribes',
+    description: 'Provider writes the Rx in NovaMed. Platform shows pricing and compound options across pharmacy partners in real time.',
+  },
+  {
+    number: '02',
+    image: img2.src,
+    title: 'Auto-Routed to Pharmacy',
+    description: 'Prescription is sent digitally to the selected pharmacy. No faxes, no phone calls, no delays.',
+  },
+  {
+    number: '03',
+    image: img3.src,
+    title: 'Track & Fulfill',
+    description: 'Pharmacy compounds and ships. Clinic tracks status in real time. Patient gets automated shipping notifications.',
+  },
+  {
+    number: '04',
+    image: img4.src,
+    title: 'Auto-Refill & Invoice',
+    description: 'Refill cycles managed automatically. Invoicing reconciles in the background. Revenue flows without manual effort.',
+  },
+];
+---
+
+<section class="bg-[#1A1816] pt-24 pb-20 overflow-x-clip" data-animate>
+  <!-- Header -->
+  <div class="max-w-[1200px] mx-auto px-[10px] mb-10">
+    <div class="flex items-end justify-between">
+      <div>
+        <p class="font-inter text-teal text-base mb-3 font-medium">How it works</p>
+        <h2 class="font-fraunces text-cream text-[clamp(40px,5vw,72px)] leading-[1.05] tracking-[-0.02em]">
+          Four automated steps.
+        </h2>
+      </div>
+      <!-- Arrow Buttons -->
+      <div class="flex items-center gap-2 pb-2">
+        <button
+          id="providers-steps-prev"
+          class="w-11 h-11 rounded-full border border-cream/15 flex items-center justify-center text-cream/30 hover:text-cream hover:border-cream/40 transition-colors cursor-pointer"
+          aria-label="Previous slide"
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button
+          id="providers-steps-next"
+          class="w-11 h-11 rounded-full border border-cream/15 flex items-center justify-center text-cream/30 hover:text-cream hover:border-cream/40 transition-colors cursor-pointer"
+          aria-label="Next slide"
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carousel (bleeds right) -->
+  <div
+    id="providers-steps-carousel"
+    class="providers-steps-carousel flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4"
+    style="scrollbar-width: none;"
+  >
+    {cards.map(card => (
+      <div class="snap-start shrink-0 w-[500px]">
+        <!-- Card with image + number overlay -->
+        <div class="relative rounded-2xl h-[500px] overflow-hidden mb-5">
+          <img src={card.image} alt="" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-dark/20"></div>
+          <span class="absolute bottom-6 left-6 font-fraunces text-[#f5f0ea] text-[100px] leading-none tracking-[-0.04em]">
+            {card.number}
+          </span>
+        </div>
+        <h3 class="font-inter text-cream text-lg font-bold mb-2 px-2">{card.title}</h3>
+        <p class="font-inter text-cream/40 text-sm leading-[1.6] px-2">{card.description}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .providers-steps-carousel::-webkit-scrollbar {
+    display: none;
+  }
+  .providers-steps-carousel {
+    padding-left: 10px;
+  }
+  @media (min-width: 1200px) {
+    .providers-steps-carousel {
+      padding-left: calc((100vw - 1200px) / 2 + 10px);
+    }
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    var prevBtn = document.getElementById('providers-steps-prev');
+    var nextBtn = document.getElementById('providers-steps-next');
+    var carousel = document.getElementById('providers-steps-carousel');
+    var cardWidth = 500 + 24;
+
+    prevBtn?.addEventListener('click', function() {
+      carousel?.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    });
+
+    nextBtn?.addEventListener('click', function() {
+      carousel?.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    });
+  })();
+</script>

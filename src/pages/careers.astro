@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import HormoneFAQ from '../components/HormoneFAQ.astro';
+import HormoneCTA from '../components/HormoneCTA.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Nimbus Healthcare - Careers">
+  <Navbar />
+  <main class="bg-[#1A1816]">
+    <section class="bg-[#1A1816] pt-52 pb-24 px-[10px]">
+      <div class="max-w-[1200px] mx-auto text-center flex flex-col items-center justify-center min-h-[50vh]">
+        <!-- Label -->
+        <div class="flex items-center justify-center gap-3 mb-6" data-animate>
+          <div class="w-12 h-[2px] bg-teal"></div>
+          <span class="font-montserrat text-teal text-sm font-semibold tracking-[0.15em] uppercase">Careers</span>
+          <div class="w-12 h-[2px] bg-teal"></div>
+        </div>
+
+        <!-- Heading -->
+        <h1 class="font-fraunces text-cream text-[clamp(56px,7vw,120px)] leading-[1] tracking-[-0.02em] mb-6" data-animate data-delay="1">
+          Coming <em class="text-teal not-italic italic">soon.</em>
+        </h1>
+
+        <!-- Subtext -->
+        <p class="font-inter text-cream/40 text-lg leading-[1.7] max-w-[500px] mb-10" data-animate data-delay="2">
+          We're building a team that's passionate about changing how people experience healthcare. Check back soon for open positions.
+        </p>
+
+        <!-- CTA -->
+        <a href="/contact" class="bg-terracotta hover:bg-terracotta-hover text-cream font-montserrat font-medium text-base rounded-full px-10 py-4.5 transition-colors" data-animate data-delay="3">
+          Get in touch
+        </a>
+      </div>
+    </section>
+    <HormoneFAQ />
+    <HormoneCTA />
+  </main>
+  <div class="bg-[#1A1816] pb-[10px] px-[10px]">
+    <Footer />
+  </div>
+</Layout>

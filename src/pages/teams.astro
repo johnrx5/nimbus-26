@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import TeamsHero from '../components/TeamsHero.astro';
+import TeamsProblem from '../components/TeamsProblem.astro';
+import TeamsSolution from '../components/TeamsSolution.astro';
+import TeamsSteps from '../components/TeamsSteps.astro';
+import TeamsDifferent from '../components/TeamsDifferent.astro';
+import TeamsNutrition from '../components/TeamsNutrition.astro';
+import TeamsServes from '../components/TeamsServes.astro';
+import TeamsSuccess from '../components/TeamsSuccess.astro';
+import FAQ from '../components/FAQ.astro';
+import TeamsBottomCTA from '../components/TeamsBottomCTA.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Nimbus Healthcare - Teams">
+  <Navbar />
+  <main>
+    <TeamsHero />
+    <TeamsProblem />
+    <TeamsSolution />
+    <TeamsSteps />
+    <TeamsDifferent />
+    <TeamsNutrition />
+    <TeamsServes />
+    <TeamsSuccess />
+    <FAQ />
+  </main>
+  <div class="bg-cream px-[10px] pb-[10px]">
+    <div class="bg-[#EAE4DD] rounded-[14px]">
+      <TeamsBottomCTA />
+      <Footer />
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,127 @@
+---
+import jobbyImg from '../assets/[9] Headshots/Dr Jobby John.png';
+import richardImg from '../assets/[9] Headshots/Dr Richard Harris.png';
+---
+
+<section class="bg-[#1A1816] py-24 px-[10px]">
+  <div class="max-w-[1200px] mx-auto">
+    <!-- Section Header -->
+    <div class="text-center mb-20" data-animate>
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <div class="w-12 h-[2px] bg-teal"></div>
+        <span class="font-montserrat text-teal text-sm font-semibold tracking-[0.15em] uppercase">Leadership</span>
+        <div class="w-12 h-[2px] bg-teal"></div>
+      </div>
+      <h2 class="font-fraunces text-cream text-[clamp(40px,6vw,80px)] leading-[1.05] tracking-[-0.02em]">
+        Who we are.
+      </h2>
+    </div>
+
+    <!-- Bio 1: Jobby John — Image Left, Bio Right -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start mb-24" data-animate>
+      <!-- Headshot -->
+      <div class="bg-[#22201E] rounded-2xl overflow-hidden">
+        <img
+          src={jobbyImg.src}
+          alt="Dr. Jobby John"
+          class="w-full aspect-[4/5] object-cover object-top"
+        />
+      </div>
+      <!-- Bio Content -->
+      <div class="flex flex-col justify-center">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="font-montserrat text-teal text-sm font-semibold tracking-[0.15em] uppercase">Founder & CEO</span>
+          <div class="w-12 h-[2px] bg-teal"></div>
+        </div>
+        <h3 class="font-fraunces text-cream text-[clamp(32px,4vw,48px)] leading-[1.1] tracking-[-0.02em] mb-2">
+          Jobby John, <span class="text-teal">PharmD, FACA</span>
+        </h3>
+        <p class="font-inter text-cream/30 text-sm mb-8">Founder & CEO, Nimbus Healthcare</p>
+
+        <div class="space-y-5">
+          <p class="font-inter text-cream/60 text-base leading-[1.8]">
+            Dr. Jobby John is a pharmacist-turned-tech founder with over two decades of clinical and leadership experience. He served as President of the Texas Pharmacy Association and led Lake Hills Pharmacy, a NABP-accredited compounding pharmacy, before founding Nimbus Healthcare in 2021.
+          </p>
+          <p class="font-inter text-cream/60 text-base leading-[1.8]">
+            His work began behind the pharmacy counter, where he witnessed firsthand how fragmented and reactive the healthcare system had become. Nimbus Healthcare is his answer: a clinician-led, tech-enabled platform designed to connect diagnostics, guidance, and treatment into a single, continuous loop of personalized care.
+          </p>
+          <p class="font-inter text-cream/60 text-base leading-[1.8]">
+            Jobby is a nationally recognized voice on the future of pharmacy and healthcare innovation, known for reimagining how technology can amplify human care rather than replace it.
+          </p>
+        </div>
+
+        <p class="font-fraunces text-teal text-lg italic mt-8">
+          Transforming sick care into true healthcare&#8482;
+        </p>
+
+        <!-- Credentials -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+          <div>
+            <h4 class="font-inter text-teal font-semibold text-sm mb-2">Education</h4>
+            <p class="font-inter text-cream/40 text-sm leading-[1.6]">Doctor of Pharmacy (Pharm D.)</p>
+          </div>
+          <div>
+            <h4 class="font-inter text-teal font-semibold text-sm mb-2">Specialties</h4>
+            <p class="font-inter text-cream/40 text-sm leading-[1.6]">Compounding Pharmacy, Metabolic Health, Healthcare Innovation</p>
+          </div>
+          <div>
+            <h4 class="font-inter text-teal font-semibold text-sm mb-2">Recognition</h4>
+            <p class="font-inter text-cream/40 text-sm leading-[1.6]">Past President, Texas Pharmacy Association</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-white/10 mb-24"></div>
+
+    <!-- Bio 2: Richard Harris — Bio Left, Image Right -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start" data-animate>
+      <!-- Bio Content -->
+      <div class="flex flex-col justify-center lg:order-1">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="font-montserrat text-teal text-sm font-semibold tracking-[0.15em] uppercase">Clinical Leadership</span>
+          <div class="w-12 h-[2px] bg-teal"></div>
+        </div>
+        <h3 class="font-fraunces text-cream text-[clamp(32px,4vw,48px)] leading-[1.1] tracking-[-0.02em] mb-2">
+          Richard Harris, <span class="text-teal">MD, PharmD, MBA</span>
+        </h3>
+        <p class="font-inter text-cream/30 text-sm mb-8">Chief Medical Officer, Nimbus Healthcare</p>
+
+        <div class="space-y-5">
+          <p class="font-inter text-cream/60 text-base leading-[1.8]">
+            Dr. Richard Harris is a board-certified physician and integrative health specialist passionate about bridging conventional medicine with cutting-edge preventive care. As Chief Medical Officer of Nimbus Healthcare, he drives the clinical vision behind Nimbus' personalized medicine platform, ensuring every protocol is evidence-based and patient-first.
+          </p>
+          <p class="font-inter text-cream/60 text-base leading-[1.8]">
+            His work emphasizes metabolic health, preventive strategies, and technology-enabled care models that empower both patients and clinicians.
+          </p>
+        </div>
+
+        <!-- Credentials -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+          <div>
+            <h4 class="font-inter text-teal font-semibold text-sm mb-2">Education</h4>
+            <p class="font-inter text-cream/40 text-sm leading-[1.6]">MD, PharmD, MBA</p>
+          </div>
+          <div>
+            <h4 class="font-inter text-teal font-semibold text-sm mb-2">Specialties</h4>
+            <p class="font-inter text-cream/40 text-sm leading-[1.6]">Integrative Medicine, Metabolic Health, Preventive Care</p>
+          </div>
+          <div>
+            <h4 class="font-inter text-teal font-semibold text-sm mb-2">Role</h4>
+            <p class="font-inter text-cream/40 text-sm leading-[1.6]">Chief Medical Officer, Nimbus Healthcare</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Headshot -->
+      <div class="bg-[#22201E] rounded-2xl overflow-hidden lg:order-2">
+        <img
+          src={richardImg.src}
+          alt="Dr. Richard Harris"
+          class="w-full aspect-[4/5] object-cover object-top"
+        />
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import AboutHero from '../components/AboutHero.astro';
+import AboutMission from '../components/AboutMission.astro';
+import AboutLoop from '../components/AboutLoop.astro';
+import AboutQuality from '../components/AboutQuality.astro';
+import AboutLeadership from '../components/AboutLeadership.astro';
+import AboutBoard from '../components/AboutBoard.astro';
+import AboutPharmacy from '../components/AboutPharmacy.astro';
+import AboutTeam from '../components/AboutTeam.astro';
+import AboutCTA from '../components/AboutCTA.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Nimbus Healthcare - About">
+  <Navbar />
+  <main class="bg-[#1A1816]">
+    <AboutHero />
+    <AboutMission />
+    <AboutLoop />
+    <AboutQuality />
+    <AboutLeadership />
+    <AboutBoard />
+    <AboutPharmacy />
+    <AboutTeam />
+    <AboutCTA />
+  </main>
+  <div class="bg-[#1A1816] pb-[10px] px-[10px]">
+    <Footer />
+  </div>
+</Layout>

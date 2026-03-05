@@ -1,0 +1,45 @@
+---
+import vial from '../assets/[10] Viles/Nimbus_GLP1_Vile.png';
+---
+
+<section class="py-24 px-[10px]">
+  <div class="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+    <!-- Left: Product Card -->
+    <div class="bg-[#f0ebe4] rounded-3xl p-12 flex flex-col items-center text-center hover-lift" data-animate>
+      <img
+        src={vial.src}
+        alt="Nimbus GLP-1 vial"
+        class="h-[280px] object-contain mb-8"
+      />
+
+      <div class="flex items-center justify-center gap-2 mb-2">
+        <div class="w-6 h-[2px] bg-teal"></div>
+        <span class="font-montserrat text-teal text-xs font-semibold tracking-[0.1em] uppercase">Starting at</span>
+        <div class="w-6 h-[2px] bg-teal"></div>
+      </div>
+
+      <span class="font-fraunces text-dark text-3xl font-bold block mb-1">$179<span class="text-dark/50 text-lg font-normal">/mo</span></span>
+
+      <h3 class="font-inter text-dark/70 text-base font-medium mb-8">
+        WeightWise GLP-1 Plan
+      </h3>
+
+      <a href="/get-started" class="bg-terracotta hover:bg-terracotta-hover text-cream font-montserrat font-medium text-base rounded-full px-8 py-4 transition-colors w-full text-center block">
+        Get Started
+      </a>
+    </div>
+
+    <!-- Right: Copy -->
+    <div class="flex flex-col justify-center" data-animate data-delay="2">
+      <h2 class="font-fraunces text-dark text-[clamp(36px,4vw,56px)] leading-[1.1] tracking-[-0.02em] mb-6">
+        May cause an<br />
+        increase in<br />
+        <strong class="font-bold text-terracotta">dance parties.</strong>
+      </h2>
+
+      <p class="font-inter text-dark/60 text-base leading-[1.7] max-w-[400px]">
+        Feel-good weight care that fits into your real life, not the other way around. Less restriction, more rhythm.
+      </p>
+    </div>
+  </div>
+</section>

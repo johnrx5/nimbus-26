@@ -1,0 +1,110 @@
+---
+const features = [
+  'Clinical consultation with a licensed provider',
+  'Medication compounded in our NABP-accredited pharmacy',
+  'Batch-tested for potency, purity, and sterility',
+  'Ongoing provider support and dose adjustments',
+  'Aura™ health tracking and patient portal access',
+];
+
+const badges = [
+  { text: 'NABP-accredited pharmacy' },
+  { text: '87% lost 20+ lbs in 3 months' },
+  { text: 'FSA / HSA eligible' },
+];
+---
+
+<section class="bg-cream py-24 px-[10px]">
+  <div class="max-w-[1200px] mx-auto">
+    <!-- Section Header -->
+    <div class="mb-16" data-animate>
+      <div class="flex items-center gap-3 mb-4">
+        <span class="font-montserrat text-teal text-sm font-semibold tracking-[0.15em] uppercase">WeightWise GLP-1 Plan</span>
+        <div class="w-12 h-[2px] bg-teal"></div>
+      </div>
+      <h2 class="font-fraunces text-dark text-[clamp(48px,5.2vw,80px)] leading-[1.05] tracking-[-0.02em] mb-5">
+        Groove with <em class="text-terracotta not-italic font-fraunces italic">us.</em>
+      </h2>
+      <p class="font-inter text-dark/60 text-lg leading-[1.6] max-w-[600px]">
+        The only GLP-1 program that makes your medication in-house, compounded in our own pharmacy, to your exact protocol.
+      </p>
+    </div>
+
+    <!-- Main Card -->
+    <div class="bg-dark rounded-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-0" data-animate="scale-in">
+      <!-- Left: Pricing -->
+      <div class="p-10 lg:p-14 lg:py-20 flex flex-col justify-center">
+        <div>
+          <span class="font-montserrat text-cream/60 text-xs font-semibold tracking-[0.15em] uppercase mb-6 block">WeightWise GLP-1 Plan</span>
+          <h3 class="font-fraunces text-cream text-[clamp(36px,3.5vw,56px)] leading-[1.1]">
+            One price.<br />
+            <span class="text-terracotta">Any dose.</span>
+          </h3>
+          <div class="mt-8 mb-2">
+            <span class="font-fraunces text-cream/70 text-2xl align-top">$</span>
+            <span class="font-fraunces text-cream text-[72px] leading-none tracking-tight">179</span>
+            <span class="font-inter text-cream/60 text-lg">/mo</span>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-4 mt-10">
+          <a href="/get-started" class="bg-terracotta hover:bg-terracotta-hover text-cream font-montserrat font-medium text-sm rounded-full px-8 py-4 transition-colors inline-flex items-center gap-2">
+            Find Your Groove
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <span class="font-inter text-cream/50 text-sm">No commitment required</span>
+        </div>
+      </div>
+
+      <!-- Right: Features -->
+      <div class="p-10 lg:p-14 border-t lg:border-t-0 lg:border-l border-white/10 relative overflow-hidden">
+        <span class="font-montserrat text-cream/50 text-xs font-semibold tracking-[0.15em] uppercase mb-5 block">All Included</span>
+
+        <ul class="space-y-4">
+          {features.map(feature => (
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 mt-0.5 shrink-0 text-teal" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M6 10l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="font-inter text-cream/80 text-sm leading-snug">{feature}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="mt-8 bg-white/5 rounded-xl p-5">
+          <p class="font-inter text-cream/50 text-sm leading-relaxed">
+            Your clinician will determine the right protocol for you,
+            including medication and dose. <strong class="text-cream/70">For some patients, that includes options beyond semaglutide.</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Badges -->
+    <div class="flex flex-wrap items-center justify-between mt-6 px-2">
+      <div class="flex flex-wrap items-center gap-8">
+        {badges.map(badge => (
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-teal" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M6 10l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="font-inter text-dark text-sm">
+              {badge.text.includes('87%') ? (
+                <><strong class="font-semibold">87%</strong> lost 20+ lbs in 3 months</>
+              ) : (
+                badge.text
+              )}
+            </span>
+          </div>
+        ))}
+      </div>
+      <a href="#save" class="text-teal text-sm font-medium font-inter hover:underline inline-flex items-center gap-1">
+        Save 28% with a 6-month plan →
+      </a>
+    </div>
+  </div>
+</section>

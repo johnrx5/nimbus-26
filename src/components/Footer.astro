@@ -1,0 +1,77 @@
+---
+import logoWhite from '../assets/NB_br_Logo White/NB_br_Logo White_0325.png';
+
+const footerLinks = {
+  Programs: [
+    { label: 'Weight Care', href: '/weight' },
+    { label: 'Hormone Optimization', href: '/hormone' },
+    { label: 'Hair Restoration', href: '/hair' },
+    { label: 'Meal Plans', href: 'https://meals.nimbushealthcare.com/', target: '_blank' },
+  ],
+  Company: [
+    { label: 'About Nimbus', href: '/about' },
+    { label: 'Dr. Jobby John', href: '/dr-john' },
+    { label: 'Providers', href: '/providers' },
+    { label: 'Teams', href: '/teams' },
+    { label: 'Careers', href: '/careers' },
+  ],
+  Support: [
+    { label: 'FAQ', href: '#faq' },
+    { label: 'Contact Us', href: '/contact' },
+    { label: 'Patient Portal', href: '/login' },
+    { label: 'Pharmacy', href: 'https://www.lakehillsrx.com/', target: '_blank' },
+  ],
+  Legal: [
+    { label: 'Privacy Policy', href: '/privacy' },
+    { label: 'Terms of Service', href: '/terms' },
+    { label: 'Refund Policy', href: '/refund' },
+  ],
+};
+---
+
+<footer class="px-[10px] pb-[10px]">
+  <div class="max-w-[1200px] mx-auto bg-dark rounded-3xl pt-20 pb-10 px-10 lg:px-14">
+    <!-- Top: Logo + Link Columns -->
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-10 mb-16">
+      <!-- Logo Column -->
+      <div class="col-span-2 md:col-span-1">
+        <a href="/" class="inline-block mb-6">
+          <img src={logoWhite.src} alt="Nimbus" class="h-[28px]" />
+        </a>
+        <p class="font-inter text-cream/50 text-sm leading-[1.6] max-w-[200px]">
+          Doctor-led metabolic care, personalized to your real life.
+        </p>
+      </div>
+
+      <!-- Link Columns -->
+      {Object.entries(footerLinks).map(([category, links]) => (
+        <div>
+          <h4 class="font-inter text-cream/40 text-xs font-semibold tracking-[0.15em] uppercase mb-5">
+            {category}
+          </h4>
+          <ul class="space-y-3">
+            {links.map(link => (
+              <li>
+                <a href={link.href} target={link.target || undefined} rel={link.target === '_blank' ? 'noopener' : undefined} class="font-inter text-cream/70 text-sm hover:text-cream transition-colors">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-white/10 pt-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="font-inter text-cream/40 text-xs">
+          &copy; {new Date().getFullYear()} Nimbus Healthcare. All rights reserved.
+        </p>
+        <p class="font-inter text-cream/30 text-xs max-w-[500px] text-center md:text-right leading-[1.5]">
+          Nimbus Healthcare provides telehealth services and compounded medications. This is not a substitute for emergency medical care. Individual results may vary.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

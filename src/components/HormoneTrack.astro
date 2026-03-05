@@ -1,0 +1,123 @@
+---
+const features = [
+  {
+    title: 'Wearable Integration',
+    description: 'Pairs with Apple Watch, Fitbit, Garmin, Oura Ring, Whoop, Dexcom CGM, and more.',
+  },
+  {
+    title: 'Pattern Recognition',
+    description: 'We combine real-world data with your labs and symptoms to spot patterns and adjust dosing confidently.',
+  },
+  {
+    title: 'Provider Chat',
+    description: 'Secure messaging with your care team between check-ins — get answers when you need them.',
+  },
+  {
+    title: 'Sleep & Recovery',
+    description: 'Track sleep quality, activity, and recovery signals that matter for hormone health and optimization.',
+  },
+];
+---
+
+<section class="px-[10px] pt-6">
+  <div class="bg-[#22201E] rounded-[14px] px-10 py-24 md:px-16">
+  <div class="max-w-[1200px] mx-auto">
+
+    <!-- Header -->
+    <div class="text-center mb-12" data-animate>
+      <h2 class="font-fraunces text-cream text-[clamp(40px,5vw,72px)] leading-[1.05] tracking-[-0.02em] mb-5">
+        Track your <span class="text-teal">progress.</span>
+      </h2>
+      <p class="font-inter text-cream/40 text-base leading-[1.7] max-w-[520px] mx-auto mb-10">
+        Aura™ is your personal health guide inside the NimCore® ecosystem, connecting your wearable data with labs and symptoms.
+      </p>
+      <a href="/get-started" class="inline-block border border-cream/20 text-cream font-montserrat font-medium text-sm rounded-full px-8 py-3.5 hover:bg-cream/5 transition-colors">
+        Find your path
+      </a>
+    </div>
+
+    <!-- Video -->
+    <div class="relative bg-cream rounded-2xl overflow-hidden mb-14 mt-14" data-animate data-delay="1">
+      <video
+        id="track-video"
+        class="w-full h-auto"
+        autoplay
+        muted
+        loop
+        playsinline
+      >
+        <source src="/videos/Nimbus_Start Moving_v1.mp4" type="video/mp4" />
+      </video>
+      <!-- Controls -->
+      <div class="absolute bottom-5 left-5 flex items-center gap-3">
+        <!-- Play/Pause -->
+        <button id="track-play-pause" class="w-10 h-10 rounded-full bg-dark/60 backdrop-blur-sm flex items-center justify-center hover:bg-dark/80 transition-colors cursor-pointer" aria-label="Pause video">
+          <svg id="track-pause-icon" class="w-5 h-5 text-cream" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M5 4h3v12H5V4zm7 0h3v12h-3V4z"/>
+          </svg>
+          <svg id="track-play-icon" class="w-5 h-5 text-cream hidden" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M6 4l10 6-10 6V4z"/>
+          </svg>
+        </button>
+        <!-- Mute/Unmute -->
+        <button id="track-mute" class="w-10 h-10 rounded-full bg-dark/60 backdrop-blur-sm flex items-center justify-center hover:bg-dark/80 transition-colors cursor-pointer" aria-label="Unmute video">
+          <svg id="track-muted-icon" class="w-5 h-5 text-cream" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9 3L5 7H2v6h3l4 4V3zm8.5 7l1.5-1.5-1.06-1.06L16.5 8.88l-1.44-1.44L14 8.5 15.5 10 14 11.5l1.06 1.06 1.44-1.44 1.44 1.44L19 11.5 17.5 10z"/>
+          </svg>
+          <svg id="track-unmuted-icon" class="w-5 h-5 text-cream hidden" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9 3L5 7H2v6h3l4 4V3zm4 3.5c.88.88 1.5 2.19 1.5 3.5s-.62 2.62-1.5 3.5l1.06 1.06C15.56 13.06 16.5 11.12 16.5 10s-.94-3.06-2.44-4.56L13 6.5zm2.5-2.5c1.69 1.69 2.5 3.88 2.5 6s-.81 4.31-2.5 6l1.06 1.06C18.44 15.19 19.5 12.69 19.5 10s-1.06-5.19-2.94-7.06L15.5 4z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- 4-Column Features -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10" data-animate data-delay="2">
+      {features.map(f => (
+        <div>
+          <h3 class="font-inter text-teal font-semibold text-sm mb-3">{f.title}</h3>
+          <p class="font-inter text-cream/40 text-sm leading-[1.6]">{f.description}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+  </div>
+</section>
+
+<script>
+  const trackVideo = document.getElementById('track-video') as HTMLVideoElement;
+  const trackPlayPauseBtn = document.getElementById('track-play-pause');
+  const trackPauseIcon = document.getElementById('track-pause-icon');
+  const trackPlayIcon = document.getElementById('track-play-icon');
+  const trackMuteBtn = document.getElementById('track-mute');
+  const trackMutedIcon = document.getElementById('track-muted-icon');
+  const trackUnmutedIcon = document.getElementById('track-unmuted-icon');
+
+  trackPlayPauseBtn?.addEventListener('click', () => {
+    if (trackVideo.paused) {
+      trackVideo.play();
+      trackPauseIcon?.classList.remove('hidden');
+      trackPlayIcon?.classList.add('hidden');
+      trackPlayPauseBtn.setAttribute('aria-label', 'Pause video');
+    } else {
+      trackVideo.pause();
+      trackPauseIcon?.classList.add('hidden');
+      trackPlayIcon?.classList.remove('hidden');
+      trackPlayPauseBtn.setAttribute('aria-label', 'Play video');
+    }
+  });
+
+  trackMuteBtn?.addEventListener('click', () => {
+    trackVideo.muted = !trackVideo.muted;
+    if (trackVideo.muted) {
+      trackMutedIcon?.classList.remove('hidden');
+      trackUnmutedIcon?.classList.add('hidden');
+      trackMuteBtn.setAttribute('aria-label', 'Unmute video');
+    } else {
+      trackMutedIcon?.classList.add('hidden');
+      trackUnmutedIcon?.classList.remove('hidden');
+      trackMuteBtn.setAttribute('aria-label', 'Mute video');
+    }
+  });
+</script>

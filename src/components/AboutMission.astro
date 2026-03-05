@@ -1,0 +1,99 @@
+---
+const missionPoints = [
+  {
+    title: 'Clinical oversight at every step',
+    description: 'Not a handoff between disconnected vendors. One coordinated team, one accountable system.',
+  },
+  {
+    title: 'Precision medications',
+    description: 'Made for each individual, with pharmacy leadership built into the model from the start.',
+  },
+  {
+    title: 'A continuous care loop',
+    description: 'Support that stays connected before, during, and after treatment begins.',
+  },
+];
+
+const benefits = [
+  'Clear accountability: you know who is responsible for what, end to end.',
+  'Fewer surprises: consistency in how care is reviewed, prepared, and delivered.',
+  'Precision over mass production: medications designed and verified for the individual.',
+  'Quality you can feel: rigorous standards, documentation, and repeatable processes.',
+  'Care that stays connected: adjustments and support stay inside one system.',
+];
+---
+
+<section class="bg-[#1A1816] py-24 px-[10px]">
+  <div class="max-w-[1200px] mx-auto">
+
+    <!-- Our Mission -->
+    <div class="text-center mb-20" data-animate>
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <div class="w-12 h-[2px] bg-teal"></div>
+        <span class="font-montserrat text-teal text-sm font-semibold tracking-[0.15em] uppercase">Our Mission</span>
+        <div class="w-12 h-[2px] bg-teal"></div>
+      </div>
+      <h2 class="font-fraunces text-cream text-[clamp(40px,5vw,72px)] leading-[1.05] tracking-[-0.02em] mb-6">
+        From sick care to <em class="text-teal not-italic italic">real care.</em>
+      </h2>
+      <p class="font-inter text-cream/50 text-lg leading-[1.6] max-w-[700px] mx-auto">
+        Nimbus exists to turn fragmented "sick care" into real healthcare—care that is coordinated, proactive, and designed around the patient's real life.
+      </p>
+    </div>
+
+    <!-- 3-Column Mission Points -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-24" data-stagger>
+      {missionPoints.map(point => (
+        <div class="border-t-2 border-teal/30 pt-6">
+          <h4 class="font-inter text-cream text-base font-bold leading-[1.3] mb-3">
+            {point.title}
+          </h4>
+          <p class="font-inter text-cream/40 text-sm leading-[1.6]">
+            {point.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Pharmacy-First + Patient Benefits (2-column) -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start" data-animate>
+      <!-- Left: Why pharmacy comes first -->
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <span class="font-montserrat text-teal text-sm font-semibold tracking-[0.15em] uppercase">Why the pharmacy comes first</span>
+          <div class="w-12 h-[2px] bg-teal"></div>
+        </div>
+        <h3 class="font-fraunces text-cream text-[clamp(28px,3.5vw,48px)] leading-[1.15] tracking-[-0.02em] mb-6">
+          Built differently.
+        </h3>
+        <div class="space-y-4">
+          <p class="font-inter text-cream/50 text-base leading-[1.7]">
+            Most healthcare experiences are stitched together after the fact. Nimbus is built differently.
+          </p>
+          <p class="font-inter text-cream/50 text-base leading-[1.7]">
+            Pharmacy-first means the people responsible for safety, formulation, and fulfillment are not "downstream." They are part of the care team from day one.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: Patient Benefits -->
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <span class="font-montserrat text-teal text-sm font-semibold tracking-[0.15em] uppercase">Patient Benefits</span>
+          <div class="w-12 h-[2px] bg-teal"></div>
+        </div>
+        <ul class="space-y-5">
+          {benefits.map(benefit => (
+            <li class="flex items-start gap-4">
+              <svg class="w-5 h-5 text-teal shrink-0 mt-0.5" viewBox="0 0 20 20" fill="none">
+                <path d="M16.667 5L7.5 14.167 3.333 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="font-inter text-cream/60 text-sm leading-[1.6]">{benefit}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import WeightHero from '../components/WeightHero.astro';
+import WeightWiserX from '../components/WeightWiserX.astro';
+import WeightBiology from '../components/WeightBiology.astro';
+import WeightQuote from '../components/WeightQuote.astro';
+import WeightSimple from '../components/WeightSimple.astro';
+import WeightPricing from '../components/WeightPricing.astro';
+import FAQ from '../components/FAQ.astro';
+import BottomCTA from '../components/BottomCTA.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Nimbus Healthcare - Weight Care">
+  <Navbar />
+  <main>
+    <WeightHero />
+    <WeightWiserX />
+    <WeightBiology />
+    <div class="px-[10px]">
+      <div class="bg-[#EAE4DD] rounded-[14px] overflow-hidden">
+        <WeightQuote />
+        <WeightSimple />
+      </div>
+    </div>
+    <WeightPricing />
+    <FAQ />
+  </main>
+  <div class="bg-cream px-[10px] pb-[10px]">
+    <div class="bg-[#EAE4DD] rounded-[14px]">
+      <BottomCTA />
+      <Footer />
+    </div>
+  </div>
+</Layout>

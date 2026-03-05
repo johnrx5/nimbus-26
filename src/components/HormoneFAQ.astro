@@ -1,0 +1,114 @@
+---
+const faqs = [
+  {
+    question: 'What is Nimbus Healthcare?',
+    answer: `<p>Nimbus Healthcare is a modern, personalized wellness platform that offers treatment programs for hormone optimization, weight loss, hair restoration, and more. Unlike other services, we manage your entire care journey in-house from consultation through medication delivery.</p>
+<p>Your treatment is guided by real-time data and continuous provider support, allowing us to make ongoing adjustments tailored to how you respond.</p>
+<p>All medications are custom-compounded at our pharmacy, ensuring consistent quality and a seamless experience from start to finish.</p>`,
+  },
+  {
+    question: 'Where is Nimbus currently available, and do you ship medications?',
+    answer: `<p>Nimbus Healthcare is available in most U.S. states. We ship compounded medications directly to your door from our NABP-accredited pharmacy.</p>
+<p>Availability may vary by state due to regulatory requirements. During your initial consultation, we'll confirm whether services are available in your area.</p>`,
+  },
+  {
+    question: 'Are Nimbus services covered by health insurance?',
+    answer: `<p>Nimbus services are not billed through insurance. However, our flat-rate pricing is designed to be transparent and affordable, and many of our plans are FSA/HSA eligible.</p>
+<p>This approach allows us to offer personalized, physician-led care without the delays and restrictions that often come with insurance-based models.</p>`,
+  },
+  {
+    question: 'How do I get started as a patient?',
+    answer: `<p>Getting started is simple. Click "Get Started" to complete a brief health questionnaire. A licensed provider will review your information and schedule a virtual consultation.</p>
+<p>From there, your provider will create a personalized treatment plan, and your medication will be compounded and shipped directly to you.</p>`,
+  },
+  {
+    question: 'What do I do in case of a health emergency?',
+    answer: `<p>If you are experiencing a medical emergency, call 911 or go to your nearest emergency room immediately. Nimbus Healthcare is not an emergency medical service.</p>
+<p>For non-urgent clinical questions, you can reach your care team through the Aura™ patient portal or contact our support line during business hours.</p>`,
+  },
+];
+---
+
+<section class="bg-[#1A1816] py-24 px-[10px]">
+  <div class="max-w-[900px] mx-auto">
+    <!-- Heading -->
+    <div class="flex items-center gap-3 mb-4" data-animate>
+      <span class="font-montserrat text-teal text-sm font-semibold tracking-[0.15em] uppercase">Support</span>
+      <div class="w-12 h-[2px] bg-teal"></div>
+    </div>
+    <h2 class="font-fraunces text-cream text-[clamp(56px,6vw,96px)] leading-[1] tracking-[-0.02em] mb-16" data-animate data-delay="1">
+      FAQ
+    </h2>
+
+    <!-- Accordion -->
+    <div class="dark-faq-list" data-animate data-delay="2">
+      {faqs.map((faq, i) => (
+        <div class="dark-faq-item border-b border-cream/10" data-faq-index={i}>
+          <button
+            class="dark-faq-toggle w-full flex items-center justify-between py-6 text-left cursor-pointer group"
+            aria-expanded={i === 0 ? 'true' : 'false'}
+          >
+            <span class="font-inter text-cream text-lg leading-[1.4] pr-8">
+              {faq.question}
+            </span>
+            <span class="dark-faq-icon shrink-0 w-6 h-6 flex items-center justify-center text-teal text-xl font-light transition-transform duration-300">
+              {i === 0 ? '−' : '+'}
+            </span>
+          </button>
+          <div
+            class:list={[
+              'dark-faq-content overflow-hidden transition-all duration-400 ease-out',
+              i === 0 ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0',
+            ]}
+          >
+            <div class="pb-8 font-inter text-cream/40 text-base leading-[1.7] space-y-4 max-w-[800px]" set:html={faq.answer} />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const items = document.querySelectorAll('.dark-faq-item');
+
+  items.forEach((item) => {
+    const toggle = item.querySelector('.dark-faq-toggle');
+    const content = item.querySelector('.dark-faq-content') as HTMLElement;
+    const icon = item.querySelector('.dark-faq-icon');
+
+    toggle?.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+
+      // Close all
+      items.forEach((other) => {
+        const otherToggle = other.querySelector('.dark-faq-toggle');
+        const otherContent = other.querySelector('.dark-faq-content') as HTMLElement;
+        const otherIcon = other.querySelector('.dark-faq-icon');
+        otherToggle?.setAttribute('aria-expanded', 'false');
+        if (otherContent) {
+          otherContent.style.maxHeight = '0px';
+          otherContent.style.opacity = '0';
+        }
+        if (otherIcon) otherIcon.textContent = '+';
+      });
+
+      // Open clicked (if it was closed)
+      if (!isOpen) {
+        toggle.setAttribute('aria-expanded', 'true');
+        if (content) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          content.style.opacity = '1';
+        }
+        if (icon) icon.textContent = '−';
+      }
+    });
+  });
+</script>
+
+<style>
+  .dark-faq-content {
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.3s ease;
+  }
+</style>

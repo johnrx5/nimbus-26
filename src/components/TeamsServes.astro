@@ -1,0 +1,80 @@
+---
+import employerImg from '../assets/[7] Photography/iStock-1157992539.jpg';
+import employeeImg from '../assets/[7] Photography/iStock-1766905173.jpg';
+
+const employerBenefits = [
+  { label: 'Budget certainty', desc: 'One predictable rate, independent of drug or dose' },
+  { label: 'No cost volatility', desc: 'No surprise spikes when employees need higher doses or different medications' },
+  { label: 'Operational simplicity', desc: 'No drug-specific pricing tables or exception handling' },
+  { label: 'Outcome-focused', desc: 'The question becomes "Is the program working?", not "Which drug costs more?"' },
+];
+
+const employeeBenefits = [
+  { label: 'Simple to understand', desc: 'No complex formularies, no claims process, no reimbursement paperwork' },
+  { label: 'Reliable and consistent', desc: 'Access doesn\'t change based on coverage rules or mid-treatment switches' },
+  { label: 'No fear of penalty', desc: 'Employees are never penalized for needing different care' },
+  { label: 'Designed for them', desc: 'The program feels built around their health, not around cost containment' },
+];
+---
+
+<section class="bg-cream pt-24 pb-20 px-[10px]" data-animate>
+  <div class="max-w-[1200px] mx-auto">
+
+    <!-- Header -->
+    <div class="text-center mb-16" data-animate>
+      <p class="font-inter text-dark/50 text-base mb-3">Who this serves</p>
+      <h2 class="font-fraunces text-dark text-[clamp(40px,5vw,72px)] leading-[1.05] tracking-[-0.02em] mb-6">
+        Designed for employers.<br />Built for employees.
+      </h2>
+      <p class="font-inter text-dark/50 text-base max-w-[480px] mx-auto">
+        The program creates value on both sides of the benefits equation.
+      </p>
+    </div>
+
+    <!-- Two Column Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-animate data-delay="1">
+
+      <!-- For Employers -->
+      <div class="bg-[#EAE4DD] rounded-2xl overflow-hidden">
+        <div class="h-[300px] overflow-hidden">
+          <img src={employerImg.src} alt="For employers" class="w-full h-full object-cover" />
+        </div>
+        <div class="p-8 md:p-10">
+          <h3 class="font-fraunces text-dark text-2xl mb-8">
+            For <span class="font-bold">Employers</span>
+          </h3>
+          <div class="space-y-5">
+            {employerBenefits.map(b => (
+              <p class="font-inter text-sm leading-[1.6]">
+                <span class="text-dark font-bold">{b.label} –</span>
+                <span class="text-dark/50"> {b.desc}</span>
+              </p>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- For Employees -->
+      <div class="bg-[#EAE4DD] rounded-2xl overflow-hidden">
+        <div class="h-[300px] overflow-hidden">
+          <img src={employeeImg.src} alt="For employees" class="w-full h-full object-cover" />
+        </div>
+        <div class="p-8 md:p-10">
+          <h3 class="font-fraunces text-dark text-2xl mb-8">
+            For <span class="font-bold">Employees</span>
+          </h3>
+          <div class="space-y-5">
+            {employeeBenefits.map(b => (
+              <p class="font-inter text-sm leading-[1.6]">
+                <span class="text-dark font-bold">{b.label} –</span>
+                <span class="text-dark/50"> {b.desc}</span>
+              </p>
+            ))}
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

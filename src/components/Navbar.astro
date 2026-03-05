@@ -1,0 +1,279 @@
+---
+import logoWhite from '../assets/NB_br_Logo White/NB_br_Logo White_0325.png';
+import logoBlack from '../assets/NB_br_Logo Black/NB_br_Logo Black_0325.png';
+
+const navLinks = [
+  { label: 'Weight', href: '/weight' },
+  { label: 'Hormone', href: '/hormone' },
+  { label: 'Hair', href: '/hair' },
+  { label: 'Meals', href: 'https://meals.nimbushealthcare.com/', external: true },
+  { label: 'Teams', href: '/teams' },
+  { label: 'Providers', href: '/providers' },
+];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const darkPages = ['/hormone', '/hair', '/providers', '/get-started', '/login', '/contact', '/privacy', '/terms', '/refund', '/careers', '/dr-john', '/about'];
+const isDarkPage = darkPages.includes(currentPath);
+---
+
+<nav id="main-nav" class="fixed top-[20px] left-1/2 -translate-x-1/2 z-50 w-full max-w-[1340px] px-5" data-scrolled="false" data-dark-page={isDarkPage ? 'true' : undefined}>
+  <div id="nav-pill" class={`flex items-center justify-between backdrop-blur-xl shadow-lg rounded-full h-[70px] px-[10px] transition-colors duration-300 ${isDarkPage ? 'bg-[#1A1816]/80' : 'bg-white/20'}`}>
+    <!-- Logo -->
+    <a href="/" class="shrink-0 pl-[10px]">
+      <img id="logo-white" src={logoWhite.src} alt="Nimbus" class="h-[30px]" />
+      <img id="logo-black" src={logoBlack.src} alt="Nimbus" class="h-[30px] hidden" />
+    </a>
+
+    <!-- Nav Links (desktop) -->
+    <div class="hidden md:flex items-center gap-8">
+      {navLinks.map(link => {
+        const isActive = link.href.startsWith('/') && currentPath === link.href.replace(/\/$/, '');
+        return (
+          <a href={link.href} class={`nav-link text-base hover:opacity-70 transition-colors duration-300 ${isActive ? 'text-white font-semibold' : 'text-cream'}`} data-active={isActive ? 'true' : undefined} target={link.external ? '_blank' : undefined} rel={link.external ? 'noopener noreferrer' : undefined}>
+            {link.label}
+          </a>
+        );
+      })}
+    </div>
+
+    <!-- CTA area -->
+    <div class="flex items-center gap-3 shrink-0">
+      <a href="/login" class="hidden md:block nav-link text-base hover:opacity-70 transition-colors duration-300 text-cream mr-5" id="nav-login-link">Login</a>
+      <a href="/get-started" class="hidden md:flex bg-teal text-cream text-sm font-medium rounded-full h-[50px] px-7 items-center hover:opacity-90 transition-opacity shrink-0">
+        Get Started
+      </a>
+
+      <!-- Hamburger / Close Button (mobile only) -->
+      <button id="hamburger-btn" class="md:hidden relative w-[50px] h-[50px] rounded-full flex items-center justify-center cursor-pointer hover:opacity-70 transition-opacity" aria-label="Menu" aria-expanded="false">
+        <div class="relative w-[20px] h-[8px]">
+          <span id="ham-line-1" class="absolute top-0 left-0 w-full h-[2px] bg-cream rounded-full transition-all duration-300"></span>
+          <span id="ham-line-2" class="absolute bottom-0 left-0 w-full h-[2px] bg-cream rounded-full transition-all duration-300"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Full-Screen Menu Overlay (Light Mode) -->
+<div id="fullscreen-menu" class="fixed inset-0 z-[45] pointer-events-none">
+  <!-- Light background -->
+  <div id="menu-bg" class="absolute inset-0 bg-cream opacity-0 transition-opacity duration-500"></div>
+
+  <!-- Menu Content -->
+  <div id="menu-content" class="relative z-10 h-full flex flex-col pt-[120px] pb-10 px-8 md:px-16 opacity-0 translate-y-[20px] transition-all duration-500 ease-out">
+    <!-- Main Nav Links -->
+    <div class="flex-1 flex flex-col justify-center">
+      <div class="flex flex-col gap-1">
+        {navLinks.map((link, i) => (
+          <a
+            href={link.href}
+            class={`menu-link font-fraunces text-[clamp(36px,8vw,64px)] leading-[1.2] tracking-[-0.02em] py-2 transition-all duration-300 hover:translate-x-2 ${
+              link.href.startsWith('/') && currentPath === link.href.replace(/\/$/, '')
+                ? 'text-dark'
+                : 'text-dark/70 hover:text-dark'
+            }`}
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noopener noreferrer' : undefined}
+          >
+            {link.label}
+          </a>
+        ))}
+
+        <!-- Get Started button -->
+        <a
+          href="/get-started"
+          class="menu-link inline-flex items-center justify-center bg-teal hover:opacity-90 text-cream font-montserrat font-medium text-base rounded-full px-10 py-4.5 mt-4 transition-opacity w-fit"
+        >
+          Get Started
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="flex flex-col gap-6">
+      <!-- Divider -->
+      <div class="border-t border-dark/10"></div>
+
+      <!-- Bottom Links Row -->
+      <div class="flex flex-wrap items-center gap-6">
+        <a href="/login" class="font-inter text-dark/40 text-sm hover:text-dark transition-colors">Login</a>
+        <a href="/contact" class="font-inter text-dark/40 text-sm hover:text-dark transition-colors">Contact</a>
+        <a href="/careers" class="font-inter text-dark/40 text-sm hover:text-dark transition-colors">Careers</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  const pill = document.getElementById('nav-pill');
+  const logoWhite = document.getElementById('logo-white');
+  const logoBlack = document.getElementById('logo-black');
+  const links = document.querySelectorAll('.nav-link');
+  const isDarkPage = nav?.dataset.darkPage === 'true';
+
+  let scrolled = false;
+
+  function update() {
+    if (isDarkPage) return;
+
+    const shouldBeScrolled = window.scrollY > window.innerHeight * 0.7;
+
+    if (shouldBeScrolled === scrolled) return;
+    scrolled = shouldBeScrolled;
+
+    if (scrolled) {
+      pill!.classList.remove('bg-white/20');
+      pill!.classList.add('bg-[#1A1816]/80');
+      logoWhite!.classList.remove('hidden');
+      logoBlack!.classList.add('hidden');
+      links.forEach(l => {
+        if (l.dataset.active !== 'true') {
+          l.classList.remove('text-dark');
+          l.classList.add('text-cream');
+        }
+      });
+    } else {
+      pill!.classList.add('bg-white/20');
+      pill!.classList.remove('bg-[#1A1816]/80');
+      logoWhite!.classList.remove('hidden');
+      logoBlack!.classList.add('hidden');
+      links.forEach(l => {
+        if (l.dataset.active !== 'true') {
+          l.classList.remove('text-dark');
+          l.classList.add('text-cream');
+        }
+      });
+    }
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+
+  // Full-screen menu
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const fullscreenMenu = document.getElementById('fullscreen-menu');
+  const menuBg = document.getElementById('menu-bg');
+  const menuContent = document.getElementById('menu-content');
+  const hamLine1 = document.getElementById('ham-line-1');
+  const hamLine2 = document.getElementById('ham-line-2');
+  const menuLinks = document.querySelectorAll('.menu-link');
+  let menuOpen = false;
+
+  function openMenu() {
+    menuOpen = true;
+    hamburgerBtn!.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+
+    // Show overlay
+    fullscreenMenu!.classList.remove('pointer-events-none');
+    fullscreenMenu!.classList.add('pointer-events-auto');
+
+    // Animate background
+    menuBg!.style.opacity = '1';
+
+    // Switch nav pill to dark on cream bg
+    pill!.classList.remove('bg-white/20', 'bg-[#1A1816]/80');
+    pill!.classList.add('bg-[#1A1816]/80');
+
+    // Make sure white logo shows and ham lines stay cream
+    logoWhite!.classList.remove('hidden');
+    logoBlack!.classList.add('hidden');
+
+    // Animate content
+    setTimeout(() => {
+      menuContent!.style.opacity = '1';
+      menuContent!.style.transform = 'translateY(0)';
+    }, 150);
+
+    // Animate each link
+    menuLinks.forEach((link, i) => {
+      const el = link as HTMLElement;
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      setTimeout(() => {
+        el.style.opacity = '';
+        el.style.transform = '';
+      }, 200 + i * 60);
+    });
+
+    // Animate to X — rotate from center
+    hamLine1!.style.top = '3px';
+    hamLine1!.style.transform = 'rotate(45deg)';
+    hamLine2!.style.bottom = '3px';
+    hamLine2!.style.transform = 'rotate(-45deg)';
+  }
+
+  function closeMenu() {
+    menuOpen = false;
+    hamburgerBtn!.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+
+    // Fade out content first
+    menuContent!.style.opacity = '0';
+    menuContent!.style.transform = 'translateY(20px)';
+
+    // Then fade out background
+    setTimeout(() => {
+      menuBg!.style.opacity = '0';
+    }, 100);
+
+    // Remove pointer events after animation
+    setTimeout(() => {
+      fullscreenMenu!.classList.add('pointer-events-none');
+      fullscreenMenu!.classList.remove('pointer-events-auto');
+
+      // Restore nav pill style based on scroll position
+      if (!isDarkPage) {
+        if (window.scrollY > window.innerHeight * 0.7) {
+          pill!.classList.remove('bg-white/20');
+          pill!.classList.add('bg-[#1A1816]/80');
+        } else {
+          pill!.classList.add('bg-white/20');
+          pill!.classList.remove('bg-[#1A1816]/80');
+        }
+      }
+    }, 500);
+
+    // Reset lines to hamburger
+    hamLine1!.style.top = '0';
+    hamLine1!.style.transform = '';
+    hamLine2!.style.bottom = '0';
+    hamLine2!.style.transform = '';
+  }
+
+  function toggleMenu() {
+    if (menuOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  }
+
+  hamburgerBtn?.addEventListener('click', toggleMenu);
+
+  // Close on escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menuOpen) closeMenu();
+  });
+
+  // Close when clicking a menu link
+  menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (menuOpen) closeMenu();
+    });
+  });
+</script>
+
+<style>
+  .menu-link {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease, color 0.3s ease;
+  }
+
+  #fullscreen-menu.pointer-events-auto .menu-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>

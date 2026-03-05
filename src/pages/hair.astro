@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import HairHero from '../components/HairHero.astro';
+import HormoneFAQ from '../components/HormoneFAQ.astro';
+import HormoneCTA from '../components/HormoneCTA.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Nimbus Healthcare - Hair Restoration">
+  <Navbar />
+  <main class="bg-[#1A1816]">
+    <HairHero />
+    <HormoneFAQ />
+    <HormoneCTA />
+  </main>
+  <div class="bg-[#1A1816] pb-[10px] px-[10px]">
+    <Footer />
+  </div>
+</Layout>

@@ -1,0 +1,222 @@
+---
+const menSymptoms = [
+  'Low energy & afternoon crashes',
+  'Reduced libido & sexual health',
+  'Loss of muscle mass & poor recovery',
+  'Brain fog & reduced mental clarity',
+  'Sleep disruption',
+  'Metabolic & weight concerns',
+];
+
+const womenSymptoms = [
+  'Hot flashes & night sweats',
+  'Low energy & persistent fatigue',
+  'Weight gain & metabolic changes',
+  'Mood swings, anxiety & brain fog',
+  'Sleep disruption',
+  'Low libido & hormonal imbalance',
+];
+
+const menFeatures = [
+  '70+ biomarker testing every 90 days',
+  'Specialized hormone & peptide clinicians',
+  'Access to testosterone, peptides, and performance medications',
+  'Aura™ app with wearable integration for real-time tracking',
+  'Medication pricing from our NABP-accredited pharmacy',
+  'Ongoing monitoring with check-ins and secure provider messaging',
+];
+
+const womenFeatures = [
+  '70+ biomarker testing',
+  'Women hormone specialist consultations',
+  'Access to estrogen, progesterone, thyroid, and more',
+  'Aura™ app with wearable integration for real-time tracking',
+  'Medication pricing from our NABP-accredited pharmacy',
+  'Ongoing monitoring with check-ins and secure provider messaging',
+];
+---
+
+<section class="px-[10px] pt-6" id="hormone-program">
+  <div class="bg-[#22201E] rounded-[14px] px-10 py-20 md:px-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto">
+
+      <!-- Header -->
+      <div class="text-center mb-20" data-animate>
+        <h2 class="font-fraunces text-cream text-[clamp(36px,5vw,72px)] leading-[1.1] tracking-[-0.02em] mb-6">
+          Personalized for your<br />unique biology.
+        </h2>
+        <p class="font-inter text-cream/40 text-base leading-[1.7] max-w-[420px] mx-auto mb-10">
+          Whether you're navigating low energy, hormonal shifts, or just don't feel like yourself — there's a path forward built around you.
+        </p>
+
+        <!-- Toggle -->
+        <div class="inline-flex bg-dark rounded-[20px] p-[6px]">
+          <button
+            class="hormone-toggle-btn bg-cream text-dark font-montserrat text-sm font-medium w-[145px] h-[50px] rounded-[12px] transition-all duration-300 cursor-pointer"
+            data-gender="men"
+          >
+            Men
+          </button>
+          <button
+            class="hormone-toggle-btn text-cream/60 font-montserrat text-sm font-medium w-[145px] h-[50px] rounded-[12px] transition-all duration-300 cursor-pointer"
+            data-gender="women"
+          >
+            Women
+          </button>
+        </div>
+      </div>
+
+      <!-- Content — Two Column -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20" data-animate data-delay="1">
+
+        <!-- Left Column -->
+        <div>
+          <h3 id="program-heading" class="font-fraunces text-cream text-[clamp(28px,3.5vw,44px)] leading-[1.15] tracking-[-0.02em] mb-6">
+            Restore your energy,<br />performance, and focus
+          </h3>
+          <p id="program-description" class="font-inter text-cream/40 text-sm leading-[1.8] mb-10 max-w-[500px]">
+            A physician-led program designed to optimize testosterone, metabolic health, body composition, and cognitive function — through comprehensive labs and protocols built around your data, not a one-size-fits-all approach.
+          </p>
+
+          <!-- Symptoms -->
+          <div id="program-symptoms" class="flex flex-col gap-3.5 mb-12">
+            {menSymptoms.map(s => (
+              <div class="flex items-center gap-3 symptom-item">
+                <svg class="w-5 h-5 shrink-0 text-teal" viewBox="0 0 20 20" fill="none">
+                  <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M6 10l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="font-inter text-cream/70 text-sm">{s}</span>
+              </div>
+            ))}
+          </div>
+
+          <!-- Price -->
+          <p class="font-fraunces text-cream text-[40px] leading-none font-bold mb-2">
+            $125<span class="text-cream/40 text-base font-normal">/mo</span>
+          </p>
+          <p class="font-inter text-teal text-xs leading-[1.6] mb-8">
+            + medications at subsidized member pricing (typically $50–300/mo depending on protocol)
+          </p>
+
+          <!-- CTA -->
+          <a href="/get-started" class="bg-terracotta hover:bg-terracotta-hover text-cream font-montserrat font-medium text-sm rounded-full py-4 px-12 inline-block text-center transition-colors">
+            Get started
+          </a>
+        </div>
+
+        <!-- Right Column — Feature Pills -->
+        <div class="flex flex-col gap-4 justify-center" id="program-features">
+          {menFeatures.map(f => (
+            <div class="feature-pill border border-cream/10 rounded-full py-5 px-8 text-center">
+              <span class="font-inter text-cream/70 text-sm">{f}</span>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const programData = {
+    men: {
+      heading: 'Restore your energy,<br />performance, and focus',
+      description: 'A physician-led program designed to optimize testosterone, metabolic health, body composition, and cognitive function — through comprehensive labs and protocols built around your data, not a one-size-fits-all approach.',
+      symptoms: [
+        'Low energy & afternoon crashes',
+        'Reduced libido & sexual health',
+        'Loss of muscle mass & poor recovery',
+        'Brain fog & reduced mental clarity',
+        'Sleep disruption',
+        'Metabolic & weight concerns',
+      ],
+      features: [
+        '70+ biomarker testing every 90 days',
+        'Specialized hormone & peptide clinicians',
+        'Access to testosterone, peptides, and performance medications',
+        'Aura™ app with wearable integration for real-time tracking',
+        'Medication pricing from our NABP-accredited pharmacy',
+        'Ongoing monitoring with check-ins and secure provider messaging',
+      ],
+    },
+    women: {
+      heading: 'Balance your hormones,<br />restore your vitality',
+      description: 'Personalized hormone therapy addressing perimenopause, menopause, metabolic health, and overall hormonal balance through comprehensive testing and clinical oversight from providers who truly listen.',
+      symptoms: [
+        'Hot flashes & night sweats',
+        'Low energy & persistent fatigue',
+        'Weight gain & metabolic changes',
+        'Mood swings, anxiety & brain fog',
+        'Sleep disruption',
+        'Low libido & hormonal imbalance',
+      ],
+      features: [
+        '70+ biomarker testing',
+        'Women hormone specialist consultations',
+        'Access to estrogen, progesterone, thyroid, and more',
+        'Aura™ app with wearable integration for real-time tracking',
+        'Medication pricing from our NABP-accredited pharmacy',
+        'Ongoing monitoring with check-ins and secure provider messaging',
+      ],
+    },
+  };
+
+  const section = document.getElementById('hormone-program');
+  const toggleBtns = section!.querySelectorAll('.hormone-toggle-btn');
+  const headingEl = document.getElementById('program-heading');
+  const descEl = document.getElementById('program-description');
+  const symptomsEl = document.getElementById('program-symptoms');
+  const featuresEl = document.getElementById('program-features');
+
+  function setGender(gender: string) {
+    const data = programData[gender as keyof typeof programData];
+
+    // Update heading
+    if (headingEl) headingEl.innerHTML = data.heading;
+
+    // Update description
+    if (descEl) descEl.textContent = data.description;
+
+    // Update symptoms
+    if (symptomsEl) {
+      symptomsEl.innerHTML = data.symptoms.map(s => `
+        <div class="flex items-center gap-3 symptom-item">
+          <svg class="w-5 h-5 shrink-0 text-teal" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M6 10l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="font-inter text-cream/70 text-sm">${s}</span>
+        </div>
+      `).join('');
+    }
+
+    // Update features
+    if (featuresEl) {
+      featuresEl.innerHTML = data.features.map(f => `
+        <div class="feature-pill border border-cream/10 rounded-full py-5 px-8 text-center">
+          <span class="font-inter text-cream/70 text-sm">${f}</span>
+        </div>
+      `).join('');
+    }
+
+    // Update toggle buttons
+    toggleBtns.forEach(btn => {
+      const b = btn as HTMLElement;
+      if (b.dataset.gender === gender) {
+        b.classList.add('bg-cream', 'text-dark');
+        b.classList.remove('text-cream/60');
+      } else {
+        b.classList.remove('bg-cream', 'text-dark');
+        b.classList.add('text-cream/60');
+      }
+    });
+  }
+
+  toggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      setGender((btn as HTMLElement).dataset.gender!);
+    });
+  });
+</script>

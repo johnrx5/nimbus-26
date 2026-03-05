@@ -1,0 +1,119 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Nimbus Healthcare - Contact Us">
+  <Navbar />
+  <main>
+    <section class="min-h-screen bg-dark flex items-center justify-center pt-[120px] pb-20 px-5">
+      <div class="w-full max-w-[560px] mx-auto text-center">
+        <!-- Heading -->
+        <h1 class="font-fraunces text-cream text-[36px] md:text-[48px] leading-[1.15] mb-10">Your wellness matters,<br>lets get in touch</h1>
+
+        <!-- Form -->
+        <form id="contact-form" class="flex flex-col gap-4" onsubmit="return false;">
+          <input
+            type="text"
+            placeholder="First Name"
+            class="contact-input"
+            required
+          />
+          <input
+            type="text"
+            placeholder="Last Name"
+            class="contact-input"
+            required
+          />
+          <input
+            type="text"
+            placeholder="State/Region"
+            class="contact-input"
+            required
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            class="contact-input"
+            required
+          />
+          <div class="relative">
+            <select class="contact-input contact-select appearance-none w-full" required>
+              <option value="" disabled selected>How can we help you?</option>
+              <option value="general">General Inquiry</option>
+              <option value="weight">Weight Care Program</option>
+              <option value="hormone">Hormone Optimization</option>
+              <option value="hair">Hair Restoration</option>
+              <option value="teams">Enterprise / Teams</option>
+              <option value="providers">Provider Inquiry</option>
+              <option value="support">Technical Support</option>
+              <option value="other">Other</option>
+            </select>
+            <svg class="absolute right-5 top-1/2 -translate-y-1/2 w-4 h-4 text-cream/40 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </div>
+          <textarea
+            placeholder="Message"
+            rows="4"
+            class="contact-input contact-textarea"
+          ></textarea>
+
+          <button type="submit" class="w-full bg-terracotta hover:bg-terracotta-hover text-cream font-montserrat font-semibold text-base rounded-full py-4 mt-2 transition-colors cursor-pointer">
+            Submit
+          </button>
+        </form>
+
+        <!-- Contact Info -->
+        <div class="mt-10 flex flex-col gap-2">
+          <a href="mailto:support@nimbushealthcare.com" class="font-inter text-cream/60 text-sm hover:text-cream transition-colors">support@nimbushealthcare.com</a>
+          <p class="font-inter text-cream/40 text-sm leading-[1.6]">
+            Nimbus Healthcare, 12005 Bee Cave Rd,<br>Suite 1A, Austin, Texas-78738
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="bg-[#1A1816] pb-[10px] px-[10px]">
+    <Footer />
+  </div>
+</Layout>
+
+<style>
+  .contact-input {
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #F5F0EA;
+    background: rgba(245, 240, 234, 0.06);
+    border: 1px solid rgba(245, 240, 234, 0.1);
+    border-radius: 14px;
+    padding: 18px 24px;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+  .contact-input::placeholder {
+    color: rgba(245, 240, 234, 0.35);
+  }
+  .contact-input:focus {
+    border-color: rgba(245, 240, 234, 0.25);
+  }
+
+  .contact-select {
+    color: rgba(245, 240, 234, 0.35);
+    cursor: pointer;
+  }
+  .contact-select:has(option:checked:not([disabled])) {
+    color: #F5F0EA;
+  }
+  .contact-select option {
+    background: #1A1816;
+    color: #F5F0EA;
+  }
+
+  .contact-textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+</style>

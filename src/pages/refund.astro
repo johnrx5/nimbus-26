@@ -1,0 +1,102 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Nimbus Healthcare - Refund Policy">
+  <Navbar />
+  <main>
+    <section class="bg-dark pt-[140px] pb-20 px-5">
+      <div class="w-full max-w-[800px] mx-auto">
+        <!-- Header -->
+        <h1 class="font-fraunces text-cream text-[36px] md:text-[48px] leading-[1.15] mb-4">Refund Policy</h1>
+        <p class="font-inter text-cream/60 text-base leading-[1.8] mb-16">
+          At Nimbus Healthcare, we are committed to providing high-quality online prescription services with transparent, patient-centered policies. Please review our refund policy carefully before enrolling in a subscription.
+        </p>
+
+        <!-- Subscription Plans -->
+        <div class="policy-section">
+          <h3 class="policy-heading">Subscription Plans and Commitments</h3>
+          <ul class="policy-list">
+            <li><span class="text-cream font-semibold">1-Month Subscription:</span> This plan provides flexibility with a one-month term. Once your prescription has been processed and the plan has started, it cannot be canceled or refunded for that month.</li>
+            <li><span class="text-cream font-semibold">3-Month Subscription:</span> This plan requires a full 3-month commitment. It cannot be canceled or refunded before the end of the term.</li>
+            <li><span class="text-cream font-semibold">6-Month Subscription:</span> This plan requires a full 6-month commitment and offers additional savings. Like the 1- and 3-month plans, it cannot be canceled or refunded once started.</li>
+          </ul>
+          <p class="policy-text">
+            By enrolling in any subscription plan, you agree to these terms and acknowledge that refunds are not available after your prescription has been approved and processed.
+          </p>
+        </div>
+
+        <!-- Support and Exceptions -->
+        <div class="policy-section">
+          <h3 class="policy-heading">Support and Exceptions</h3>
+          <p class="policy-text">
+            While refunds are not available, our team is here to support you throughout your treatment. If you receive the wrong medication, a damaged package, or encounter a fulfillment issue, please contact us immediately at <a href="mailto:support@nimbushealthcare.com" class="text-teal hover:underline">support@nimbushealthcare.com</a>. We will work quickly to resolve the issue and ensure your safety and satisfaction.
+          </p>
+        </div>
+
+        <!-- Our Commitment -->
+        <div class="policy-section">
+          <h3 class="policy-heading">Our Commitment to You</h3>
+          <p class="policy-text">
+            Our subscription plans are designed to provide consistent, safe, and regulated prescription care. These commitments are essential for your treatment success, and we appreciate your understanding of our no-refund policy.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="bg-[#1A1816] pb-[10px] px-[10px]">
+    <Footer />
+  </div>
+</Layout>
+
+<style>
+  .policy-section {
+    margin-bottom: 3rem;
+  }
+
+  .policy-heading {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    color: #F5F0EA;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(245, 240, 234, 0.1);
+  }
+
+  .policy-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: rgba(245, 240, 234, 0.6);
+    line-height: 1.8;
+  }
+
+  .policy-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+  }
+
+  .policy-list > li {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: rgba(245, 240, 234, 0.6);
+    line-height: 1.8;
+    padding-left: 1.25rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+
+  .policy-list > li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #2A9D8F;
+  }
+</style>

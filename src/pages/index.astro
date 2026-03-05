@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import WeightWiserX from '../components/WeightWiserX.astro';
+import Testimonial from '../components/Testimonial.astro';
+import YourPath from '../components/YourPath.astro';
+import FoodSection from '../components/FoodSection.astro';
+import SimpleSteady from '../components/SimpleSteady.astro';
+import DanceParties from '../components/DanceParties.astro';
+import SnapHero from '../components/SnapHero.astro';
+import Professionals from '../components/Professionals.astro';
+import FAQ from '../components/FAQ.astro';
+import BottomCTA from '../components/BottomCTA.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Nimbus Healthcare - Find Your Groove">
+  <Navbar />
+  <main>
+    <Hero />
+    <WeightWiserX />
+    <Testimonial />
+    <div class="bg-cream px-[10px]">
+      <div class="bg-[#EAE4DD] rounded-3xl">
+        <SimpleSteady />
+        <YourPath />
+        <DanceParties />
+      </div>
+    </div>
+    <FoodSection />
+    <SnapHero />
+    <Professionals />
+    <FAQ />
+  </main>
+  <div class="bg-cream px-[10px] pb-[10px]">
+    <div class="bg-[#EAE4DD] rounded-[14px]">
+      <BottomCTA />
+      <Footer />
+    </div>
+  </div>
+</Layout>

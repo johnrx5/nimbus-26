@@ -1,0 +1,69 @@
+---
+import img1 from '../assets/[7] Photography/iStock-2187968525.jpg';
+import img2 from '../assets/[7] Photography/iStock-1276569663.jpg';
+import img3 from '../assets/[7] Photography/iStock-1317735408.jpg';
+---
+
+<section class="bg-cream pt-24 pb-20 px-[10px]" data-animate>
+  <div class="max-w-[1200px] mx-auto">
+
+    <!-- Header -->
+    <div class="text-center mb-16" data-animate>
+      <p class="font-inter text-dark/50 text-base mb-3">How we are different</p>
+      <h2 class="font-fraunces text-dark text-[clamp(40px,5vw,72px)] leading-[1.05] tracking-[-0.02em] mb-6">
+        Care integrity over<br />cost optimization.
+      </h2>
+      <p class="font-inter text-dark/50 text-base max-w-[500px] mx-auto">
+        Where others cut corners, Nimbus invests in the clinical relationship.
+      </p>
+    </div>
+
+    <!-- 3-Column Comparison -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-animate data-delay="1">
+
+      <!-- Traditional PBMs -->
+      <div>
+        <div class="rounded-2xl overflow-hidden mb-6 h-[340px]">
+          <img src={img1.src} alt="Traditional PBMs" class="w-full h-full object-cover" />
+        </div>
+        <div class="px-2">
+          <h3 class="font-inter text-dark text-lg font-bold mb-1">Traditional PBMs</h3>
+          <p class="font-inter text-dark/50 text-sm mb-5">Cost-first model</p>
+          <p class="font-inter text-dark/50 text-sm leading-[1.6]">
+            Optimize for cost control at the expense of employee experience. Drug switches tied to price, not care. Dose-based surcharges. Coverage rules that change mid-treatment.
+          </p>
+        </div>
+      </div>
+
+      <!-- Nimbus Healthcare (highlighted) -->
+      <div class="bg-teal rounded-2xl overflow-hidden pb-8">
+        <div class="rounded-2xl overflow-hidden h-[340px] p-3 pb-0">
+          <img src={img2.src} alt="Nimbus Healthcare" class="w-full h-full object-cover rounded-xl" />
+        </div>
+        <div class="px-5 pt-6">
+          <h3 class="font-inter text-cream text-lg font-bold mb-1">Nimbus Healthcare</h3>
+          <p class="font-inter text-cream/60 text-sm mb-5">Care-first model</p>
+          <p class="font-inter text-cream/80 text-sm leading-[1.6]">
+            One flat rate covers either formulation, any clinically appropriate dose, and ongoing management. Clinicians decide what's right, no surcharges, switches, or renegotiation.
+          </p>
+        </div>
+      </div>
+
+      <!-- DTC Brands -->
+      <div>
+        <div class="rounded-2xl overflow-hidden mb-6 h-[340px]">
+          <img src={img3.src} alt="DTC Brands" class="w-full h-full object-cover" />
+        </div>
+        <div class="px-2">
+          <h3 class="font-inter text-dark text-lg font-bold mb-1">DTC Brands</h3>
+          <p class="font-inter text-dark/50 text-sm mb-5">Growth-first model</p>
+          <p class="font-inter text-dark/50 text-sm leading-[1.6]">
+            Optimize for growth with opaque pricing and upsells. Limited clinical oversight. No accountability for long-term adherence or employer-level outcomes.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

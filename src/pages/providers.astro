@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import ProvidersHero from '../components/ProvidersHero.astro';
+import ProvidersPlatform from '../components/ProvidersPlatform.astro';
+import ProvidersSteps from '../components/ProvidersSteps.astro';
+import ProvidersTestimonial from '../components/ProvidersTestimonial.astro';
+import ProvidersClinics from '../components/ProvidersClinics.astro';
+import ProvidersBottomCTA from '../components/ProvidersBottomCTA.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Nimbus Healthcare - Providers">
+  <Navbar />
+  <main>
+    <ProvidersHero />
+    <ProvidersPlatform />
+    <ProvidersSteps />
+    <ProvidersTestimonial />
+    <ProvidersClinics />
+    <ProvidersBottomCTA />
+  </main>
+  <div class="bg-[#1A1816] pb-[10px] px-[10px]">
+    <Footer />
+  </div>
+</Layout>

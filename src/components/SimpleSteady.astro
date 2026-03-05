@@ -1,0 +1,69 @@
+---
+import photo1 from '../assets/[7] Photography/iStock-1337452483123123 1 (1).png';
+import photo2 from '../assets/[7] Photography/iStock-2203624688.jpg';
+import photo3 from '../assets/[7] Photography/iStock-2210163746.jpg';
+
+const cards = [
+  {
+    image: photo1,
+    alt: 'Mother and child laughing together',
+    title: 'Fewer Decisions',
+    description: 'We reduce the "food noise" so you can focus on what matters.',
+  },
+  {
+    image: photo2,
+    alt: 'Woman smiling with eyes closed',
+    title: 'Quiet Progress',
+    description: 'No loud "before and afters." Just the feeling of feeling like yourself again.',
+  },
+  {
+    image: photo3,
+    alt: 'Father and son playing together on the floor',
+    title: 'Readiness-First',
+    description: 'We meet you where you are today, not where a chart says you should be.',
+  },
+];
+---
+
+<section class="py-24 px-[10px]">
+  <div class="max-w-[1200px] mx-auto">
+    <!-- Heading -->
+    <div class="text-center mb-6" data-animate>
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <div class="w-12 h-[2px] bg-teal"></div>
+        <span class="font-montserrat text-teal text-sm font-semibold tracking-[0.15em] uppercase">Our Approach</span>
+        <div class="w-12 h-[2px] bg-teal"></div>
+      </div>
+      <h2 class="font-fraunces text-dark text-[clamp(40px,5vw,72px)] leading-[1.05] tracking-[-0.02em]">
+        Simple. Steady. <em class="text-terracotta not-italic italic">Supportive.</em>
+      </h2>
+    </div>
+
+    <!-- Subtitle -->
+    <p class="font-inter text-dark/70 text-base leading-[1.6] text-center max-w-[500px] mx-auto mb-16">
+      No complicated protocols. No constant check-ins.<br />
+      Just care that fits your life.
+    </p>
+
+    <!-- 3-Column Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8" data-stagger>
+      {cards.map(card => (
+        <div class="hover-zoom">
+          <div class="rounded-2xl overflow-hidden mb-6">
+            <img
+              src={card.image.src}
+              alt={card.alt}
+              class="w-full aspect-[4/5] object-cover"
+            />
+          </div>
+          <h3 class="font-inter text-dark text-lg font-bold leading-[1.3] mb-2 px-6">
+            {card.title}
+          </h3>
+          <p class="font-inter text-dark/60 text-sm leading-[1.6] px-6">
+            {card.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

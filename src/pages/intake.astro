@@ -1,0 +1,925 @@
+---
+import Layout from '../layouts/Layout.astro';
+import logoWhite from '../assets/NB_br_Logo White/NB_br_Logo White_0325.png';
+import logoBlack from '../assets/NB_br_Logo Black/NB_br_Logo Black_0325.png';
+---
+
+<Layout title="Nimbus Healthcare - Intake">
+  <main>
+    <section class="bg-[#1A1816] min-h-screen flex flex-col" id="intake-app">
+      <!-- Progress Bar -->
+      <div class="w-full h-[3px] bg-cream/5 intake-progress-track">
+        <div class="h-full bg-teal transition-all duration-500 ease-out" id="progress-bar" style="width: 5.56%"></div>
+      </div>
+
+      <!-- Scrollable Content -->
+      <div class="flex-1 overflow-y-auto px-6 pb-8" id="intake-content">
+        <div class="max-w-[620px] mx-auto">
+
+          <!-- Top Bar (persistent) -->
+          <div class="relative flex items-center justify-between py-5">
+            <!-- Left: Back -->
+            <div class="flex items-center gap-3">
+              <button
+                id="intake-back"
+                class="w-10 h-10 rounded-full border border-cream/15 flex items-center justify-center text-cream/50 hover:text-cream hover:border-cream/30 transition-colors cursor-pointer intake-back-btn"
+                aria-label="Go back"
+              >
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <span class="font-montserrat text-cream/50 text-xs font-semibold tracking-[0.15em] uppercase intake-muted" id="intake-phase">Back</span>
+            </div>
+            <!-- Center: Logo -->
+            <div class="absolute left-1/2 -translate-x-1/2">
+              <img src={logoWhite.src} alt="Nimbus Healthcare" class="h-[30px]" id="logo-white" />
+              <img src={logoBlack.src} alt="Nimbus Healthcare" class="h-[30px] hidden" id="logo-black" />
+            </div>
+            <!-- Right: Counter + Theme -->
+            <div class="flex items-center gap-4">
+              <span class="font-inter text-cream/40 text-sm intake-muted" id="intake-counter">6%</span>
+              <button
+                id="theme-toggle"
+                class="w-10 h-10 rounded-full border border-cream/15 flex items-center justify-center text-cream/50 hover:text-cream hover:border-cream/30 transition-colors cursor-pointer intake-back-btn"
+                aria-label="Toggle light mode"
+              >
+                <svg id="icon-sun" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle cx="9" cy="9" r="3.5" stroke="currentColor" stroke-width="1.3"/>
+                  <path d="M9 2v1.5M9 14.5V16M2 9h1.5M14.5 9H16M4.05 4.05l1.06 1.06M12.89 12.89l1.06 1.06M4.05 13.95l1.06-1.06M12.89 5.11l1.06-1.06" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                </svg>
+                <svg id="icon-moon" width="18" height="18" viewBox="0 0 18 18" fill="none" class="hidden">
+                  <path d="M15.36 10.68A6.5 6.5 0 017.32 2.64a7.5 7.5 0 108.04 8.04z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- ========== STEP 1: State Selection ========== -->
+
+          <!-- Step 1: Active -->
+          <div id="step-1-active" class="mt-4">
+            <p class="font-montserrat text-teal text-xs font-semibold tracking-[0.15em] uppercase mb-2 intake-label">Qualify</p>
+            <h1 class="font-fraunces text-cream text-[clamp(28px,4vw,40px)] leading-[1.15] tracking-[-0.02em] mb-4 intake-heading">
+              Hi, I'm Nimy — your health coach from Nimbus Healthcare
+            </h1>
+            <p class="font-inter text-cream/50 text-base leading-[1.6] mb-5 intake-body">
+              I'm powered by IntelliHealth™, Nimbus Healthcare's clinical intelligence. Everything we discuss is reviewed by a licensed clinician before any next steps.
+            </p>
+            <p class="font-inter text-cream font-semibold text-base intake-bold">
+              First up — which state are you based in?
+            </p>
+
+            <div class="grid grid-cols-3 gap-3 mt-8" id="state-grid">
+              <button class="state-btn">Alabama</button>
+              <button class="state-btn">Arizona</button>
+              <button class="state-btn">Arkansas</button>
+              <button class="state-btn">Colorado</button>
+              <button class="state-btn">Florida</button>
+              <button class="state-btn">Georgia</button>
+              <button class="state-btn">Hawaii</button>
+              <button class="state-btn">Idaho</button>
+              <button class="state-btn">Illinois</button>
+              <button class="state-btn">Indiana</button>
+              <button class="state-btn">Iowa</button>
+              <button class="state-btn">Kansas</button>
+              <button class="state-btn">Louisiana</button>
+              <button class="state-btn">Maine</button>
+              <button class="state-btn">Maryland</button>
+              <button class="state-btn">Michigan</button>
+              <button class="state-btn">Missouri</button>
+              <button class="state-btn">Montana</button>
+              <button class="state-btn">Nebraska</button>
+              <button class="state-btn">New Jersey</button>
+              <button class="state-btn">New York</button>
+              <button class="state-btn">North Dakota</button>
+              <button class="state-btn">Ohio</button>
+              <button class="state-btn">Oklahoma</button>
+              <button class="state-btn">South Dakota</button>
+              <button class="state-btn">Tennessee</button>
+              <button class="state-btn">Texas</button>
+              <button class="state-btn">Washington</button>
+              <button class="state-btn">Wisconsin</button>
+              <button class="state-btn">Wyoming</button>
+            </div>
+
+            <p class="font-inter text-cream/30 text-sm text-center mt-6 cursor-pointer hover:text-cream/50 transition-colors intake-subtle">
+              State not on the list?
+            </p>
+          </div>
+
+          <!-- Step 1: Collapsed -->
+          <div id="step-1-collapsed" class="hidden">
+            <div class="flex items-center justify-between py-2">
+              <div>
+                <p class="font-montserrat text-teal text-[10px] font-semibold tracking-[0.15em] uppercase mb-1 intake-label">Getting to know you</p>
+                <p class="font-inter text-cream/50 text-sm intake-body">Hi, I'm Nimy — your health coach from Nimbus Healthcare</p>
+              </div>
+              <button class="edit-step-btn flex items-center gap-2 border border-cream/15 rounded-full px-4 py-2 text-cream text-sm font-inter font-medium hover:border-cream/30 transition-colors cursor-pointer intake-back-btn intake-heading" data-edit-step="1">
+                <span id="step-1-answer">Texas</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M10.08 1.92a1.5 1.5 0 012.12 0l.38.38a1.5 1.5 0 010 2.12L5.5 11.5 2 12.5l1-3.5 7.08-7.08z" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="border-t border-cream/10 mt-4 intake-border"></div>
+          </div>
+
+          <!-- ========== STEP 2: Date of Birth + Sex ========== -->
+          <div id="step-2-active" class="hidden mt-8">
+            <p class="font-montserrat text-teal text-xs font-semibold tracking-[0.15em] uppercase mb-2 intake-label">Getting to know you</p>
+            <h2 class="font-fraunces text-cream text-[clamp(28px,4vw,40px)] leading-[1.15] tracking-[-0.02em] mb-4 intake-heading">
+              Great! Let's start here
+            </h2>
+            <p class="font-inter text-cream/50 text-base leading-[1.6] mb-10 intake-body">
+              Tell me your origin story, the short version.
+            </p>
+
+            <!-- Date of Birth -->
+            <div class="mb-8">
+              <label class="font-inter text-cream font-semibold text-base block mb-3 intake-bold">Date of Birth</label>
+              <input
+                type="text"
+                id="dob-input"
+                placeholder="MM/DD/YYYY"
+                maxlength="10"
+                class="w-full bg-transparent border border-cream/15 rounded-2xl px-5 py-4 font-inter text-cream text-base placeholder:text-cream/25 focus:outline-none focus:border-cream/40 transition-colors intake-input"
+              />
+            </div>
+
+            <!-- Sex at Birth -->
+            <div class="mb-8">
+              <label class="font-inter text-cream font-semibold text-base block mb-3 intake-bold">Sex at Birth</label>
+              <div class="grid grid-cols-2 gap-4">
+                <button class="sex-btn font-inter text-cream text-base font-medium border border-cream/15 rounded-2xl py-4 hover:border-cream/30 transition-colors cursor-pointer intake-heading" data-value="Male">Male</button>
+                <button class="sex-btn font-inter text-cream text-base font-medium border border-cream/15 rounded-2xl py-4 hover:border-cream/30 transition-colors cursor-pointer intake-heading" data-value="Female">Female</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Collapsed -->
+          <div id="step-2-collapsed" class="hidden">
+            <div class="flex items-center justify-between py-2">
+              <div>
+                <p class="font-montserrat text-teal text-[10px] font-semibold tracking-[0.15em] uppercase mb-1 intake-label">Getting to know you</p>
+                <p class="font-inter text-cream/50 text-sm intake-body">Great! Let's start here</p>
+              </div>
+              <button class="edit-step-btn flex items-center gap-2 border border-cream/15 rounded-full px-4 py-2 text-cream text-sm font-inter font-medium hover:border-cream/30 transition-colors cursor-pointer intake-back-btn intake-heading" data-edit-step="2">
+                <span id="step-2-answer">01/01/1990 · male</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M10.08 1.92a1.5 1.5 0 012.12 0l.38.38a1.5 1.5 0 010 2.12L5.5 11.5 2 12.5l1-3.5 7.08-7.08z" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="border-t border-cream/10 mt-4 intake-border"></div>
+          </div>
+
+          <!-- ========== STEP 3: Height + Weight ========== -->
+          <div id="step-3-active" class="hidden mt-8">
+            <p class="font-montserrat text-teal text-xs font-semibold tracking-[0.15em] uppercase mb-2 intake-label">Getting to know you</p>
+            <h2 class="font-fraunces text-cream text-[clamp(28px,4vw,40px)] leading-[1.15] tracking-[-0.02em] mb-4 intake-heading">
+              Now, a little more about you
+            </h2>
+            <p class="font-inter text-cream/50 text-base leading-[1.6] mb-10 intake-body">
+              These details just help me personalize your care plan.
+            </p>
+
+            <!-- Height -->
+            <div class="mb-8">
+              <label class="font-inter text-cream font-semibold text-base block mb-3 intake-bold">Height</label>
+              <div class="flex gap-4">
+                <!-- Feet -->
+                <div class="flex-1 flex items-center border border-cream/15 rounded-2xl overflow-hidden stepper-box">
+                  <button class="stepper-btn w-14 h-full flex items-center justify-center text-cream/40 hover:text-cream transition-colors cursor-pointer intake-muted" data-target="height-ft" data-dir="-1">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  </button>
+                  <div class="flex-1 flex items-center justify-center gap-2 py-4">
+                    <span class="font-inter text-cream text-2xl font-semibold intake-heading" id="height-ft">5</span>
+                    <span class="font-inter text-cream/40 text-sm intake-muted">ft</span>
+                  </div>
+                  <button class="stepper-btn w-14 h-full flex items-center justify-center text-cream/40 hover:text-cream transition-colors cursor-pointer intake-muted" data-target="height-ft" data-dir="1">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 4v10M4 9h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  </button>
+                </div>
+                <!-- Inches -->
+                <div class="flex-1 flex items-center border border-cream/15 rounded-2xl overflow-hidden stepper-box">
+                  <button class="stepper-btn w-14 h-full flex items-center justify-center text-cream/40 hover:text-cream transition-colors cursor-pointer intake-muted" data-target="height-in" data-dir="-1">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  </button>
+                  <div class="flex-1 flex items-center justify-center gap-2 py-4">
+                    <span class="font-inter text-cream text-2xl font-semibold intake-heading" id="height-in">6</span>
+                    <span class="font-inter text-cream/40 text-sm intake-muted">in</span>
+                  </div>
+                  <button class="stepper-btn w-14 h-full flex items-center justify-center text-cream/40 hover:text-cream transition-colors cursor-pointer intake-muted" data-target="height-in" data-dir="1">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 4v10M4 9h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Weight -->
+            <div class="mb-8">
+              <label class="font-inter text-cream font-semibold text-base block mb-3 intake-bold">Weight (lbs)</label>
+              <div class="flex items-center border border-cream/15 rounded-2xl overflow-hidden stepper-box">
+                <button class="stepper-btn w-16 h-full flex items-center justify-center text-cream/40 hover:text-cream transition-colors cursor-pointer intake-muted" data-target="weight-lbs" data-dir="-1">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </button>
+                <div class="flex-1 flex items-center justify-center gap-2 py-4">
+                  <span class="font-inter text-cream text-2xl font-semibold intake-heading" id="weight-lbs">150</span>
+                  <span class="font-inter text-cream/40 text-sm intake-muted">lbs</span>
+                </div>
+                <button class="stepper-btn w-16 h-full flex items-center justify-center text-cream/40 hover:text-cream transition-colors cursor-pointer intake-muted" data-target="weight-lbs" data-dir="1">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 4v10M4 9h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Continue button -->
+            <button
+              id="step-3-continue"
+              class="w-full bg-terracotta hover:bg-terracotta-hover text-cream font-montserrat font-medium text-base rounded-full px-10 py-4 transition-colors cursor-pointer mt-4"
+            >
+              Continue
+            </button>
+          </div>
+
+          <!-- Step 3: Collapsed -->
+          <div id="step-3-collapsed" class="hidden">
+            <div class="flex items-center justify-between py-2">
+              <div>
+                <p class="font-montserrat text-teal text-[10px] font-semibold tracking-[0.15em] uppercase mb-1 intake-label">Getting to know you</p>
+                <p class="font-inter text-cream/50 text-sm intake-body">Now, a little more about you</p>
+              </div>
+              <button class="edit-step-btn flex items-center gap-2 border border-cream/15 rounded-full px-4 py-2 text-cream text-sm font-inter font-medium hover:border-cream/30 transition-colors cursor-pointer intake-back-btn intake-heading" data-edit-step="3">
+                <span id="step-3-answer">5'6" · 150 lbs</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M10.08 1.92a1.5 1.5 0 012.12 0l.38.38a1.5 1.5 0 010 2.12L5.5 11.5 2 12.5l1-3.5 7.08-7.08z" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="border-t border-cream/10 mt-4 intake-border"></div>
+          </div>
+
+          <!-- ========== STEP 4: Your Goals ========== -->
+          <div id="step-4-active" class="hidden mt-8">
+            <p class="font-montserrat text-teal text-xs font-semibold tracking-[0.15em] uppercase mb-2 intake-label">Your Goals</p>
+            <h2 class="font-fraunces text-cream text-[clamp(28px,4vw,40px)] leading-[1.15] tracking-[-0.02em] mb-4 intake-heading">
+              So, now tell me what brought you here today?
+            </h2>
+            <p class="font-inter text-cream/50 text-base leading-[1.6] mb-10 intake-body">
+              Pick all that apply so I can keep building a plan personalized to you.
+            </p>
+
+            <div class="grid grid-cols-2 gap-4" id="goals-grid">
+              <button class="goal-btn" data-value="Lose weight">
+                <svg class="goal-icon" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                  <path d="M14 3v4M14 7L7 14M14 7l7 7M5 16a2 2 0 002 2h2l3-4M23 16a2 2 0 01-2 2h-2l-3-4M14 22v3M10 25h8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="font-inter text-cream text-base font-medium intake-heading">Lose weight</span>
+              </button>
+              <button class="goal-btn" data-value="Feel more energy">
+                <svg class="goal-icon" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                  <path d="M15.5 4L9 15h5l-1.5 9L20 13h-5L15.5 4z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="font-inter text-cream text-base font-medium intake-heading">Feel more energy</span>
+              </button>
+              <button class="goal-btn" data-value="Improve health markers">
+                <svg class="goal-icon" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                  <path d="M4 22V12M10 22V8M16 22V14M22 22V6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="font-inter text-cream text-base font-medium intake-heading">Improve health markers</span>
+              </button>
+              <button class="goal-btn" data-value="Build confidence">
+                <svg class="goal-icon" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                  <path d="M14 4l3 6h6.5l-5 4.5 2 6.5-6.5-4-6.5 4 2-6.5-5-4.5H11l3-6z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="font-inter text-cream text-base font-medium intake-heading">Build confidence</span>
+              </button>
+              <button class="goal-btn" data-value="Better mobility">
+                <svg class="goal-icon" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                  <circle cx="18" cy="5" r="2.5" stroke="currentColor" stroke-width="1.4"/>
+                  <path d="M13 11l3-1.5 2.5 3-3 4.5 4.5 6M13 11l-4.5 5.5M13 11l.5 6.5M8 24l3.5-6.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="font-inter text-cream text-base font-medium intake-heading">Better mobility</span>
+              </button>
+              <button class="goal-btn" data-value="Sleep better">
+                <svg class="goal-icon" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                  <path d="M22 15.5A8.5 8.5 0 0112.5 6a8.5 8.5 0 109.5 9.5z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M19 4l2 2M22 7l2 2M20 2v1M24 6h1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+                <span class="font-inter text-cream text-base font-medium intake-heading">Sleep better</span>
+              </button>
+            </div>
+
+            <!-- Continue button (appears after selection) -->
+            <button
+              id="step-4-continue"
+              class="w-full bg-terracotta hover:bg-terracotta-hover text-cream font-montserrat font-medium text-base rounded-full px-10 py-4 transition-colors cursor-pointer mt-8 hidden"
+            >
+              Continue
+            </button>
+          </div>
+
+          <!-- Step 4: Collapsed -->
+          <div id="step-4-collapsed" class="hidden">
+            <div class="flex items-center justify-between py-2">
+              <div>
+                <p class="font-montserrat text-teal text-[10px] font-semibold tracking-[0.15em] uppercase mb-1 intake-label">Your Goals</p>
+                <p class="font-inter text-cream/50 text-sm intake-body">What brought you here today</p>
+              </div>
+              <button class="edit-step-btn flex items-center gap-2 border border-cream/15 rounded-full px-4 py-2 text-cream text-sm font-inter font-medium hover:border-cream/30 transition-colors cursor-pointer intake-back-btn intake-heading" data-edit-step="4">
+                <span id="step-4-answer">Lose weight</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M10.08 1.92a1.5 1.5 0 012.12 0l.38.38a1.5 1.5 0 010 2.12L5.5 11.5 2 12.5l1-3.5 7.08-7.08z" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="border-t border-cream/10 mt-4 intake-border"></div>
+          </div>
+
+          <!-- ========== STEP 5: GLP-1 Experience ========== -->
+          <div id="step-5-active" class="hidden mt-8">
+            <p class="font-montserrat text-teal text-xs font-semibold tracking-[0.15em] uppercase mb-2 intake-label">Building Your Plan</p>
+            <h2 class="font-fraunces text-cream text-[clamp(28px,4vw,40px)] leading-[1.15] tracking-[-0.02em] mb-4 intake-heading">
+              Have you tried a GLP-1 before?
+            </h2>
+            <p class="font-inter text-cream/50 text-base leading-[1.6] mb-10 intake-body">
+              This just helps me understand where you are in your journey.
+            </p>
+
+            <div class="flex flex-col gap-4" id="glp1-options">
+              <button class="option-btn" data-value="Yes, I'm currently on one">Yes, I'm currently on one</button>
+              <button class="option-btn" data-value="Yes, but I stopped">Yes, but I stopped</button>
+              <button class="option-btn" data-value="No, this would be my first time">No, this would be my first time</button>
+              <button class="option-btn" data-value="Honestly, I'm not sure">Honestly, I'm not sure</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Exit Confirmation Modal -->
+      <div id="exit-modal" class="fixed inset-0 z-50 hidden items-center justify-center">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" id="exit-modal-overlay"></div>
+        <div class="relative bg-[#22201E] rounded-2xl p-8 max-w-[380px] w-[calc(100%-48px)] mx-auto exit-modal-box">
+          <h3 class="font-fraunces text-cream text-xl leading-[1.2] mb-3 exit-modal-heading">Are you sure you want to leave?</h3>
+          <p class="font-inter text-cream/50 text-sm leading-[1.6] mb-6 exit-modal-body">Your progress will be lost and you'll need to start over.</p>
+          <div class="flex flex-col gap-3">
+            <button id="exit-modal-leave" class="w-full border border-cream/15 text-cream font-montserrat font-medium text-sm rounded-full py-3 hover:border-cream/30 transition-colors cursor-pointer exit-modal-btn">Leave intake</button>
+            <button id="exit-modal-stay" class="w-full bg-terracotta hover:bg-terracotta-hover text-cream font-montserrat font-medium text-sm rounded-full py-3 transition-colors cursor-pointer">Keep going</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Trust Badges -->
+      <div class="flex items-center justify-center gap-8 py-5 border-t border-cream/5 intake-border">
+        <div class="flex items-center gap-2 text-cream/30 intake-badge">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 1.33L2 4v4c0 3.47 2.56 6.71 6 7.33 3.44-.62 6-3.86 6-7.33V4L8 1.33z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="font-montserrat text-[11px] font-semibold tracking-[0.1em] uppercase">HIPAA Compliant</span>
+        </div>
+        <div class="flex items-center gap-2 text-cream/30 intake-badge">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M13.33 4L6 11.33 2.67 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="font-montserrat text-[11px] font-semibold tracking-[0.1em] uppercase">Secure & Confidential</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .state-btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #F5F0EA;
+    border: 1px solid rgba(245, 240, 234, 0.15);
+    border-radius: 9999px;
+    padding: 12px 8px;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-align: center;
+  }
+  .state-btn:hover {
+    border-color: rgba(245, 240, 234, 0.4);
+    background: rgba(245, 240, 234, 0.05);
+  }
+  .state-btn.selected {
+    border-color: #2A9D8F;
+    background: rgba(42, 157, 143, 0.1);
+    color: #2A9D8F;
+  }
+  .sex-btn {
+    background: transparent;
+  }
+  .sex-btn.selected {
+    border-color: #2A9D8F;
+    background: rgba(42, 157, 143, 0.1);
+    color: #2A9D8F;
+  }
+
+  /* Step transitions */
+  .step-enter {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  .step-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .step-exit {
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .collapsed-enter {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  .collapsed-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s;
+  }
+
+  /* Light mode overrides */
+  .light-mode {
+    background-color: #F5F0EA !important;
+  }
+  .light-mode .intake-heading {
+    color: #1A1816;
+  }
+  .light-mode .intake-body {
+    color: rgba(26, 24, 22, 0.55);
+  }
+  .light-mode .intake-bold {
+    color: #1A1816;
+  }
+  .light-mode .intake-muted {
+    color: rgba(26, 24, 22, 0.4);
+  }
+  .light-mode .intake-back-btn {
+    border-color: rgba(26, 24, 22, 0.15);
+    color: rgba(26, 24, 22, 0.5);
+  }
+  .light-mode .intake-back-btn:hover {
+    border-color: rgba(26, 24, 22, 0.3);
+    color: #1A1816;
+  }
+  .light-mode .intake-label {
+    color: #2A9D8F;
+  }
+  .light-mode .state-btn {
+    color: #1A1816;
+    border-color: rgba(26, 24, 22, 0.15);
+  }
+  .light-mode .state-btn:hover {
+    border-color: rgba(26, 24, 22, 0.35);
+    background: rgba(26, 24, 22, 0.03);
+  }
+  .light-mode .state-btn.selected {
+    border-color: #2A9D8F;
+    background: rgba(42, 157, 143, 0.08);
+    color: #2A9D8F;
+  }
+  .light-mode .sex-btn {
+    color: #1A1816;
+    border-color: rgba(26, 24, 22, 0.15);
+  }
+  .light-mode .sex-btn:hover {
+    border-color: rgba(26, 24, 22, 0.35);
+  }
+  .light-mode .sex-btn.selected {
+    border-color: #2A9D8F;
+    background: rgba(42, 157, 143, 0.08);
+    color: #2A9D8F;
+  }
+  .light-mode .intake-input {
+    color: #1A1816;
+    border-color: rgba(26, 24, 22, 0.15);
+  }
+  .light-mode .intake-input::placeholder {
+    color: rgba(26, 24, 22, 0.25);
+  }
+  .light-mode .intake-input:focus {
+    border-color: rgba(26, 24, 22, 0.35);
+  }
+  .goal-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 16px;
+    border: 1px solid rgba(245, 240, 234, 0.15);
+    border-radius: 16px;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .goal-btn:hover {
+    border-color: rgba(245, 240, 234, 0.35);
+    background: rgba(245, 240, 234, 0.03);
+  }
+  .goal-icon {
+    color: rgba(245, 240, 234, 0.5);
+    margin-bottom: 12px;
+    transition: color 0.15s ease;
+  }
+  .goal-btn:hover .goal-icon {
+    color: rgba(245, 240, 234, 0.7);
+  }
+  .goal-btn.selected {
+    border-color: #2A9D8F;
+    background: rgba(42, 157, 143, 0.1);
+  }
+  .goal-btn.selected .goal-icon {
+    color: #2A9D8F;
+  }
+  .light-mode .goal-btn {
+    border-color: rgba(26, 24, 22, 0.15);
+  }
+  .light-mode .goal-btn:hover {
+    border-color: rgba(26, 24, 22, 0.35);
+    background: rgba(26, 24, 22, 0.03);
+  }
+  .light-mode .goal-btn.selected {
+    border-color: #2A9D8F;
+    background: rgba(42, 157, 143, 0.08);
+  }
+  .light-mode .goal-icon {
+    color: rgba(26, 24, 22, 0.4);
+  }
+  .light-mode .goal-btn:hover .goal-icon {
+    color: rgba(26, 24, 22, 0.6);
+  }
+  .light-mode .goal-btn.selected .goal-icon {
+    color: #2A9D8F;
+  }
+  .option-btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #F5F0EA;
+    border: 1px solid rgba(245, 240, 234, 0.15);
+    border-radius: 16px;
+    padding: 20px 24px;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-align: left;
+  }
+  .option-btn:hover {
+    border-color: rgba(245, 240, 234, 0.35);
+    background: rgba(245, 240, 234, 0.03);
+  }
+  .option-btn.selected {
+    border-color: #2A9D8F;
+    background: rgba(42, 157, 143, 0.1);
+    color: #2A9D8F;
+  }
+  .light-mode .option-btn {
+    color: #1A1816;
+    border-color: rgba(26, 24, 22, 0.15);
+  }
+  .light-mode .option-btn:hover {
+    border-color: rgba(26, 24, 22, 0.35);
+    background: rgba(26, 24, 22, 0.03);
+  }
+  .light-mode .option-btn.selected {
+    border-color: #2A9D8F;
+    background: rgba(42, 157, 143, 0.08);
+    color: #2A9D8F;
+  }
+  .stepper-box {
+    background: transparent;
+  }
+  .stepper-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+  .light-mode .stepper-box {
+    border-color: rgba(26, 24, 22, 0.15);
+  }
+  .light-mode .stepper-btn {
+    color: rgba(26, 24, 22, 0.35);
+  }
+  .light-mode .stepper-btn:hover {
+    color: #1A1816;
+  }
+  .light-mode .intake-subtle {
+    color: rgba(26, 24, 22, 0.25);
+  }
+  .light-mode .intake-subtle:hover {
+    color: rgba(26, 24, 22, 0.5);
+  }
+  .light-mode .exit-modal-box {
+    background: #F5F0EA;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  }
+  .light-mode .exit-modal-heading {
+    color: #1A1816;
+  }
+  .light-mode .exit-modal-body {
+    color: rgba(26, 24, 22, 0.55);
+  }
+  .light-mode .exit-modal-btn {
+    border-color: rgba(26, 24, 22, 0.15);
+    color: #1A1816;
+  }
+  .light-mode .exit-modal-btn:hover {
+    border-color: rgba(26, 24, 22, 0.3);
+  }
+  .light-mode .intake-progress-track {
+    background: rgba(26, 24, 22, 0.06);
+  }
+  .light-mode .intake-badge {
+    color: rgba(26, 24, 22, 0.3);
+  }
+  .light-mode .intake-border {
+    border-color: rgba(26, 24, 22, 0.08);
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    var section = document.getElementById('intake-app');
+    var counter = document.getElementById('intake-counter');
+    var backBtn = document.getElementById('intake-back');
+    var themeToggle = document.getElementById('theme-toggle');
+    var iconSun = document.getElementById('icon-sun');
+    var iconMoon = document.getElementById('icon-moon');
+    var logoWhite = document.getElementById('logo-white');
+    var logoBlack = document.getElementById('logo-black');
+
+    var currentStep = 1;
+    var totalQuestions = 18;
+    var progressBar = document.getElementById('progress-bar');
+
+    function updateProgress(step) {
+      var pct = Math.round((step / totalQuestions) * 100);
+      progressBar.style.width = pct + '%';
+      counter.textContent = pct + '%';
+    }
+
+    // Restore saved theme
+    var savedTheme = sessionStorage.getItem('intake_theme');
+    if (savedTheme === 'light') applyLight();
+
+    // Theme toggle
+    themeToggle?.addEventListener('click', function() {
+      if (section.classList.contains('light-mode')) {
+        applyDark();
+        sessionStorage.setItem('intake_theme', 'dark');
+      } else {
+        applyLight();
+        sessionStorage.setItem('intake_theme', 'light');
+      }
+    });
+
+    function applyLight() {
+      section.classList.add('light-mode');
+      iconSun.classList.add('hidden');
+      iconMoon.classList.remove('hidden');
+      logoWhite.classList.add('hidden');
+      logoBlack.classList.remove('hidden');
+    }
+    function applyDark() {
+      section.classList.remove('light-mode');
+      iconSun.classList.remove('hidden');
+      iconMoon.classList.add('hidden');
+      logoWhite.classList.remove('hidden');
+      logoBlack.classList.add('hidden');
+    }
+
+    // Back button
+    backBtn?.addEventListener('click', function() {
+      if (currentStep === 1) {
+        window.location.href = '/get-started';
+      } else if (currentStep >= 3) {
+        showExitModal();
+      } else {
+        goToStep(currentStep - 1);
+      }
+    });
+
+    // Exit modal
+    var exitModal = document.getElementById('exit-modal');
+    function showExitModal() {
+      exitModal.classList.remove('hidden');
+      exitModal.classList.add('flex');
+    }
+    function hideExitModal() {
+      exitModal.classList.add('hidden');
+      exitModal.classList.remove('flex');
+    }
+    document.getElementById('exit-modal-stay')?.addEventListener('click', hideExitModal);
+    document.getElementById('exit-modal-overlay')?.addEventListener('click', hideExitModal);
+    document.getElementById('exit-modal-leave')?.addEventListener('click', function() {
+      window.location.href = '/get-started';
+    });
+
+    // Step navigation with transitions
+    function goToStep(step) {
+      var totalSteps = 5;
+
+      // Exit current active step
+      for (var i = 1; i <= totalSteps; i++) {
+        var active = document.getElementById('step-' + i + '-active');
+        var collapsed = document.getElementById('step-' + i + '-collapsed');
+        if (active && !active.classList.contains('hidden')) {
+          active.classList.remove('step-visible');
+          active.classList.add('step-exit');
+        }
+        if (collapsed && !collapsed.classList.contains('hidden')) {
+          collapsed.classList.add('hidden');
+          collapsed.classList.remove('collapsed-visible', 'collapsed-enter');
+        }
+      }
+
+      // After exit animation, show new state
+      setTimeout(function() {
+        for (var i = 1; i <= totalSteps; i++) {
+          var active = document.getElementById('step-' + i + '-active');
+          var collapsed = document.getElementById('step-' + i + '-collapsed');
+          if (active) {
+            active.classList.add('hidden');
+            active.classList.remove('step-exit', 'step-enter', 'step-visible');
+          }
+          if (collapsed) {
+            collapsed.classList.add('hidden');
+            collapsed.classList.remove('collapsed-enter', 'collapsed-visible');
+          }
+        }
+
+        // Show collapsed for completed steps
+        for (var i = 1; i < step; i++) {
+          var collapsed = document.getElementById('step-' + i + '-collapsed');
+          if (collapsed) {
+            collapsed.classList.remove('hidden');
+            collapsed.classList.add('collapsed-enter');
+            requestAnimationFrame(function(el) {
+              return function() {
+                requestAnimationFrame(function() {
+                  el.classList.remove('collapsed-enter');
+                  el.classList.add('collapsed-visible');
+                });
+              };
+            }(collapsed));
+          }
+        }
+
+        // Show active step with enter animation
+        var activeEl = document.getElementById('step-' + step + '-active');
+        if (activeEl) {
+          activeEl.classList.remove('hidden');
+          activeEl.classList.add('step-enter');
+          requestAnimationFrame(function() {
+            requestAnimationFrame(function() {
+              activeEl.classList.remove('step-enter');
+              activeEl.classList.add('step-visible');
+            });
+          });
+        }
+
+        currentStep = step;
+        updateProgress(step);
+        document.getElementById('intake-content').scrollTop = 0;
+      }, 250);
+    }
+
+    // ===== STEP 1: State selection =====
+    var stateButtons = document.querySelectorAll('.state-btn');
+    stateButtons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        stateButtons.forEach(function(b) { b.classList.remove('selected'); });
+        btn.classList.add('selected');
+        var state = btn.textContent.trim();
+        sessionStorage.setItem('intake_state', state);
+        document.getElementById('step-1-answer').textContent = state;
+
+        // Advance to step 2 after brief delay
+        setTimeout(function() { goToStep(2); }, 300);
+      });
+    });
+
+    // Edit buttons — go back to that step
+    document.querySelectorAll('.edit-step-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var step = parseInt(btn.getAttribute('data-edit-step'));
+        goToStep(step);
+      });
+    });
+
+    // ===== STEP 2: DOB + Sex =====
+    // Auto-format DOB input
+    var dobInput = document.getElementById('dob-input');
+    dobInput?.addEventListener('input', function(e) {
+      var val = dobInput.value.replace(/\D/g, '');
+      if (val.length >= 4) {
+        val = val.slice(0, 2) + '/' + val.slice(2, 4) + '/' + val.slice(4, 8);
+      } else if (val.length >= 2) {
+        val = val.slice(0, 2) + '/' + val.slice(2);
+      }
+      dobInput.value = val;
+    });
+
+    // Sex selection — advance to step 3
+    var sexButtons = document.querySelectorAll('.sex-btn');
+    sexButtons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        sexButtons.forEach(function(b) { b.classList.remove('selected'); });
+        btn.classList.add('selected');
+        var sex = btn.getAttribute('data-value');
+        sessionStorage.setItem('intake_sex', sex);
+
+        // Update step 2 collapsed answer
+        var dob = document.getElementById('dob-input').value || '';
+        var answerText = dob + ' · ' + sex.toLowerCase();
+        document.getElementById('step-2-answer').textContent = answerText;
+
+        setTimeout(function() { goToStep(3); }, 300);
+      });
+    });
+
+    // ===== STEP 3: Height + Weight Steppers =====
+    var stepperLimits = {
+      'height-ft': { min: 3, max: 8 },
+      'height-in': { min: 0, max: 11 },
+      'weight-lbs': { min: 50, max: 500 }
+    };
+
+    document.querySelectorAll('.stepper-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var targetId = btn.getAttribute('data-target');
+        var dir = parseInt(btn.getAttribute('data-dir'));
+        var el = document.getElementById(targetId);
+        if (!el) return;
+        var current = parseInt(el.textContent);
+        var limits = stepperLimits[targetId];
+        var next = current + dir;
+        if (next < limits.min) next = limits.min;
+        if (next > limits.max) next = limits.max;
+        el.textContent = next;
+      });
+    });
+
+    // Step 3 continue button
+    var step3Continue = document.getElementById('step-3-continue');
+    step3Continue?.addEventListener('click', function() {
+      var ft = document.getElementById('height-ft').textContent;
+      var inches = document.getElementById('height-in').textContent;
+      var lbs = document.getElementById('weight-lbs').textContent;
+      var heightStr = ft + "'" + inches + '"';
+      sessionStorage.setItem('intake_height', heightStr);
+      sessionStorage.setItem('intake_weight', lbs);
+      document.getElementById('step-3-answer').textContent = heightStr + ' · ' + lbs + ' lbs';
+      goToStep(4);
+    });
+
+    // ===== STEP 4: Goals (multi-select) =====
+    var selectedGoals = [];
+    var step4Continue = document.getElementById('step-4-continue');
+    document.querySelectorAll('.goal-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        btn.classList.toggle('selected');
+        var val = btn.getAttribute('data-value');
+        var idx = selectedGoals.indexOf(val);
+        if (idx > -1) {
+          selectedGoals.splice(idx, 1);
+        } else {
+          selectedGoals.push(val);
+        }
+        sessionStorage.setItem('intake_goals', JSON.stringify(selectedGoals));
+        if (selectedGoals.length > 0) {
+          step4Continue.classList.remove('hidden');
+        } else {
+          step4Continue.classList.add('hidden');
+        }
+      });
+    });
+
+    step4Continue?.addEventListener('click', function() {
+      // Update step 4 collapsed answer
+      var goalText = selectedGoals.join(', ');
+      document.getElementById('step-4-answer').textContent = goalText;
+      goToStep(5);
+    });
+
+    // ===== STEP 5: GLP-1 Experience (single-select) =====
+    document.querySelectorAll('#glp1-options .option-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('#glp1-options .option-btn').forEach(function(b) { b.classList.remove('selected'); });
+        btn.classList.add('selected');
+        sessionStorage.setItem('intake_glp1', btn.getAttribute('data-value'));
+        // Future: setTimeout(function() { goToStep(6); }, 300);
+      });
+    });
+
+  })();
+</script>

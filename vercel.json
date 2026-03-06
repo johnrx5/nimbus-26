@@ -1,6 +1,6 @@
 {
   "cleanUrls": true,
   "installCommand": "npm install",
-  "buildCommand": "npm run build",
+  "buildCommand": "node --version && npm --version && npx astro build --verbose 2>&1 || (echo '=== BUILD FAILED ===' && exit 1)",
   "outputDirectory": "dist"
 }

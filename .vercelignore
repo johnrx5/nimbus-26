@@ -1,9 +1,1 @@
-# Exclude large videos not used by intake/get-started
-public/videos/Lab_v1.mp4
-public/videos/Nimbus_Start Moving_v1.mp4
-public/videos/groove-hero.mp4
-public/videos/iStock-2196989613.mp4
-public/videos/snap-hero-1.mp4
-public/videos/weight-hero.mp4
-
-# Keep: public/videos/iStock-2210532095.mp4 (used by get-started page)
+src/assets/

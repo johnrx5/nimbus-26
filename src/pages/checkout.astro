@@ -1,0 +1,256 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Checkout — Nimbus Healthcare">
+  <main class="min-h-screen bg-dark text-cream flex flex-col">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between px-6 py-5 border-b border-cream/8">
+      <a href="/intake" class="flex items-center gap-2 text-cream/40 hover:text-cream/70 transition-colors text-sm font-inter">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back
+      </a>
+      <span class="font-fraunces text-cream text-lg">Nimbus</span>
+      <div class="flex items-center gap-1.5 text-cream/30 text-xs font-inter">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+          <path d="M6.5 1L2 4v3.5c0 2.8 2 5.4 4.5 6 2.5-.6 4.5-3.2 4.5-6V4L6.5 1z" stroke="currentColor" stroke-width="1.1"/>
+        </svg>
+        Secure checkout
+      </div>
+    </header>
+
+    <!-- Body -->
+    <div class="flex-1 w-full max-w-[500px] mx-auto px-5 py-8">
+
+      <!-- Order summary -->
+      <div class="checkout-summary mb-8" id="order-summary">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <div>
+            <p class="font-fraunces text-cream text-base leading-[1.3]" id="co-product-name">CarniSema®</p>
+            <p class="font-inter text-cream/40 text-xs mt-0.5" id="co-commit-label">6-Month Plan</p>
+          </div>
+          <p class="font-inter text-cream font-semibold text-base shrink-0" id="co-price">$129/mo</p>
+        </div>
+        <div class="h-px bg-cream/8 my-3"></div>
+        <div class="flex items-center justify-between">
+          <span class="font-inter text-cream/50 text-sm">Due today</span>
+          <span class="font-inter text-cream font-bold text-base" id="co-due">$129</span>
+        </div>
+      </div>
+
+      <!-- Quick checkout buttons -->
+      <div class="flex flex-col gap-3 mb-6">
+        <button class="express-btn express-btn--apple" id="btn-applepay" onclick="handleExpressCheckout('apple')">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M13.9 4.6c.8-1 1.3-2.3 1.2-3.6-1.2.1-2.6.8-3.4 1.8-.8.9-1.4 2.2-1.2 3.5 1.3.1 2.6-.6 3.4-1.7zM16.5 10.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.5-.1-2.9.9-3.6.9-.8 0-1.9-.8-3.2-.8-1.6 0-3.1.9-3.9 2.4-1.7 2.9-.4 7.2 1.2 9.5.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.8 3-.8s1.8.8 3 .7c1.3 0 2.1-1.2 2.9-2.3.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.2-.8-2.2-3.9z"/>
+          </svg>
+          <span>Apple Pay</span>
+        </button>
+        <button class="express-btn express-btn--google" id="btn-gpay" onclick="handleExpressCheckout('google')">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M18.6 10.2c0-.6-.1-1.2-.2-1.8H10v3.4h4.8c-.2 1.1-.9 2-1.9 2.6v2.2h3c1.8-1.6 2.7-4 2.7-6.4z" fill="#4285F4"/>
+            <path d="M10 19c2.4 0 4.5-.8 6-2.2l-3-2.2c-.8.5-1.8.9-3 .9-2.3 0-4.3-1.6-5-3.7H2v2.3C3.5 17.2 6.6 19 10 19z" fill="#34A853"/>
+            <path d="M5 11.8c-.2-.5-.3-1.1-.3-1.8s.1-1.3.3-1.8V5.9H2C1.4 7.1 1 8.5 1 10s.4 2.9 1 4.1l3-2.3z" fill="#FBBC04"/>
+            <path d="M10 4.5c1.3 0 2.5.5 3.4 1.3l2.5-2.5C14.5 1.8 12.4 1 10 1 6.6 1 3.5 2.8 2 5.9l3 2.3c.7-2.1 2.7-3.7 5-3.7z" fill="#EA4335"/>
+          </svg>
+          <span>Google Pay</span>
+        </button>
+        <button class="express-btn express-btn--shop" id="btn-shoppay" onclick="handleExpressCheckout('shop')">
+          <svg width="20" height="14" viewBox="0 0 20 14" fill="currentColor">
+            <path d="M1.96 0C.88 0 0 .88 0 1.96v10.08C0 13.12.88 14 1.96 14h16.08c1.08 0 1.96-.88 1.96-1.96V1.96C20 .88 19.12 0 18.04 0H1.96zm2.6 3.5h1.1l.55 3.5.6-3.5h1.1l-.9 5H5.7L5.15 5 4.6 8.5H3.8l-.9-5h1.1l.56 3.5zm5.3 0c.88 0 1.5.4 1.5 1.5 0 .7-.35 1.15-1 1.35l1.1 2.15h-1.2l-.95-2H9.1V8.5H8.1v-5h1.76zm-.76.9v1.4h.65c.35 0 .6-.2.6-.7 0-.5-.25-.7-.6-.7H9.1zm4.15-.9h1.65c1.1 0 1.65.5 1.65 1.5 0 1-.55 1.5-1.65 1.5h-.65V8.5h-1V3.5zm1 .9v1.2h.55c.4 0 .65-.15.65-.6s-.25-.6-.65-.6h-.55z"/>
+          </svg>
+          <span>Shop Pay</span>
+        </button>
+      </div>
+
+      <!-- Divider -->
+      <div class="flex items-center gap-4 mb-6">
+        <div class="flex-1 h-px bg-cream/10"></div>
+        <span class="font-inter text-cream/30 text-xs uppercase tracking-wider">Or pay with card</span>
+        <div class="flex-1 h-px bg-cream/10"></div>
+      </div>
+
+      <!-- Card form -->
+      <form id="checkout-form" onsubmit="return false;">
+
+        <!-- Name -->
+        <div class="co-field-group mb-4">
+          <label class="co-label">Full name</label>
+          <input type="text" placeholder="Jane Smith" class="co-input" id="co-name" autocomplete="name"/>
+        </div>
+
+        <!-- Email -->
+        <div class="co-field-group mb-4">
+          <label class="co-label">Email</label>
+          <input type="email" placeholder="you@example.com" class="co-input" id="co-email" autocomplete="email"/>
+        </div>
+
+        <!-- Card number -->
+        <div class="co-field-group mb-4">
+          <label class="co-label">Card number</label>
+          <div class="co-input co-input--icon">
+            <input type="text" placeholder="1234 5678 9012 3456" class="co-input-bare" id="co-card" maxlength="19" autocomplete="cc-number"/>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <!-- Visa -->
+              <svg width="30" height="20" viewBox="0 0 30 20" fill="none"><rect width="30" height="20" rx="3" fill="#1A1F71"/><path d="M11.5 13.5H9.7l1.1-7h1.8l-1.1 7zM8.3 6.5L6.6 11.2l-.2-.9-.6-3.2s-.1-.6-.8-.6H2.1l-.1.2s.9.2 1.9.8l1.6 6h1.9l3-7h-2.1zM20.3 13.5h1.7l-1.5-7h-1.5c-.6 0-.8.5-.8.5L15 13.5h1.9l.4-1h2.3l.7 1zm-2.1-2.5l.9-2.6.5 2.6h-1.4zm-2.5-4.2l-.3 1.6s-.8-.4-1.6-.4c-.9 0-1.3.4-1.3.7 0 .8 2 1.1 2 2.8 0 1.4-1.3 2.2-3 2.2-1.3 0-2-.3-2-.3l.3-1.7s.9.4 1.8.4c.5 0 1.4-.2 1.4-.9 0-1.1-2-1.1-2-2.7 0-1.5 1.3-2.3 3-2.3.9 0 1.7.3 1.7.6z" fill="white"/></svg>
+              <!-- MC -->
+              <svg width="30" height="20" viewBox="0 0 30 20" fill="none"><rect width="30" height="20" rx="3" fill="#252525"/><circle cx="11.5" cy="10" r="5.5" fill="#EB001B"/><circle cx="18.5" cy="10" r="5.5" fill="#F79E1B"/><path d="M15 6.1a5.5 5.5 0 010 7.8A5.5 5.5 0 0115 6.1z" fill="#FF5F00"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Expiry + CVV -->
+        <div class="grid grid-cols-2 gap-3 mb-6">
+          <div class="co-field-group">
+            <label class="co-label">Expiry</label>
+            <input type="text" placeholder="MM / YY" class="co-input" id="co-expiry" maxlength="7" autocomplete="cc-exp"/>
+          </div>
+          <div class="co-field-group">
+            <label class="co-label">CVV</label>
+            <input type="text" placeholder="•••" class="co-input" id="co-cvv" maxlength="4" autocomplete="cc-csc"/>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="w-full bg-terracotta hover:bg-terracotta-hover text-cream font-montserrat font-medium text-base rounded-full py-4 transition-colors cursor-pointer mb-5" id="co-submit">
+          Start my plan
+        </button>
+
+        <!-- Legal -->
+        <p class="font-inter text-cream/25 text-xs text-center leading-[1.6]">
+          By continuing, you authorize this charge and agree to our <a href="/terms" class="underline hover:text-cream/50 transition-colors">Terms of Service</a> and <a href="/privacy" class="underline hover:text-cream/50 transition-colors">Privacy Policy</a>. Your subscription renews automatically. Cancel anytime in your account settings.
+        </p>
+
+      </form>
+
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .checkout-summary {
+    background: rgba(245, 240, 234, 0.04);
+    border: 1px solid rgba(245, 240, 234, 0.1);
+    border-radius: 16px;
+    padding: 18px 20px;
+  }
+  .express-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+    border: none;
+  }
+  .express-btn:hover { opacity: 0.88; }
+  .express-btn--apple {
+    background: #000;
+    color: #fff;
+  }
+  .express-btn--google {
+    background: #fff;
+    color: #1a1a1a;
+  }
+  .express-btn--shop {
+    background: #5433EB;
+    color: #fff;
+  }
+  .co-label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(245, 240, 234, 0.5);
+    margin-bottom: 6px;
+  }
+  .co-input {
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #F5F0EA;
+    background: rgba(245, 240, 234, 0.05);
+    border: 1px solid rgba(245, 240, 234, 0.12);
+    border-radius: 12px;
+    padding: 14px 16px;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+  .co-input::placeholder { color: rgba(245, 240, 234, 0.2); }
+  .co-input:focus { border-color: rgba(245, 240, 234, 0.3); }
+  .co-input--icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+  }
+  .co-input-bare {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #F5F0EA;
+    min-width: 0;
+  }
+  .co-input-bare::placeholder { color: rgba(245, 240, 234, 0.2); }
+</style>
+
+<script>
+  // Populate summary from sessionStorage
+  (function() {
+    var product = sessionStorage.getItem('checkout_product') || 'CarniSema\u00ae';
+    var price = sessionStorage.getItem('checkout_price') || '129';
+    var commit = sessionStorage.getItem('checkout_commit') || '6month';
+    var commitLabels = { monthly: 'Monthly Plan', '3month': '3-Month Plan', '6month': '6-Month Plan' };
+
+    document.getElementById('co-product-name').textContent = product;
+    document.getElementById('co-commit-label').textContent = commitLabels[commit] || '6-Month Plan';
+    document.getElementById('co-price').textContent = '$' + price + '/mo';
+    document.getElementById('co-due').textContent = '$' + price;
+
+    // Pre-fill email from intake
+    var email = sessionStorage.getItem('intake_email');
+    if (email) document.getElementById('co-email').value = email;
+  })();
+
+  // Card number formatting
+  document.getElementById('co-card').addEventListener('input', function(e) {
+    var v = e.target.value.replace(/\D/g, '').substring(0, 16);
+    e.target.value = v.replace(/(.{4})/g, '$1 ').trim();
+  });
+
+  // Expiry formatting
+  document.getElementById('co-expiry').addEventListener('input', function(e) {
+    var v = e.target.value.replace(/\D/g, '').substring(0, 4);
+    if (v.length >= 3) v = v.substring(0, 2) + ' / ' + v.substring(2);
+    e.target.value = v;
+  });
+
+  // Express checkout handler (demo)
+  window.handleExpressCheckout = function(method) {
+    var btn = document.getElementById('btn-' + method + 'pay');
+    if (btn) {
+      btn.textContent = 'Processing...';
+      btn.disabled = true;
+      setTimeout(function() { window.location.href = '/'; }, 1500);
+    }
+  };
+
+  // Form submit (demo)
+  document.getElementById('checkout-form').addEventListener('submit', function() {
+    var btn = document.getElementById('co-submit');
+    btn.textContent = 'Processing...';
+    btn.disabled = true;
+  });
+</script>

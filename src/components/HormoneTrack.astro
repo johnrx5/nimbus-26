@@ -50,6 +50,12 @@ const features = [
       </video>
       <!-- Controls -->
       <div class="absolute bottom-5 left-5 flex items-center gap-3">
+        <!-- Restart -->
+        <button id="track-restart" class="w-10 h-10 rounded-full bg-dark/60 backdrop-blur-sm flex items-center justify-center hover:bg-dark/80 transition-colors cursor-pointer" aria-label="Restart video">
+          <svg class="w-4.5 h-4.5 text-cream" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+          </svg>
+        </button>
         <!-- Play/Pause -->
         <button id="track-play-pause" class="w-10 h-10 rounded-full bg-dark/60 backdrop-blur-sm flex items-center justify-center hover:bg-dark/80 transition-colors cursor-pointer" aria-label="Pause video">
           <svg id="track-pause-icon" class="w-5 h-5 text-cream" viewBox="0 0 20 20" fill="currentColor">
@@ -90,6 +96,7 @@ const features = [
   const trackPlayPauseBtn = document.getElementById('track-play-pause');
   const trackPauseIcon = document.getElementById('track-pause-icon');
   const trackPlayIcon = document.getElementById('track-play-icon');
+  const trackRestartBtn = document.getElementById('track-restart');
   const trackMuteBtn = document.getElementById('track-mute');
   const trackMutedIcon = document.getElementById('track-muted-icon');
   const trackUnmutedIcon = document.getElementById('track-unmuted-icon');
@@ -106,6 +113,14 @@ const features = [
       trackPlayIcon?.classList.remove('hidden');
       trackPlayPauseBtn.setAttribute('aria-label', 'Play video');
     }
+  });
+
+  trackRestartBtn?.addEventListener('click', () => {
+    trackVideo.currentTime = 0;
+    trackVideo.play();
+    trackPauseIcon?.classList.remove('hidden');
+    trackPlayIcon?.classList.add('hidden');
+    trackPlayPauseBtn?.setAttribute('aria-label', 'Pause video');
   });
 
   trackMuteBtn?.addEventListener('click', () => {

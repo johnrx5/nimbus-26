@@ -36,6 +36,17 @@ const pills = [
 
         <!-- Controls -->
         <div class="absolute bottom-5 left-5 flex items-center gap-3">
+          <!-- Restart -->
+          <button
+            id="teams-nutrition-restart"
+            class="w-10 h-10 rounded-full bg-dark/60 backdrop-blur-sm flex items-center justify-center hover:bg-dark/80 transition-colors cursor-pointer"
+            aria-label="Restart video"
+          >
+            <svg class="w-4.5 h-4.5 text-cream" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+            </svg>
+          </button>
+
           <!-- Play/Pause -->
           <button
             id="teams-nutrition-play-pause"
@@ -115,6 +126,7 @@ const pills = [
     var playPauseBtn = document.getElementById('teams-nutrition-play-pause');
     var pauseIcon = document.getElementById('teams-nutrition-pause-icon');
     var playIcon = document.getElementById('teams-nutrition-play-icon');
+    var restartBtn = document.getElementById('teams-nutrition-restart');
     var muteBtn = document.getElementById('teams-nutrition-mute');
     var mutedIcon = document.getElementById('teams-nutrition-muted-icon');
     var unmutedIcon = document.getElementById('teams-nutrition-unmuted-icon');
@@ -131,6 +143,14 @@ const pills = [
         playIcon?.classList.remove('hidden');
         playPauseBtn.setAttribute('aria-label', 'Play video');
       }
+    });
+
+    restartBtn?.addEventListener('click', function() {
+      video.currentTime = 0;
+      video.play();
+      pauseIcon?.classList.remove('hidden');
+      playIcon?.classList.add('hidden');
+      playPauseBtn?.setAttribute('aria-label', 'Pause video');
     });
 
     muteBtn?.addEventListener('click', function() {

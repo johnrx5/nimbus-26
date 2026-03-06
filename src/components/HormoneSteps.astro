@@ -68,7 +68,9 @@ const steps = [
     class="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4"
     style="scrollbar-width: none;"
   >
-    {steps.map(step => (
+    <!-- Leading spacer to align first card with header -->
+    <div id="steps-spacer" class="shrink-0" aria-hidden="true"></div>
+    {steps.map((step, i) => (
       <div class="snap-start shrink-0 w-[400px]">
         <!-- Card with number -->
         <div class="bg-[#22201E] rounded-2xl h-[420px] flex flex-col justify-end p-8 mb-5">
@@ -80,6 +82,8 @@ const steps = [
         <p class="font-inter text-cream/40 text-sm leading-[1.6] px-5">{step.description}</p>
       </div>
     ))}
+    <!-- Trailing spacer to bleed last card off-screen -->
+    <div class="shrink-0 w-[1px]" aria-hidden="true"></div>
   </div>
 </section>
 

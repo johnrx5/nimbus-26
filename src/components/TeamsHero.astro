@@ -2,9 +2,9 @@
 import heroBg from '../assets/[7] Photography/iStock-2187968525.jpg';
 ---
 
-<section class="relative w-full h-[100vh] p-[10px]">
+<section class="relative w-full h-[100vh] p-0 md:p-[10px]">
   <!-- Background Image -->
-  <div class="absolute inset-[10px] rounded-[14px] overflow-hidden">
+  <div class="absolute inset-0 md:inset-[10px] rounded-none md:rounded-[14px] overflow-hidden">
     <img
       src={heroBg.src}
       alt=""
@@ -38,8 +38,8 @@ import heroBg from '../assets/[7] Photography/iStock-2187968525.jpg';
   </div>
 
   <!-- Trust Bar -->
-  <div class="absolute bottom-[10px] left-[10px] right-[10px] z-10">
-    <div class="hero-animate hero-animate-delay-3 flex flex-wrap items-center justify-center gap-x-10 gap-y-3 rounded-b-[14px] py-5 px-6">
+  <div class="absolute bottom-0 left-0 right-0 md:bottom-[10px] md:left-[10px] md:right-[10px] z-10">
+    <div class="hero-animate hero-animate-delay-3 flex flex-wrap items-center justify-center gap-x-10 gap-y-3 rounded-b-none md:rounded-b-[14px] py-5 px-6">
       <div class="flex items-center gap-2 text-cream">
         <svg class="w-[18px] h-[18px]" viewBox="0 0 18 18" fill="none"><path d="M2 14V8h3v6H2zm5.5 0V4h3v10h-3zM13 14V1h3v13h-3z" fill="currentColor"/></svg>
         <span class="font-inter font-medium text-sm text-cream whitespace-nowrap">94% patient success rate</span>

@@ -69,7 +69,7 @@ const isDarkPage = darkPages.includes(currentPath);
             href={link.href}
             class={`menu-link font-fraunces text-[clamp(36px,8vw,64px)] leading-[1.2] tracking-[-0.02em] py-2 transition-all duration-300 hover:translate-x-2 ${
               link.href.startsWith('/') && currentPath === link.href.replace(/\/$/, '')
-                ? 'text-dark'
+                ? 'text-terracotta'
                 : 'text-dark/70 hover:text-dark'
             }`}
             target={link.external ? '_blank' : undefined}

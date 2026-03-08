@@ -30,7 +30,7 @@ const steps = [
 
 <section class="py-24 overflow-hidden">
   <!-- Header -->
-  <div class="max-w-[1200px] mx-auto px-[10px] mb-16" data-animate>
+  <div id="hormone-showcase-header" class="max-w-[1200px] mx-auto px-[10px] mb-16" data-animate>
     <p class="font-inter text-teal text-base mb-3">How it works</p>
     <h2 class="font-fraunces text-cream text-[clamp(40px,5vw,72px)] leading-[1.05] tracking-[-0.02em]">
       Five steps to a <span class="text-teal">better</span> you.
@@ -100,6 +100,7 @@ const steps = [
 <script is:inline>
   (function() {
     var track = document.getElementById('hormone-showcase-track');
+    var header = document.getElementById('hormone-showcase-header');
     var prevBtn = document.getElementById('hormone-showcase-prev');
     var nextBtn = document.getElementById('hormone-showcase-next');
     var dots = document.querySelectorAll('.hormone-showcase-dot');
@@ -108,10 +109,17 @@ const steps = [
     var cardWidth = 700;
     var gap = 20;
 
+    function getLeftStart() {
+      if (header) {
+        var rect = header.getBoundingClientRect();
+        var padding = parseFloat(getComputedStyle(header).paddingLeft);
+        return rect.left + padding;
+      }
+      return 10;
+    }
+
     function getOffset(index) {
-      var vw = window.innerWidth;
-      var centerOffset = (vw - cardWidth) / 2;
-      return -(index * (cardWidth + gap)) + centerOffset;
+      return -(index * (cardWidth + gap)) + getLeftStart();
     }
 
     function goTo(index) {

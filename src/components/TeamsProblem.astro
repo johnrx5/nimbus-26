@@ -54,10 +54,10 @@ const cards = [
   </div>
 
   <!-- Controls -->
-  <div class="flex items-center justify-center gap-6 mt-8">
+  <div class="flex items-center justify-center gap-4 mt-8">
     <button
       id="teams-problem-prev"
-      class="flex items-center justify-center text-dark/40 hover:text-dark transition-colors cursor-pointer"
+      class="w-10 h-10 rounded-full bg-dark/10 flex items-center justify-center text-dark/40 hover:text-dark hover:bg-dark/20 transition-colors cursor-pointer"
       aria-label="Previous slide"
     >
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -65,14 +65,9 @@ const cards = [
       </svg>
     </button>
 
-    <!-- Progress bar -->
-    <div class="w-20 h-[2px] bg-dark/20 rounded-full overflow-hidden">
-      <div id="teams-problem-progress" class="h-full bg-teal rounded-full" style="width: 0%"></div>
-    </div>
-
     <button
       id="teams-problem-next"
-      class="flex items-center justify-center text-dark/40 hover:text-dark transition-colors cursor-pointer"
+      class="w-10 h-10 rounded-full bg-dark/10 flex items-center justify-center text-dark/40 hover:text-dark hover:bg-dark/20 transition-colors cursor-pointer"
       aria-label="Next slide"
     >
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -97,10 +92,8 @@ const cards = [
     var header = document.getElementById('teams-problem-header');
     var prevBtn = document.getElementById('teams-problem-prev');
     var nextBtn = document.getElementById('teams-problem-next');
-    var progress = document.getElementById('teams-problem-progress');
     var current = 0;
     var total = 4;
-    var DURATION = 4;
 
     function getSlideMetrics() {
       var slide = track.querySelector('.teams-problem-slide');
@@ -124,28 +117,12 @@ const cards = [
       return -(index * (m.cardWidth + m.gap)) + getLeftStart();
     }
 
-    function startProgress() {
-      if (!progress) return;
-      progress.style.transition = 'none';
-      progress.style.width = '0%';
-      progress.getBoundingClientRect();
-      progress.style.transition = 'width ' + DURATION + 's linear';
-      progress.style.width = '100%';
-    }
-
     function goTo(index) {
       if (index < 0) index = total - 1;
       if (index > total - 1) index = 0;
       current = index;
       track.style.transform = 'translateX(' + getOffset(current) + 'px)';
-      startProgress();
     }
-
-    progress.addEventListener('transitionend', function(e) {
-      if (e.propertyName === 'width' && progress.style.width === '100%') {
-        goTo(current + 1);
-      }
-    });
 
     track.style.transition = 'none';
     track.style.transform = 'translateX(' + getLeftStart() + 'px)';
@@ -154,19 +131,6 @@ const cards = [
         track.style.transition = '';
       });
     });
-
-    var section = track.closest('section');
-    var hasStarted = false;
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting && !hasStarted) {
-          hasStarted = true;
-          startProgress();
-          observer.disconnect();
-        }
-      });
-    }, { threshold: 0.4 });
-    if (section) observer.observe(section);
 
     prevBtn?.addEventListener('click', function() { goTo(current - 1); });
     nextBtn?.addEventListener('click', function() { goTo(current + 1); });
@@ -183,7 +147,6 @@ const cards = [
       touchStartY = e.touches[0].clientY;
       touchDeltaX = 0;
       isSwiping = false;
-      progress.style.transition = 'none';
       track.style.transition = 'none';
     }, { passive: true });
 
@@ -209,7 +172,6 @@ const cards = [
           goTo(current - 1);
         } else {
           track.style.transform = 'translateX(' + getOffset(current) + 'px)';
-          startProgress();
         }
       }
       isSwiping = false;

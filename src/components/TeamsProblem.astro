@@ -6,25 +6,21 @@ import img4 from '../assets/[7] Photography/iStock-1317735408.jpg';
 
 const cards = [
   {
-    number: '01',
     image: img1.src,
     title: 'Unpredictable Drug Spend',
     description: 'Dose-based cost escalation tied to branded medications creates budget volatility that\'s impossible to forecast.',
   },
   {
-    number: '02',
     image: img2.src,
     title: 'High Drop-Off & Restart Rates',
     description: 'Without integrated clinical support, employees cycle through starts and stops that waste spend and undermine outcomes.',
   },
   {
-    number: '03',
     image: img3.src,
     title: 'Fragmented Care',
     description: 'PBMs, telehealth vendors, and nutrition programs operate in silos with no single accountable owner for results.',
   },
   {
-    number: '04',
     image: img4.src,
     title: 'No Outcome Accountability',
     description: 'Employers pay for medication volume — not medication value — with no clear line to adherence or persistence.',
@@ -32,57 +28,57 @@ const cards = [
 ];
 ---
 
-<section class="bg-cream pt-24 pb-20 overflow-x-clip" data-animate>
+<section class="bg-cream py-24 overflow-hidden" data-animate>
   <!-- Header -->
-  <div id="teams-problem-header" class="max-w-[1200px] mx-auto px-[10px] mb-10">
-    <div class="flex items-end justify-between">
-      <div>
-        <p class="font-inter text-dark/50 text-base mb-3">The problem</p>
-        <h2 class="font-fraunces text-dark text-[clamp(40px,5vw,72px)] leading-[1.05] tracking-[-0.02em]">
-          Traditional isn't working
-        </h2>
-      </div>
-      <!-- Arrow Buttons -->
-      <div class="flex items-center gap-2 pb-2">
-        <button
-          id="teams-problem-prev"
-          class="w-11 h-11 rounded-full border border-dark/15 flex items-center justify-center text-dark/30 hover:text-dark hover:border-dark/40 transition-colors cursor-pointer"
-          aria-label="Previous slide"
-        >
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <button
-          id="teams-problem-next"
-          class="w-11 h-11 rounded-full border border-dark/15 flex items-center justify-center text-dark/30 hover:text-dark hover:border-dark/40 transition-colors cursor-pointer"
-          aria-label="Next slide"
-        >
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </div>
+  <div id="teams-problem-header" class="max-w-[1200px] mx-auto px-[10px] mb-16">
+    <p class="font-inter text-dark/50 text-base mb-3">The problem</p>
+    <h2 class="font-fraunces text-dark text-[clamp(40px,5vw,72px)] leading-[1.05] tracking-[-0.02em]">
+      Traditional isn't working
+    </h2>
+  </div>
+
+  <!-- Carousel -->
+  <div class="relative overflow-hidden">
+    <div id="teams-problem-track" class="flex gap-6 transition-transform duration-500 ease-in-out">
+      {cards.map((card) => (
+        <div class="shrink-0 w-[500px]">
+          <div class="relative rounded-2xl h-[500px] overflow-hidden mb-5">
+            <img src={card.image} alt="" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-dark/10"></div>
+          </div>
+          <h3 class="font-inter text-dark text-lg font-bold mb-2 px-1">{card.title}</h3>
+          <p class="font-inter text-dark/50 text-sm leading-[1.6] px-1">{card.description}</p>
+        </div>
+      ))}
     </div>
   </div>
 
-  <!-- Carousel (bleeds right) -->
-  <div
-    id="teams-problem-carousel"
-    class="teams-carousel flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4"
-    style="scrollbar-width: none;"
-  >
-    {cards.map(card => (
-      <div class="snap-start shrink-0 w-[500px]">
-        <!-- Card with image + number overlay -->
-        <div class="relative rounded-2xl h-[500px] overflow-hidden mb-5">
-          <img src={card.image} alt="" class="w-full h-full object-cover" />
-          <div class="absolute inset-0 bg-dark/10"></div>
-        </div>
-        <h3 class="font-inter text-dark text-lg font-bold mb-2 px-2">{card.title}</h3>
-        <p class="font-inter text-dark/50 text-sm leading-[1.6] px-2">{card.description}</p>
-      </div>
-    ))}
+  <!-- Controls -->
+  <div class="flex items-center justify-center gap-6 mt-8">
+    <button
+      id="teams-problem-prev"
+      class="flex items-center justify-center text-dark/40 hover:text-dark transition-colors cursor-pointer"
+      aria-label="Previous slide"
+    >
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <!-- Progress bar -->
+    <div class="w-20 h-[2px] bg-dark/20 rounded-full overflow-hidden">
+      <div id="teams-problem-progress" class="h-full bg-teal rounded-full" style="width: 0%"></div>
+    </div>
+
+    <button
+      id="teams-problem-next"
+      class="flex items-center justify-center text-dark/40 hover:text-dark transition-colors cursor-pointer"
+      aria-label="Next slide"
+    >
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
   </div>
 
   <!-- Bottom Line Banner -->
@@ -95,33 +91,90 @@ const cards = [
   </div>
 </section>
 
-<style>
-  .teams-carousel::-webkit-scrollbar {
-    display: none;
-  }
-  .teams-carousel {
-    padding-left: 10px;
-  }
-  @media (min-width: 1200px) {
-    .teams-carousel {
-      padding-left: calc((100vw - 1200px) / 2 + 10px);
-    }
-  }
-</style>
-
 <script is:inline>
   (function() {
+    var track = document.getElementById('teams-problem-track');
+    var header = document.getElementById('teams-problem-header');
     var prevBtn = document.getElementById('teams-problem-prev');
     var nextBtn = document.getElementById('teams-problem-next');
-    var carousel = document.getElementById('teams-problem-carousel');
-    var cardWidth = 500 + 24;
+    var progress = document.getElementById('teams-problem-progress');
+    var current = 0;
+    var total = 4;
+    var cardWidth = 500;
+    var gap = 24;
+    var DURATION = 4;
 
-    prevBtn?.addEventListener('click', function() {
-      carousel?.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    function getLeftStart() {
+      if (header) {
+        var rect = header.getBoundingClientRect();
+        var padding = parseFloat(getComputedStyle(header).paddingLeft);
+        return rect.left + padding;
+      }
+      return 10;
+    }
+
+    function getOffset(index) {
+      return -(index * (cardWidth + gap)) + getLeftStart();
+    }
+
+    function startProgress() {
+      if (!progress) return;
+      progress.style.transition = 'none';
+      progress.style.width = '0%';
+      progress.getBoundingClientRect();
+      progress.style.transition = 'width ' + DURATION + 's linear';
+      progress.style.width = '100%';
+    }
+
+    function goTo(index) {
+      if (index < 0) index = total - 1;
+      if (index > total - 1) index = 0;
+      current = index;
+      track.style.transform = 'translateX(' + getOffset(current) + 'px)';
+      startProgress();
+    }
+
+    // Auto-advance when progress bar finishes
+    progress.addEventListener('transitionend', function(e) {
+      if (e.propertyName === 'width' && progress.style.width === '100%') {
+        goTo(current + 1);
+      }
     });
 
-    nextBtn?.addEventListener('click', function() {
-      carousel?.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    // Set initial carousel position (no transition)
+    track.style.transition = 'none';
+    track.style.transform = 'translateX(' + getLeftStart() + 'px)';
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        track.style.transition = '';
+      });
+    });
+
+    // Only start autoplay once the section scrolls into view
+    var section = track.closest('section');
+    var hasStarted = false;
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && !hasStarted) {
+          hasStarted = true;
+          startProgress();
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.4 });
+    if (section) observer.observe(section);
+
+    prevBtn?.addEventListener('click', function() { goTo(current - 1); });
+    nextBtn?.addEventListener('click', function() { goTo(current + 1); });
+
+    window.addEventListener('resize', function() {
+      track.style.transition = 'none';
+      track.style.transform = 'translateX(' + getOffset(current) + 'px)';
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          track.style.transition = '';
+        });
+      });
     });
   })();
 </script>

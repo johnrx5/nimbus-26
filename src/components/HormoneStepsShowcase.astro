@@ -1,0 +1,161 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Complete Your Intake',
+    description: 'Share your symptoms, goals, and medical history through our secure online assessment.',
+  },
+  {
+    number: '02',
+    title: 'Get Comprehensive Labs',
+    description: 'A full 70+ biomarker panel at a nearby lab or via at-home blood draw — everything your provider needs.',
+  },
+  {
+    number: '03',
+    title: 'Meet Your Clinician',
+    description: 'A licensed specialist explains your results in plain language and builds your personalized plan via video.',
+  },
+  {
+    number: '04',
+    title: 'Start Treatment',
+    description: 'Custom-compounded medications ship to your door with clear dosing guidance and quality reports.',
+  },
+  {
+    number: '05',
+    title: 'Optimize Continuously',
+    description: 'Repeat labs at 90 days and annually. Aura™ wearable data helps your clinician make smarter adjustments.',
+  },
+];
+---
+
+<section class="py-24 overflow-hidden">
+  <!-- Header -->
+  <div class="max-w-[1200px] mx-auto px-[10px] text-center mb-16" data-animate>
+    <div class="flex items-center justify-center gap-3 mb-4">
+      <div class="w-12 h-[2px] bg-teal"></div>
+      <span class="font-montserrat text-teal text-sm font-semibold tracking-[0.15em] uppercase">The Platform</span>
+      <div class="w-12 h-[2px] bg-teal"></div>
+    </div>
+    <h2 class="font-fraunces text-cream text-[clamp(40px,5vw,72px)] leading-[1.05] tracking-[-0.02em]">
+      Your care, in one place.
+    </h2>
+  </div>
+
+  <!-- Centered Carousel -->
+  <div class="relative" data-animate data-delay="1">
+    <div id="hormone-showcase-carousel" class="overflow-visible">
+      <div id="hormone-showcase-track" class="flex gap-5 transition-transform duration-500 ease-in-out">
+        {steps.map((step) => (
+          <div class="shrink-0 w-[1100px]">
+            <div class="rounded-2xl bg-[#22201E] h-[480px] flex flex-col justify-between p-12">
+              <span class="font-fraunces text-teal/20 text-[160px] leading-none tracking-[-0.04em] select-none">
+                {step.number}
+              </span>
+              <div>
+                <h3 class="font-fraunces text-cream text-[clamp(28px,3vw,44px)] leading-[1.1] tracking-[-0.02em] mb-4">
+                  {step.title}
+                </h3>
+                <p class="font-inter text-cream/50 text-base leading-[1.7] max-w-[520px]">
+                  {step.description}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="flex items-center justify-center gap-6 mt-8">
+    <button
+      id="hormone-showcase-prev"
+      class="w-11 h-11 rounded-full border border-cream/20 flex items-center justify-center text-cream/40 hover:text-cream hover:border-cream/40 transition-colors cursor-pointer"
+      aria-label="Previous slide"
+    >
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <div id="hormone-showcase-dots" class="flex items-center gap-2">
+      {steps.map((_, i) => (
+        <button
+          class="hormone-showcase-dot w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer"
+          class:list={[i === 0 ? 'bg-cream' : 'bg-cream/20']}
+          data-index={i}
+          aria-label={`Go to step ${i + 1}`}
+        />
+      ))}
+    </div>
+
+    <button
+      id="hormone-showcase-next"
+      class="w-11 h-11 rounded-full border border-cream/20 flex items-center justify-center text-cream/40 hover:text-cream hover:border-cream/40 transition-colors cursor-pointer"
+      aria-label="Next slide"
+    >
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+</section>
+
+<script is:inline>
+  (function() {
+    var track = document.getElementById('hormone-showcase-track');
+    var prevBtn = document.getElementById('hormone-showcase-prev');
+    var nextBtn = document.getElementById('hormone-showcase-next');
+    var dots = document.querySelectorAll('.hormone-showcase-dot');
+    var current = 0; // start on first step
+    var total = dots.length;
+    var cardWidth = 1100;
+    var gap = 20;
+
+    function getOffset(index) {
+      var vw = window.innerWidth;
+      var centerOffset = (vw - cardWidth) / 2;
+      return -(index * (cardWidth + gap)) + centerOffset;
+    }
+
+    function goTo(index) {
+      if (index < 0) index = total - 1;
+      if (index > total - 1) index = 0;
+      current = index;
+      track.style.transform = 'translateX(' + getOffset(current) + 'px)';
+      dots.forEach(function(dot, i) {
+        dot.classList.toggle('bg-cream', i === current);
+        dot.classList.toggle('bg-cream/20', i !== current);
+      });
+    }
+
+    // Set initial position (no transition)
+    track.style.transition = 'none';
+    track.style.transform = 'translateX(' + getOffset(current) + 'px)';
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        track.style.transition = '';
+      });
+    });
+
+    prevBtn?.addEventListener('click', function() { goTo(current - 1); });
+    nextBtn?.addEventListener('click', function() { goTo(current + 1); });
+    dots.forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        goTo(parseInt(dot.dataset.index));
+      });
+    });
+
+    window.addEventListener('resize', function() {
+      track.style.transition = 'none';
+      track.style.transform = 'translateX(' + getOffset(current) + 'px)';
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          track.style.transition = '';
+        });
+      });
+    });
+
+    // No autoplay
+  })();
+</script>

@@ -4,6 +4,7 @@ const steps = [
     number: '01',
     title: 'Complete Your Intake',
     description: 'Share your symptoms, goals, and medical history through our secure online assessment.',
+    image: '/images/intake-hand1.png',
   },
   {
     number: '02',
@@ -43,18 +44,17 @@ const steps = [
       <div id="hormone-showcase-track" class="flex gap-4 md:gap-5 transition-transform duration-500 ease-in-out">
         {steps.map((step) => (
           <div class="hormone-showcase-slide shrink-0 w-[calc(100vw-40px)] md:w-[700px]">
-            <div class="rounded-2xl bg-[#22201E] h-[380px] md:h-[480px] flex flex-col justify-between p-8 md:p-12">
-              <span class="font-fraunces text-teal/20 text-[100px] md:text-[160px] leading-none tracking-[-0.04em] select-none">
-                {step.number}
-              </span>
-              <div>
-                <h3 class="font-fraunces text-cream text-[clamp(24px,3vw,44px)] leading-[1.1] tracking-[-0.02em] mb-3 md:mb-4">
-                  {step.title}
-                </h3>
-                <p class="font-inter text-cream/50 text-sm md:text-base leading-[1.7] max-w-[520px]">
-                  {step.description}
-                </p>
+            {step.image ? (
+              <div class="relative rounded-2xl h-[380px] md:h-[480px] overflow-hidden mb-4 md:mb-5">
+                <img src={step.image} alt={step.title} class="w-full h-full object-cover object-top" />
+                <div class="absolute inset-0 bg-dark/20"></div>
               </div>
+            ) : (
+              <div class="rounded-2xl bg-[#22201E] h-[380px] md:h-[480px] mb-4 md:mb-5"></div>
+            )}
+            <div class="max-w-[500px] px-6 md:px-8">
+              <h3 class="font-inter text-cream text-base md:text-lg font-bold mb-2">{step.number}. {step.title}</h3>
+              <p class="font-inter text-cream/40 text-sm leading-[1.6]">{step.description}</p>
             </div>
           </div>
         ))}
@@ -63,7 +63,7 @@ const steps = [
   </div>
 
   <!-- Controls -->
-  <div class="flex items-center justify-center gap-4 mt-8">
+  <div class="flex items-center justify-end gap-4 mt-8 max-w-[1200px] mx-auto px-5 md:px-[10px]">
     <button
       id="hormone-showcase-prev"
       class="w-10 h-10 rounded-full bg-cream/10 flex items-center justify-center text-cream/40 hover:text-cream hover:bg-cream/20 transition-colors cursor-pointer"

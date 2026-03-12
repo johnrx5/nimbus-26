@@ -5,56 +5,48 @@ const steps = [
     title: 'Patient Intake & Qualification',
     clinic: 'Custom intake forms capture medical history, contraindications, and treatment goals. Patients are auto-qualified based on your protocol criteria.',
     patient: 'Simple digital intake from any device. No paperwork, no office visit required to start.',
-    side: 'left',
   },
   {
     number: '02',
     title: 'Protocol Selection & Customization',
     clinic: 'Choose from your protocol library or build custom treatment timelines with conditional logic, dosing schedules, and milestone checkpoints.',
     patient: 'Matched to the right protocol based on their profile. Clear explanation of what to expect and when.',
-    side: 'right',
   },
   {
     number: '03',
     title: 'Real-Time Compound Pricing',
     clinic: 'Compare costs across pharmacy partners instantly. See pricing for every compound option before prescribing — full transparency.',
     patient: 'Upfront pricing with no surprise bills. Knows exactly what they\'ll pay before treatment begins.',
-    side: 'left',
   },
   {
     number: '04',
     title: 'Digital Rx to Pharmacy',
     clinic: 'Prescription sent digitally to the selected pharmacy. No faxes, no phone calls, no delays. Pharmacy receives structured compound data.',
     patient: 'Instant confirmation that their prescription has been sent. Real-time status from day one.',
-    side: 'right',
   },
   {
     number: '05',
     title: 'Compounding & Quality Check',
     clinic: 'Track compounding status in real time. Every batch tested. Every formulation verified against the original Rx.',
     patient: 'Peace of mind knowing their medication is pharmacy-verified and quality-controlled.',
-    side: 'left',
   },
   {
     number: '06',
     title: 'Shipping & Patient Notification',
     clinic: 'Automated shipping notifications. No more "where\'s my order?" calls. Clinic dashboard shows delivery status for every patient.',
     patient: 'Tracking updates via SMS and email. Knows exactly when their medication will arrive.',
-    side: 'right',
   },
   {
     number: '07',
     title: 'Automated Refill Management',
     clinic: 'Refill cycles managed automatically based on protocol timelines. Smart reminders drive adherence and recurring revenue.',
     patient: 'Automatic refill reminders before they run out. One-tap renewal — no calls, no appointments needed.',
-    side: 'left',
   },
   {
     number: '08',
     title: 'Outcome Tracking & Protocol Adjustment',
     clinic: 'Monitor patient outcomes, lab trends, and adherence metrics. Adjust protocols based on data, not guesswork.',
     patient: 'Track their own progress with biomarker trending, symptom logs, and milestone celebrations.',
-    side: 'right',
   },
 ];
 ---
@@ -70,87 +62,73 @@ const steps = [
       </h2>
     </div>
 
-    <div class="text-center max-w-[600px] mx-auto mb-8" data-animate data-delay="1">
+    <div class="text-center max-w-[600px] mx-auto mb-16" data-animate data-delay="1">
       <p class="font-inter text-cream/50 text-base leading-[1.6]">
         Every step is visible to both your clinic and your patient — parallel views of the same treatment journey.
       </p>
     </div>
 
-    <!-- Perspective Labels -->
-    <div class="hidden md:grid grid-cols-[1fr_auto_1fr] gap-6 max-w-[900px] mx-auto mb-12" data-animate data-delay="2">
-      <div class="text-right">
-        <span class="font-montserrat text-teal/70 text-xs font-semibold tracking-[0.2em] uppercase">Clinic View</span>
+    <!-- Perspective Labels (desktop) -->
+    <div class="hidden md:grid grid-cols-[1fr_56px_1fr] max-w-[960px] mx-auto mb-8" data-animate data-delay="2">
+      <div class="text-center">
+        <span class="font-montserrat text-teal text-xs font-semibold tracking-[0.2em] uppercase">Clinic View</span>
       </div>
-      <div class="w-px"></div>
-      <div class="text-left">
-        <span class="font-montserrat text-terracotta/70 text-xs font-semibold tracking-[0.2em] uppercase">Patient View</span>
+      <div></div>
+      <div class="text-center">
+        <span class="font-montserrat text-terracotta text-xs font-semibold tracking-[0.2em] uppercase">Patient View</span>
       </div>
     </div>
 
     <!-- Timeline Steps -->
-    <div class="relative max-w-[900px] mx-auto">
-      <!-- Center Line (desktop only) -->
-      <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-cream/10 -translate-x-1/2"></div>
+    <div class="relative max-w-[960px] mx-auto">
+      <!-- Center Line (desktop) -->
+      <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-cream/8 -translate-x-1/2"></div>
 
-      {steps.map((step, i) => (
-        <div class="relative mb-12 last:mb-0" data-animate>
-          <!-- Step Number (center) -->
-          <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-[#22201E] border border-cream/10 items-center justify-center z-10">
-            <span class="font-fraunces text-teal text-lg">{step.number}</span>
+      {steps.map((step) => (
+        <div class="relative mb-8 last:mb-0" data-animate>
+          {/* Step Number — center dot (desktop) */}
+          <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 top-6 w-12 h-12 rounded-full bg-[#1A1816] border border-cream/10 items-center justify-center z-10">
+            <span class="font-fraunces text-cream/60 text-base">{step.number}</span>
           </div>
 
-          <div class="md:grid md:grid-cols-[1fr_auto_1fr] md:gap-6">
-            {/* Clinic View (left side) */}
-            <div class={`${step.side === 'left' ? '' : 'md:order-1'} ${step.side === 'left' ? 'md:text-right md:pr-8' : 'md:text-right md:pr-8 md:opacity-0 md:pointer-events-none'}`}>
-              {step.side === 'left' && (
-                <div class="bg-[#22201E] rounded-2xl p-6 border border-teal/10 inline-block md:text-left">
-                  <div class="flex items-center gap-2 mb-1 md:hidden">
-                    <span class="font-fraunces text-teal text-sm">{step.number}</span>
-                    <span class="font-montserrat text-teal/50 text-[10px] tracking-widest uppercase">Clinic</span>
-                  </div>
-                  <h3 class="font-inter text-cream font-semibold text-base mb-2">{step.title}</h3>
-                  <p class="font-inter text-cream/40 text-sm leading-[1.7]">{step.clinic}</p>
-                </div>
-              )}
-              {step.side === 'right' && (
-                <div class="hidden md:block bg-[#22201E] rounded-2xl p-6 border border-terracotta/10">
-                  <p class="font-inter text-cream/40 text-sm leading-[1.7]">{step.patient}</p>
-                </div>
-              )}
+          {/* Desktop: two columns always visible */}
+          <div class="hidden md:grid grid-cols-[1fr_56px_1fr] gap-0">
+            {/* Clinic side (left) */}
+            <div class="pr-6">
+              <div class="bg-[#22201E] rounded-2xl p-6 border border-teal/15 h-full">
+                <h3 class="font-inter text-cream font-semibold text-[15px] mb-2">{step.title}</h3>
+                <p class="font-inter text-cream/45 text-sm leading-[1.7]">{step.clinic}</p>
+              </div>
             </div>
 
-            {/* Center spacer */}
-            <div class="hidden md:block w-14"></div>
+            {/* Spacer for center line */}
+            <div class="w-14"></div>
 
-            {/* Patient View (right side) */}
-            <div class={`${step.side === 'right' ? '' : 'md:order-3'} ${step.side === 'right' ? 'md:text-left md:pl-8' : 'md:text-left md:pl-8 md:opacity-0 md:pointer-events-none'}`}>
-              {step.side === 'right' && (
-                <div class="bg-[#22201E] rounded-2xl p-6 border border-terracotta/10 inline-block md:text-left">
-                  <div class="flex items-center gap-2 mb-1 md:hidden">
-                    <span class="font-fraunces text-terracotta text-sm">{step.number}</span>
-                    <span class="font-montserrat text-terracotta/50 text-[10px] tracking-widest uppercase">Patient</span>
-                  </div>
-                  <h3 class="font-inter text-cream font-semibold text-base mb-2">{step.title}</h3>
-                  <p class="font-inter text-cream/40 text-sm leading-[1.7]">{step.patient}</p>
-                </div>
-              )}
-              {step.side === 'left' && (
-                <div class="hidden md:block bg-[#22201E] rounded-2xl p-6 border border-teal/10">
-                  <p class="font-inter text-cream/40 text-sm leading-[1.7]">{step.clinic}</p>
-                </div>
-              )}
+            {/* Patient side (right) */}
+            <div class="pl-6">
+              <div class="bg-[#22201E] rounded-2xl p-6 border border-terracotta/15 h-full">
+                <p class="font-inter text-cream/45 text-sm leading-[1.7]">{step.patient}</p>
+              </div>
             </div>
           </div>
 
-          {/* Mobile: show both views */}
-          <div class="md:hidden mt-3 ml-8">
-            <div class="bg-[#22201E]/50 rounded-xl p-4 border border-cream/5">
-              <span class="font-montserrat text-cream/30 text-[10px] tracking-widest uppercase">
-                {step.side === 'left' ? 'Patient sees' : 'Clinic sees'}
-              </span>
-              <p class="font-inter text-cream/30 text-xs leading-[1.7] mt-1">
-                {step.side === 'left' ? step.patient : step.clinic}
-              </p>
+          {/* Mobile: stacked layout */}
+          <div class="md:hidden">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 rounded-full bg-[#22201E] border border-cream/10 flex items-center justify-center shrink-0">
+                <span class="font-fraunces text-cream/60 text-sm">{step.number}</span>
+              </div>
+              <h3 class="font-inter text-cream font-semibold text-base">{step.title}</h3>
+            </div>
+            <div class="ml-[52px] space-y-3">
+              <div class="bg-[#22201E] rounded-xl p-4 border border-teal/15">
+                <span class="font-montserrat text-teal/50 text-[10px] tracking-widest uppercase block mb-1">Clinic</span>
+                <p class="font-inter text-cream/45 text-sm leading-[1.7]">{step.clinic}</p>
+              </div>
+              <div class="bg-[#22201E] rounded-xl p-4 border border-terracotta/15">
+                <span class="font-montserrat text-terracotta/50 text-[10px] tracking-widest uppercase block mb-1">Patient</span>
+                <p class="font-inter text-cream/45 text-sm leading-[1.7]">{step.patient}</p>
+              </div>
             </div>
           </div>
         </div>

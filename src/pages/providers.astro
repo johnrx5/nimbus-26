@@ -1,51 +1,65 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
-import ProvidersHero from '../components/ProvidersHero.astro';
+import Footer from '../components/Footer.astro';
+
+// V2 Components
+import ProvidersHeroV2 from '../components/v2/ProvidersHeroV2.astro';
+import ProvidersPillars from '../components/v2/ProvidersPillars.astro';
 import ProvidersPainPoints from '../components/ProvidersPainPoints.astro';
-import ProvidersPlatform from '../components/ProvidersPlatform.astro';
-import ProvidersProtocol from '../components/ProvidersProtocol.astro';
-import ProvidersCompliance from '../components/ProvidersCompliance.astro';
-import ProvidersPersonas from '../components/ProvidersPersonas.astro';
+import ProvidersDifferentiators from '../components/v2/ProvidersDifferentiators.astro';
+import ProvidersFeatures from '../components/v2/ProvidersFeatures.astro';
+import ProvidersWorkflows from '../components/v2/ProvidersWorkflows.astro';
+import ProvidersAuthority from '../components/v2/ProvidersAuthority.astro';
 import ProvidersTestimonial from '../components/ProvidersTestimonial.astro';
 import ProvidersClinics from '../components/ProvidersClinics.astro';
-import ProvidersTrust from '../components/ProvidersTrust.astro';
-import ProvidersBottomCTA from '../components/ProvidersBottomCTA.astro';
-import Footer from '../components/Footer.astro';
+import ProvidersTiers from '../components/v2/ProvidersTiers.astro';
+import ProvidersAntiPersonas from '../components/v2/ProvidersAntiPersonas.astro';
+import ProvidersFAQ from '../components/v2/ProvidersFAQ.astro';
+import ProvidersCTAV2 from '../components/v2/ProvidersCTAV2.astro';
 ---
 
-<Layout title="NovaMed - Protocol Infrastructure for Modern Clinics | Nimbus Healthcare">
+<Layout title="NovaMed — The Clinic-to-Pharmacy Operating System | Nimbus Healthcare">
   <Navbar />
   <main>
-    <!-- 1. Hook: Protocol-first hero -->
-    <ProvidersHero />
+    <!-- 1. Hero: Protocol-first with dashboard screenshot -->
+    <ProvidersHeroV2 />
 
-    <!-- 2. Empathy: Problem-first storytelling -->
+    <!-- 2. Three Pillars: Clinics / Patients / Pharmacy -->
+    <ProvidersPillars />
+
+    <!-- 3. Pain Points: The Current State -->
     <ProvidersPainPoints />
 
-    <!-- 3. Solution: Platform features -->
-    <ProvidersPlatform />
+    <!-- 4. Differentiators: X, not Y -->
+    <ProvidersDifferentiators />
 
-    <!-- 4. Journey: 8-step protocol lifecycle -->
-    <ProvidersProtocol />
+    <!-- 5. Guided Workflows: Med Spa / Chiro / Physician (KEY DIFFERENTIATOR) -->
+    <ProvidersWorkflows />
 
-    <!-- 5. Social proof -->
+    <!-- 6. Platform Features: 9 expandable cards -->
+    <ProvidersFeatures />
+
+    <!-- 7. Testimonial -->
     <ProvidersTestimonial />
 
-    <!-- 6. Moat: Vertical integration & compliance -->
-    <ProvidersCompliance />
+    <!-- 8. Authority: JJ credentials + compliance story -->
+    <ProvidersAuthority />
 
-    <!-- 7. Targeting: Persona-specific value props -->
-    <ProvidersPersonas />
-
-    <!-- 8. Credibility: Clinic types + testimonial -->
+    <!-- 9. Clinic Types (existing) -->
     <ProvidersClinics />
 
-    <!-- 9. Trust: Medical board + stats -->
-    <ProvidersTrust />
+    <!-- 10. Pricing Tiers: Explore / Launch / Scale -->
+    <ProvidersTiers />
 
-    <!-- 10. Convert: Dual CTA -->
-    <ProvidersBottomCTA />
+    <!-- 11. Anti-Personas: Not ideal for -->
+    <ProvidersAntiPersonas />
+
+    <!-- 12. FAQ -->
+    <ProvidersFAQ />
+
+    <!-- 13. Bottom CTA: Get Started Free + Demo + Sign In -->
+    <ProvidersCTAV2 />
   </main>
   <div class="bg-[#1A1816] pb-[10px] px-[10px]">
     <Footer />

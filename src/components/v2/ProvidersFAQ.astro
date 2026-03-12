@@ -1,0 +1,80 @@
+---
+const faqs = [
+  {
+    q: 'How is NovaMed different from my EMR?',
+    a: 'Your EMR was designed for insurance billing and episodic visits. NovaMed was built for multi-month protocols with structured timelines, check-ins, lab milestones, and patient tracking over time. It doesn\'t replace your EMR — it handles everything your EMR can\'t: compound prescribing, protocol management, pharmacy fulfillment, and automated refills.',
+  },
+  {
+    q: 'How does the pharmacy integration work?',
+    a: 'There\'s no "integration" — we own the pharmacy. Lake Hills Pharmacy is our NABP-accredited, 503A/503B compounding facility in Austin, TX. When you prescribe through NovaMed, the Rx goes directly to our pharmacy. We compound it, batch-test it, and ship it to your patient\'s door with tracking. No faxes, no phone calls, no third-party coordination.',
+  },
+  {
+    q: 'What compounds do you support?',
+    a: 'Our formulary includes 131 compounds covering weight management (Semaglutide, Tirzepatide), peptides (BPC-157, PT-141), hormone optimization, cognitive health, and more. All with real-time pricing visible before you prescribe. We continuously expand the formulary based on clinic demand.',
+  },
+  {
+    q: 'How does pricing work?',
+    a: 'NovaMed has three tiers based on clinic volume: Standard (default for new clinics), Medium Volume ($10K-$50K/month), and High Volume ($50K+/month). Each tier has different margin structures. There\'s no monthly platform fee — you pay per patient through the compound pricing. Start with Explore (free) to see the platform before committing.',
+  },
+  {
+    q: 'Is NovaMed HIPAA compliant?',
+    a: 'Yes. The platform is HIPAA-compliant with encrypted data at rest and in transit. Every action creates an audit trail. Consent forms are digital and stored securely. We also support adverse event reporting and provide board-ready compliance reports on demand.',
+  },
+  {
+    q: 'Can I use my existing pharmacy?',
+    a: 'NovaMed is optimized for end-to-end fulfillment through Lake Hills Pharmacy — that\'s how we guarantee quality, speed, and compliance. If you have specific requirements for an external pharmacy, contact us to discuss options.',
+  },
+  {
+    q: 'I\'m a chiropractor — can I use NovaMed for wellness protocols?',
+    a: 'Yes. NovaMed supports collaborative care models where chiropractors and other non-prescribing providers work alongside licensed prescribers. The platform manages scope-of-practice boundaries, collaborative practice agreements, and compliant prescribing workflows. You design the wellness program; we handle the regulatory infrastructure.',
+  },
+  {
+    q: 'How long does onboarding take?',
+    a: 'Most clinics are live within 48-72 hours. Enterprise multi-location setups take 1-2 weeks depending on complexity. Start with Explore (free) immediately — no onboarding required.',
+  },
+];
+---
+
+<section class="bg-[#1A1816] py-24 px-[10px]">
+  <div class="max-w-[800px] mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-16" data-animate>
+      <p class="font-montserrat text-teal text-sm font-semibold tracking-[0.15em] uppercase mb-4">FAQ</p>
+      <h2 class="font-fraunces text-cream text-[clamp(32px,4vw,48px)] leading-[1.08] tracking-[-0.02em]">
+        Common questions
+      </h2>
+    </div>
+
+    <!-- Accordion -->
+    <div class="space-y-3" data-stagger>
+      {faqs.map((faq) => (
+        <div class="faq-item bg-[#22201E] rounded-2xl border border-cream/5 overflow-hidden cursor-pointer hover:border-cream/10 transition-colors">
+          <div class="faq-trigger flex items-center justify-between p-6">
+            <h3 class="font-inter text-cream font-medium text-base pr-4">{faq.q}</h3>
+            <svg class="faq-chevron shrink-0 w-5 h-5 text-cream/20 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </div>
+          <div class="faq-answer hidden px-6 pb-6">
+            <p class="font-inter text-cream/40 text-sm leading-[1.7]">{faq.a}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const answer = item.querySelector('.faq-answer');
+        const chevron = item.querySelector('.faq-chevron');
+        if (answer && chevron) {
+          answer.classList.toggle('hidden');
+          chevron.classList.toggle('rotate-180');
+        }
+      });
+    });
+  });
+</script>

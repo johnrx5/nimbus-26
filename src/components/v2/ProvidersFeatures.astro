@@ -1,0 +1,149 @@
+---
+const features = [
+  {
+    num: '01',
+    title: 'Intake & Triage',
+    summary: 'Capture patient information and auto-qualify for protocols',
+    detail: 'Custom intake forms capture health history, medications, contraindications, and goals. Patients are auto-qualified based on your criteria and routed into your pipeline. Hosted on your website or a NovaMed link.',
+    bullets: ['Custom form fields per protocol', 'Auto-qualification logic', 'Automated confirmations & scheduling links'],
+  },
+  {
+    num: '02',
+    title: 'Protocol Design & Templates',
+    summary: 'Build reusable programs — or customize for each patient',
+    detail: 'Create protocol templates for your most common programs: weight loss, hormone optimization, peptide therapy, longevity. Each includes timeline, compounds, doses, frequency, check-ins, labs, and conditional logic.',
+    bullets: ['7 pre-built programs (MetaboLift™, AgeWell360™, etc.)', 'Custom timelines with milestone checkpoints', 'Conditional logic and dose adjustments'],
+    screenshot: '/images/platform/03-programs.png',
+    screenshotAlt: 'NovaMed Program Management — 7 branded health programs',
+  },
+  {
+    num: '03',
+    title: 'Formulary & Real-Time Pricing',
+    summary: '131 compounds with transparent, real-time cost visibility',
+    detail: 'See the cost of every compound formulation before prescribing. Compare Semaglutide, Tirzepatide, BPC-157, and 128 more compounds. Set clinic margins. Give patients transparent pricing.',
+    bullets: ['131 compounds in master catalog', 'Real-time COGS calculator', 'Clinic margin configuration'],
+    screenshot: '/images/platform/04-formulary.png',
+    screenshotAlt: 'NovaMed Formulary — 131 compounds with pricing',
+  },
+  {
+    num: '04',
+    title: 'Prescribing & Pharmacy Fulfillment',
+    summary: 'Digital Rx straight to our pharmacy — no faxes, no delays',
+    detail: 'Prescribe through NovaMed. The Rx goes directly to Lake Hills Pharmacy — our own NABP-accredited compounding facility. Compounded, batch-tested, and shipped to the patient\'s door with tracking.',
+    bullets: ['Digital prescribing (no faxes)', 'Direct routing to Lake Hills Pharmacy', 'Batch testing & quality verification'],
+  },
+  {
+    num: '05',
+    title: 'Tiered Pricing & Billing',
+    summary: 'Volume-based pricing across three tiers — automated payables',
+    detail: 'Three pricing tiers based on clinic volume. Margins are configured per clinic. Billing, settlements, statements, and pharmacy payables are all automated. No manual invoicing.',
+    bullets: ['High Volume / Medium / Standard tiers', 'Automated settlements & statements', 'Clinic-level margin configuration'],
+    screenshot: '/images/platform/05-tiered-pricing.png',
+    screenshotAlt: 'NovaMed Tiered Pricing — Three volume-based tiers',
+  },
+  {
+    num: '06',
+    title: 'Patient Communication',
+    summary: 'Secure messaging, automated reminders, and check-in prompts',
+    detail: 'Patients message through their portal. You respond in the clinic dashboard. All messages are HIPAA-secure, timestamped, and stored in the patient record. Set up automated message sequences for onboarding, check-ins, and refill reminders.',
+    bullets: ['HIPAA-secure messaging', 'Automated reminder sequences', 'Refill and check-in prompts'],
+  },
+  {
+    num: '07',
+    title: 'Lab Results & Biomarker Tracking',
+    summary: 'Track labs over time — not just at individual visits',
+    detail: 'Patients upload lab results. You see them linked to their protocol timeline. Compare current labs to baseline, see trends over time, flag out-of-range results, and adjust protocols based on data.',
+    bullets: ['Longitudinal biomarker trending', 'Protocol-linked lab milestones', 'Automatic out-of-range flagging'],
+  },
+  {
+    num: '08',
+    title: 'Analytics Dashboard',
+    summary: 'Revenue, orders, top products, geographic distribution — real-time',
+    detail: 'See total revenue, order volume, average order value, active clinics, top-performing products, top clinics, and geographic distribution. Filter by time range. Export for reporting.',
+    bullets: ['Revenue & order trends', 'Top products by revenue', 'Geographic distribution map'],
+    screenshot: '/images/platform/06-analytics.png',
+    screenshotAlt: 'NovaMed Analytics Dashboard',
+  },
+  {
+    num: '09',
+    title: 'Compliance & Audit Trails',
+    summary: 'Every action logged, timestamped, and traceable',
+    detail: 'Every protocol step, prescription, consent form, and dose adjustment creates an audit log. If a regulator asks "how did you manage this patient\'s care?" — you have a complete, traceable record. Export for audits in PDF format.',
+    bullets: ['Automatic audit trail generation', 'Digital consent management', 'Board-ready compliance reports'],
+  },
+];
+---
+
+<section class="bg-[#1A1816] py-24 px-[10px]">
+  <div class="max-w-[1200px] mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-6" data-animate>
+      <p class="font-montserrat text-teal text-sm font-semibold tracking-[0.15em] uppercase mb-4">Platform Capabilities</p>
+      <h2 class="font-fraunces text-cream text-[clamp(32px,4vw,56px)] leading-[1.08] tracking-[-0.02em]">
+        Everything your clinic needs.<br />
+        <em class="italic text-teal">Nothing it doesn't.</em>
+      </h2>
+    </div>
+
+    <div class="text-center max-w-[600px] mx-auto mb-16" data-animate data-delay="1">
+      <p class="font-inter text-cream/50 text-base leading-[1.6]">
+        Nine capabilities that cover the full lifecycle — from the first patient click to the hundredth refill.
+      </p>
+    </div>
+
+    <!-- Feature Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" data-stagger>
+      {features.map((f) => (
+        <div class="feature-card bg-[#22201E] rounded-2xl border border-cream/5 overflow-hidden cursor-pointer transition-all hover:border-teal/20">
+          <div class="p-6">
+            <!-- Header (always visible) -->
+            <div class="flex items-start justify-between mb-3">
+              <span class="font-fraunces text-teal/40 text-sm">{f.num}</span>
+              <svg class="feature-chevron w-5 h-5 text-cream/20 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+              </svg>
+            </div>
+            <h3 class="font-inter text-cream font-semibold text-base mb-2">{f.title}</h3>
+            <p class="font-inter text-cream/40 text-sm leading-[1.6]">{f.summary}</p>
+
+            <!-- Expandable Detail -->
+            <div class="feature-detail hidden mt-4 pt-4 border-t border-cream/5">
+              <p class="font-inter text-cream/50 text-sm leading-[1.7] mb-4">{f.detail}</p>
+              <ul class="space-y-2 mb-4">
+                {f.bullets.map((b: string) => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-teal text-xs mt-1">→</span>
+                    <span class="font-inter text-cream/40 text-sm">{b}</span>
+                  </li>
+                ))}
+              </ul>
+              {f.screenshot && (
+                <img
+                  src={f.screenshot}
+                  alt={f.screenshotAlt}
+                  class="w-full rounded-lg border border-cream/5"
+                  loading="lazy"
+                />
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.feature-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const detail = card.querySelector('.feature-detail');
+        const chevron = card.querySelector('.feature-chevron');
+        if (detail && chevron) {
+          detail.classList.toggle('hidden');
+          chevron.classList.toggle('rotate-180');
+        }
+      });
+    });
+  });
+</script>

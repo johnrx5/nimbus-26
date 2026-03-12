@@ -1,0 +1,81 @@
+---
+const diffs = [
+  {
+    old: 'Protocol logic is hacked onto your EMR',
+    new_way: 'Protocol logic is native',
+    desc: 'Your EMR thinks in "visits" and "billing codes." NovaMed thinks in "protocols" and "timelines." Build multi-week programs with check-ins, labs, dose adjustments, and conditional logic — all structured and trackable.',
+  },
+  {
+    old: 'Pharmacy is a separate vendor',
+    new_way: 'Pharmacy is built in',
+    desc: 'Other platforms integrate with pharmacies. We own the pharmacy. Lake Hills Pharmacy compounds every order with full audit trails, batch testing, and NABP accreditation. Zero coordination gaps.',
+  },
+  {
+    old: 'Compliance is manual and fragile',
+    new_way: 'Compliance is automatic',
+    desc: 'Every action creates an audit trail. Every protocol step is logged with timestamps. Consent forms are digital. If a regulator asks "how did you manage this patient?", you have a complete, traceable record.',
+  },
+  {
+    old: 'Built for solo providers',
+    new_way: 'Built for teams',
+    desc: 'Providers see clinical context. Front desk sees scheduling. Lab coordinators see orders. Patient success sees engagement metrics. Role-based access means everyone sees exactly what they need.',
+  },
+  {
+    old: 'Pricing is a black box',
+    new_way: 'Real-time compound pricing',
+    desc: 'See the cost of every compound formulation before prescribing. Compare options, set clinic margins, and give patients transparent pricing. No surprise bills, no awkward conversations.',
+  },
+];
+---
+
+<section class="bg-[#1A1816] py-24 px-[10px]">
+  <div class="max-w-[1200px] mx-auto">
+    <!-- Header -->
+    <div class="mb-6" data-animate>
+      <p class="font-montserrat text-teal text-sm font-semibold tracking-[0.15em] uppercase mb-4">Why NovaMed</p>
+      <h2 class="font-fraunces text-cream text-[clamp(32px,4vw,56px)] leading-[1.08] tracking-[-0.02em] max-w-[700px]">
+        Not another EMR.<br />
+        <em class="italic text-terracotta">A different category.</em>
+      </h2>
+    </div>
+
+    <div class="max-w-[600px] mb-16" data-animate data-delay="1">
+      <p class="font-inter text-cream/50 text-base leading-[1.6]">
+        Your EMR was designed for insurance billing and episodic visits. NovaMed was built for multi-month protocols with check-ins, lab milestones, and patient tracking over time.
+      </p>
+    </div>
+
+    <!-- Differentiator Cards -->
+    <div class="space-y-4" data-stagger>
+      {diffs.map((d) => (
+        <div class="bg-[#22201E] rounded-2xl p-8 border border-cream/5">
+          <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_2fr] gap-6 items-start">
+            {/* Old way */}
+            <div class="flex items-start gap-3">
+              <span class="shrink-0 w-6 h-6 rounded-full bg-red-500/10 flex items-center justify-center mt-0.5">
+                <span class="text-red-400 text-xs">✕</span>
+              </span>
+              <p class="font-inter text-cream/30 text-sm line-through decoration-cream/20">{d.old}</p>
+            </div>
+
+            {/* Arrow */}
+            <div class="hidden md:flex items-center">
+              <span class="text-cream/10 text-lg">→</span>
+            </div>
+
+            {/* New way */}
+            <div class="flex items-start gap-3">
+              <span class="shrink-0 w-6 h-6 rounded-full bg-teal/10 flex items-center justify-center mt-0.5">
+                <span class="text-teal text-xs">✓</span>
+              </span>
+              <p class="font-inter text-cream font-semibold text-sm">{d.new_way}</p>
+            </div>
+
+            {/* Description */}
+            <p class="font-inter text-cream/40 text-sm leading-[1.7]">{d.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

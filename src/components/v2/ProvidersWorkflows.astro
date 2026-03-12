@@ -7,227 +7,255 @@
     <div class="text-center mb-6" data-animate>
       <p class="font-montserrat text-teal text-sm font-semibold tracking-[0.15em] uppercase mb-4">Guided Workflows</p>
       <h2 class="font-fraunces text-cream text-[clamp(32px,4vw,56px)] leading-[1.08] tracking-[-0.02em]">
-        Your clinic type. Your workflow.<br />
+        Your practice. Your workflow.<br />
         <em class="italic text-teal">Your way.</em>
       </h2>
     </div>
 
     <div class="text-center max-w-[640px] mx-auto mb-16" data-animate data-delay="1">
       <p class="font-inter text-cream/50 text-base leading-[1.6]">
-        NovaMed adapts to how you practice. Whether you're running a med spa, chiropractic wellness center, or multi-provider physician group — the platform molds to your workflow.
+        Whether you have prescribers or not — NovaMed adapts to how you practice. Two paths, one platform.
       </p>
     </div>
 
-    <!-- Clinic Type Tabs -->
+    <!-- Persona Tabs -->
     <div class="flex flex-wrap justify-center gap-3 mb-12" data-animate data-delay="2">
-      <button
-        class="workflow-tab active font-montserrat text-sm font-medium px-6 py-3 rounded-full border transition-colors cursor-pointer"
-        data-tab="medspa"
-      >
-        Med Spa & Aesthetics
+      <button class="workflow-tab active font-montserrat text-sm font-medium px-5 py-3 rounded-full border transition-colors cursor-pointer" data-tab="marcus">
+        Multi-Clinic Owner
       </button>
-      <button
-        class="workflow-tab font-montserrat text-sm font-medium px-6 py-3 rounded-full border transition-colors cursor-pointer"
-        data-tab="chiro"
-      >
-        Chiropractic & Physical Medicine
+      <button class="workflow-tab font-montserrat text-sm font-medium px-5 py-3 rounded-full border transition-colors cursor-pointer" data-tab="sofia">
+        Med Spa / Aesthetics
       </button>
-      <button
-        class="workflow-tab font-montserrat text-sm font-medium px-6 py-3 rounded-full border transition-colors cursor-pointer"
-        data-tab="physician"
-      >
-        Physician Groups
+      <button class="workflow-tab font-montserrat text-sm font-medium px-5 py-3 rounded-full border transition-colors cursor-pointer" data-tab="james">
+        Solo Physician
+      </button>
+      <button class="workflow-tab font-montserrat text-sm font-medium px-5 py-3 rounded-full border transition-colors cursor-pointer" data-tab="kim">
+        Non-Prescribing Clinician
       </button>
     </div>
 
-    <!-- Med Spa Panel -->
-    <div class="workflow-panel active" data-panel="medspa">
+    <!-- DR. MARCUS — The Business Scaler -->
+    <div class="workflow-panel active" data-panel="marcus">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <!-- Left: Journey Steps -->
-        <div class="space-y-4">
-          <div class="bg-[#22201E] rounded-2xl p-6 border border-teal/10">
-            <div class="flex items-start gap-4">
-              <span class="shrink-0 w-8 h-8 rounded-full bg-teal/10 flex items-center justify-center font-fraunces text-teal text-sm">1</span>
-              <div>
-                <h4 class="font-inter text-cream font-semibold text-base mb-1">Patient Books Weight Loss Consult</h4>
-                <p class="font-inter text-cream/40 text-sm leading-[1.6]">Online intake captures BMI, health history, medication contraindications, and weight loss goals. Auto-qualifies for GLP-1, peptide, or hormone protocols.</p>
-              </div>
+        <div>
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 rounded-full bg-teal/10 flex items-center justify-center">
+              <span class="font-fraunces text-teal text-lg">M</span>
+            </div>
+            <div>
+              <h3 class="font-inter text-cream font-semibold text-lg">Dr. Marcus — The Business Scaler</h3>
+              <p class="font-inter text-cream/40 text-sm">3+ clinics · Multi-site operator · Revenue engine</p>
             </div>
           </div>
-          <div class="bg-[#22201E] rounded-2xl p-6 border border-teal/10">
-            <div class="flex items-start gap-4">
-              <span class="shrink-0 w-8 h-8 rounded-full bg-teal/10 flex items-center justify-center font-fraunces text-teal text-sm">2</span>
-              <div>
-                <h4 class="font-inter text-cream font-semibold text-base mb-1">Provider Selects Protocol</h4>
-                <p class="font-inter text-cream/40 text-sm leading-[1.6]">Choose from MetaboLift™ (semaglutide), tirzepatide programs, or custom compound protocols. See real-time pricing for every formulation. Adjust doses per patient.</p>
-              </div>
-            </div>
+
+          <div class="bg-[#1A1816] rounded-xl p-4 border border-teal/10 mb-6">
+            <p class="font-inter text-cream/60 text-sm italic leading-[1.6]">
+              "My time is worth more than chasing invoices. I need consistency across locations and immediate revenue realization — like Amazon."
+            </p>
           </div>
-          <div class="bg-[#22201E] rounded-2xl p-6 border border-teal/10">
-            <div class="flex items-start gap-4">
-              <span class="shrink-0 w-8 h-8 rounded-full bg-teal/10 flex items-center justify-center font-fraunces text-teal text-sm">3</span>
-              <div>
-                <h4 class="font-inter text-cream font-semibold text-base mb-1">Rx to Pharmacy → Ship to Patient</h4>
-                <p class="font-inter text-cream/40 text-sm leading-[1.6]">Digital prescription goes directly to Lake Hills Pharmacy. Compounded, batch-tested, and shipped to the patient's door. Tracking updates via SMS.</p>
-              </div>
+
+          <div class="space-y-3">
+            <div class="bg-[#22201E] rounded-xl p-5 border border-cream/5">
+              <h4 class="font-inter text-cream font-semibold text-sm mb-1">Zero Accounts Receivable</h4>
+              <p class="font-inter text-cream/40 text-xs leading-[1.6]">Payment captured at point of service. No chasing invoices. Cash flow is immediate and predictable.</p>
             </div>
-          </div>
-          <div class="bg-[#22201E] rounded-2xl p-6 border border-teal/10">
-            <div class="flex items-start gap-4">
-              <span class="shrink-0 w-8 h-8 rounded-full bg-teal/10 flex items-center justify-center font-fraunces text-teal text-sm">4</span>
-              <div>
-                <h4 class="font-inter text-cream font-semibold text-base mb-1">Auto-Refills Drive Revenue</h4>
-                <p class="font-inter text-cream/40 text-sm leading-[1.6]">Refill cycles managed automatically. Patients get reminders before they run out. One-tap renewal. Recurring revenue without manual outreach.</p>
-              </div>
+            <div class="bg-[#22201E] rounded-xl p-5 border border-cream/5">
+              <h4 class="font-inter text-cream font-semibold text-sm mb-1">White-Label Across Locations</h4>
+              <p class="font-inter text-cream/40 text-xs leading-[1.6]">Brand consistency across every clinic. Patients see your brand — not ours. Standardized protocols enforced via IntelliHealth.</p>
+            </div>
+            <div class="bg-[#22201E] rounded-xl p-5 border border-cream/5">
+              <h4 class="font-inter text-cream font-semibold text-sm mb-1">Network Analytics & Control</h4>
+              <p class="font-inter text-cream/40 text-xs leading-[1.6]">Revenue per location, provider utilization, compound trends, and compliance status — all in one dashboard. Multi-clinic admin built in.</p>
             </div>
           </div>
         </div>
-        <!-- Right: Screenshot + Key Metrics -->
         <div>
           <div class="rounded-2xl overflow-hidden border border-cream/10 mb-6">
-            <img
-              src="/images/platform/04-formulary.png"
-              alt="NovaMed Formulary — Semaglutide, Tirzepatide formulations with real-time pricing"
-              class="w-full"
-              loading="lazy"
-            />
+            <img src="/images/platform/06-analytics.png" alt="NovaMed Analytics — Multi-clinic revenue and performance" class="w-full" loading="lazy" />
           </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="bg-[#22201E] rounded-xl p-4 border border-cream/5 text-center">
-              <p class="font-fraunces text-teal text-2xl mb-1">~80%</p>
-              <p class="font-inter text-cream/40 text-xs">Refill adherence rate</p>
+          <div class="grid grid-cols-3 gap-3">
+            <div class="bg-[#22201E] rounded-xl p-3 border border-cream/5 text-center">
+              <p class="font-fraunces text-teal text-xl mb-0.5">0</p>
+              <p class="font-inter text-cream/40 text-[10px]">Days in AR</p>
             </div>
-            <div class="bg-[#22201E] rounded-xl p-4 border border-cream/5 text-center">
-              <p class="font-fraunces text-teal text-2xl mb-1">< 48h</p>
-              <p class="font-inter text-cream/40 text-xs">Rx to doorstep</p>
+            <div class="bg-[#22201E] rounded-xl p-3 border border-cream/5 text-center">
+              <p class="font-fraunces text-teal text-xl mb-0.5">3.9%</p>
+              <p class="font-inter text-cream/40 text-[10px]">Transparent fee</p>
+            </div>
+            <div class="bg-[#22201E] rounded-xl p-3 border border-cream/5 text-center">
+              <p class="font-fraunces text-teal text-xl mb-0.5">< 1wk</p>
+              <p class="font-inter text-cream/40 text-[10px]">To go live</p>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Chiro Panel -->
-    <div class="workflow-panel hidden" data-panel="chiro">
+    <!-- DR. SOFIA — Med Spa / Aesthetics -->
+    <div class="workflow-panel hidden" data-panel="sofia">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div class="space-y-4">
-          <div class="bg-[#22201E] rounded-2xl p-6 border border-terracotta/10">
-            <div class="flex items-start gap-4">
-              <span class="shrink-0 w-8 h-8 rounded-full bg-terracotta/10 flex items-center justify-center font-fraunces text-terracotta text-sm">1</span>
-              <div>
-                <h4 class="font-inter text-cream font-semibold text-base mb-1">Wellness Program Enrollment</h4>
-                <p class="font-inter text-cream/40 text-sm leading-[1.6]">Patient enrolls in a holistic wellness program — combining chiropractic care with peptide recovery, anti-inflammatory compounds, or hormone optimization.</p>
-              </div>
+        <div>
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 rounded-full bg-terracotta/10 flex items-center justify-center">
+              <span class="font-fraunces text-terracotta text-lg">S</span>
+            </div>
+            <div>
+              <h3 class="font-inter text-cream font-semibold text-lg">Dr. Sofia — The Med Spa Owner</h3>
+              <p class="font-inter text-cream/40 text-sm">High-volume cash-pay · Entering peptides/GLP-1 · Volume driver</p>
             </div>
           </div>
-          <div class="bg-[#22201E] rounded-2xl p-6 border border-terracotta/10">
-            <div class="flex items-start gap-4">
-              <span class="shrink-0 w-8 h-8 rounded-full bg-terracotta/10 flex items-center justify-center font-fraunces text-terracotta text-sm">2</span>
-              <div>
-                <h4 class="font-inter text-cream font-semibold text-base mb-1">Collaborative Care Protocol</h4>
-                <p class="font-inter text-cream/40 text-sm leading-[1.6]">The chiropractor designs the wellness plan. NovaMed connects to licensed prescribers for compound authorization. BPC-157, PT-141, or custom formulations — all compliant.</p>
-              </div>
-            </div>
+
+          <div class="bg-[#1A1816] rounded-xl p-4 border border-terracotta/10 mb-6">
+            <p class="font-inter text-cream/60 text-sm italic leading-[1.6]">
+              "I want to offer these services, but I need guardrails. My staff needs to look competent — and I can't afford a clinical mistake."
+            </p>
           </div>
-          <div class="bg-[#22201E] rounded-2xl p-6 border border-terracotta/10">
-            <div class="flex items-start gap-4">
-              <span class="shrink-0 w-8 h-8 rounded-full bg-terracotta/10 flex items-center justify-center font-fraunces text-terracotta text-sm">3</span>
-              <div>
-                <h4 class="font-inter text-cream font-semibold text-base mb-1">Guided Compliance & Documentation</h4>
-                <p class="font-inter text-cream/40 text-sm leading-[1.6]">NovaMed enforces the regulatory guardrails. Consent forms, scope-of-practice boundaries, and collaborative practice agreements — all automated.</p>
-              </div>
+
+          <div class="space-y-3">
+            <div class="bg-[#22201E] rounded-xl p-5 border border-cream/5">
+              <h4 class="font-inter text-cream font-semibold text-sm mb-1">IntelliHealth™ Clinical Co-Pilot</h4>
+              <p class="font-inter text-cream/40 text-xs leading-[1.6]">AI-powered safety guardrails prevent prescribing errors. Your staff can't prescribe a GLP-1 to someone with medullary thyroid cancer — the system catches it.</p>
             </div>
-          </div>
-          <div class="bg-[#22201E] rounded-2xl p-6 border border-terracotta/10">
-            <div class="flex items-start gap-4">
-              <span class="shrink-0 w-8 h-8 rounded-full bg-terracotta/10 flex items-center justify-center font-fraunces text-terracotta text-sm">4</span>
-              <div>
-                <h4 class="font-inter text-cream font-semibold text-base mb-1">Expand Revenue, Stay in Your Lane</h4>
-                <p class="font-inter text-cream/40 text-sm leading-[1.6]">Add wellness, weight management, and recovery protocols to your practice without stepping outside scope. NovaMed handles the prescribing infrastructure.</p>
-              </div>
+            <div class="bg-[#22201E] rounded-xl p-5 border border-cream/5">
+              <h4 class="font-inter text-cream font-semibold text-sm mb-1">Pre-Built Protocols & Questionnaires</h4>
+              <p class="font-inter text-cream/40 text-xs leading-[1.6]">Don't know the protocol? The system guides you. Pre-built intake forms, automated recommendations, and clinical decision support — even if your team is new to compounding.</p>
+            </div>
+            <div class="bg-[#22201E] rounded-xl p-5 border border-cream/5">
+              <h4 class="font-inter text-cream font-semibold text-sm mb-1">Speed to Value</h4>
+              <p class="font-inter text-cream/40 text-xs leading-[1.6]">Start prescribing safely next week. No 2-month implementation. No complex integrations. Standalone white-label portal works alongside — or replaces — your existing EHR.</p>
             </div>
           </div>
         </div>
         <div>
           <div class="rounded-2xl overflow-hidden border border-cream/10 mb-6">
-            <img
-              src="/images/platform/03-programs.png"
-              alt="NovaMed Programs — RestoreJoint™, VitalityReset™, FocusForward™"
-              class="w-full"
-              loading="lazy"
-            />
+            <img src="/images/platform/04-formulary.png" alt="NovaMed Formulary — GLP-1, Peptide, Hormone formulations" class="w-full" loading="lazy" />
           </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="bg-[#22201E] rounded-xl p-4 border border-cream/5 text-center">
-              <p class="font-fraunces text-terracotta text-2xl mb-1">7</p>
-              <p class="font-inter text-cream/40 text-xs">Pre-built programs</p>
+          <div class="grid grid-cols-3 gap-3">
+            <div class="bg-[#22201E] rounded-xl p-3 border border-cream/5 text-center">
+              <p class="font-fraunces text-terracotta text-xl mb-0.5">131</p>
+              <p class="font-inter text-cream/40 text-[10px]">Compounds</p>
             </div>
-            <div class="bg-[#22201E] rounded-xl p-4 border border-cream/5 text-center">
-              <p class="font-fraunces text-terracotta text-2xl mb-1">100%</p>
-              <p class="font-inter text-cream/40 text-xs">Compliant prescribing</p>
+            <div class="bg-[#22201E] rounded-xl p-3 border border-cream/5 text-center">
+              <p class="font-fraunces text-terracotta text-xl mb-0.5">AI</p>
+              <p class="font-inter text-cream/40 text-[10px]">Safety guardrails</p>
+            </div>
+            <div class="bg-[#22201E] rounded-xl p-3 border border-cream/5 text-center">
+              <p class="font-fraunces text-terracotta text-xl mb-0.5">7 days</p>
+              <p class="font-inter text-cream/40 text-[10px]">To go live</p>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Physician Groups Panel -->
-    <div class="workflow-panel hidden" data-panel="physician">
+    <!-- DR. JAMES — Solo / Burnt-Out Physician -->
+    <div class="workflow-panel hidden" data-panel="james">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div class="space-y-4">
-          <div class="bg-[#22201E] rounded-2xl p-6 border border-teal/10">
-            <div class="flex items-start gap-4">
-              <span class="shrink-0 w-8 h-8 rounded-full bg-teal/10 flex items-center justify-center font-fraunces text-teal text-sm">1</span>
-              <div>
-                <h4 class="font-inter text-cream font-semibold text-base mb-1">Enterprise Onboarding</h4>
-                <p class="font-inter text-cream/40 text-sm leading-[1.6]">Full clinic setup: organization hierarchy, multi-location access, provider credentialing, custom formulary selection, and tiered pricing configuration.</p>
-              </div>
+        <div>
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 rounded-full bg-teal/10 flex items-center justify-center">
+              <span class="font-fraunces text-teal text-lg">J</span>
+            </div>
+            <div>
+              <h3 class="font-inter text-cream font-semibold text-lg">Dr. James — The Solo Physician</h3>
+              <p class="font-inter text-cream/40 text-sm">Transitioning from insurance · Overwhelmed · Retention engine</p>
             </div>
           </div>
-          <div class="bg-[#22201E] rounded-2xl p-6 border border-teal/10">
-            <div class="flex items-start gap-4">
-              <span class="shrink-0 w-8 h-8 rounded-full bg-teal/10 flex items-center justify-center font-fraunces text-teal text-sm">2</span>
-              <div>
-                <h4 class="font-inter text-cream font-semibold text-base mb-1">Multi-Provider Protocol Management</h4>
-                <p class="font-inter text-cream/40 text-sm leading-[1.6]">Centralized protocol library with per-location customization. Medical directors set standard protocols. Individual providers adjust within guardrails.</p>
-              </div>
-            </div>
+
+          <div class="bg-[#1A1816] rounded-xl p-4 border border-teal/10 mb-6">
+            <p class="font-inter text-cream/60 text-sm italic leading-[1.6]">
+              "I just want to take care of patients. I'm not a tech person — and I can't spend money on another failed experiment."
+            </p>
           </div>
-          <div class="bg-[#22201E] rounded-2xl p-6 border border-teal/10">
-            <div class="flex items-start gap-4">
-              <span class="shrink-0 w-8 h-8 rounded-full bg-teal/10 flex items-center justify-center font-fraunces text-teal text-sm">3</span>
-              <div>
-                <h4 class="font-inter text-cream font-semibold text-base mb-1">Network Analytics & Revenue</h4>
-                <p class="font-inter text-cream/40 text-sm leading-[1.6]">See prescription volume, revenue per location, provider utilization, and compound trends across your entire network. Consolidated billing with automated pharmacy payables.</p>
-              </div>
+
+          <div class="space-y-3">
+            <div class="bg-[#22201E] rounded-xl p-5 border border-cream/5">
+              <h4 class="font-inter text-cream font-semibold text-sm mb-1">Zero Cost to Start</h4>
+              <p class="font-inter text-cream/40 text-xs leading-[1.6]">No upfront investment. The Explore tier is free. Start a new cash-pay revenue stream without risking anything. Upgrade when volume justifies it.</p>
             </div>
-          </div>
-          <div class="bg-[#22201E] rounded-2xl p-6 border border-teal/10">
-            <div class="flex items-start gap-4">
-              <span class="shrink-0 w-8 h-8 rounded-full bg-teal/10 flex items-center justify-center font-fraunces text-teal text-sm">4</span>
-              <div>
-                <h4 class="font-inter text-cream font-semibold text-base mb-1">Compliance at Scale</h4>
-                <p class="font-inter text-cream/40 text-sm leading-[1.6]">Audit trails across every location. Standardized consent management. DEA schedule tracking. Board-ready compliance reports generated automatically.</p>
-              </div>
+            <div class="bg-[#22201E] rounded-xl p-5 border border-cream/5">
+              <h4 class="font-inter text-cream font-semibold text-sm mb-1">AI Co-Pilot for Clinical Confidence</h4>
+              <p class="font-inter text-cream/40 text-xs leading-[1.6]">Like having a hormone expert sitting next to you. IntelliHealth guides protocol selection, checks contraindications, and provides evidence-based dosing — so you never feel out of your depth.</p>
+            </div>
+            <div class="bg-[#22201E] rounded-xl p-5 border border-cream/5">
+              <h4 class="font-inter text-cream font-semibold text-sm mb-1">Streamlined Intake → Treatment Plan</h4>
+              <p class="font-inter text-cream/40 text-xs leading-[1.6]">Send the questionnaire before they arrive. Treatment plan is ready when they walk in. Save 2+ hours per day on charting. Staff sets up, you verify.</p>
             </div>
           </div>
         </div>
         <div>
           <div class="rounded-2xl overflow-hidden border border-cream/10 mb-6">
-            <img
-              src="/images/platform/06-analytics.png"
-              alt="NovaMed Analytics — Revenue, top clinics, geographic distribution"
-              class="w-full"
-              loading="lazy"
-            />
+            <img src="/images/platform/01-dashboard-overview.png" alt="NovaMed Dashboard — Simple, clean overview" class="w-full" loading="lazy" />
           </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="bg-[#22201E] rounded-xl p-4 border border-cream/5 text-center">
-              <p class="font-fraunces text-teal text-2xl mb-1">256+</p>
-              <p class="font-inter text-cream/40 text-xs">Active clinics</p>
+          <div class="grid grid-cols-3 gap-3">
+            <div class="bg-[#22201E] rounded-xl p-3 border border-cream/5 text-center">
+              <p class="font-fraunces text-teal text-xl mb-0.5">$0</p>
+              <p class="font-inter text-cream/40 text-[10px]">Upfront cost</p>
             </div>
-            <div class="bg-[#22201E] rounded-xl p-4 border border-cream/5 text-center">
-              <p class="font-fraunces text-teal text-2xl mb-1">3 Tiers</p>
-              <p class="font-inter text-cream/40 text-xs">Volume-based pricing</p>
+            <div class="bg-[#22201E] rounded-xl p-3 border border-cream/5 text-center">
+              <p class="font-fraunces text-teal text-xl mb-0.5">2h+</p>
+              <p class="font-inter text-cream/40 text-[10px]">Saved per day</p>
+            </div>
+            <div class="bg-[#22201E] rounded-xl p-3 border border-cream/5 text-center">
+              <p class="font-fraunces text-teal text-xl mb-0.5">AI</p>
+              <p class="font-inter text-cream/40 text-[10px]">Clinical co-pilot</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DR. KIM — Non-Prescribing Clinician -->
+    <div class="workflow-panel hidden" data-panel="kim">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div>
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 rounded-full bg-terracotta/10 flex items-center justify-center">
+              <span class="font-fraunces text-terracotta text-lg">K</span>
+            </div>
+            <div>
+              <h3 class="font-inter text-cream font-semibold text-lg">Dr. Kim — The Non-Prescribing Clinician</h3>
+              <p class="font-inter text-cream/40 text-sm">PT · Chiropractor · Health Coach · Expansion frontier</p>
+            </div>
+          </div>
+
+          <div class="bg-[#1A1816] rounded-xl p-4 border border-terracotta/10 mb-6">
+            <p class="font-inter text-cream/60 text-sm italic leading-[1.6]">
+              "My clients trust me. If I could offer prescriptions under my brand without needing my own license — they'd buy from me instead of going elsewhere."
+            </p>
+          </div>
+
+          <div class="space-y-3">
+            <div class="bg-[#22201E] rounded-xl p-5 border border-cream/5">
+              <h4 class="font-inter text-cream font-semibold text-sm mb-1">Prescribing Through Our Network</h4>
+              <p class="font-inter text-cream/40 text-xs leading-[1.6]">Connect to NovaMed's licensed prescriber network. Our physicians prescribe — not you. Patients stay yours. Same platform, same pharmacy, same results. 100% compliant.</p>
+            </div>
+            <div class="bg-[#22201E] rounded-xl p-5 border border-cream/5">
+              <h4 class="font-inter text-cream font-semibold text-sm mb-1">White-Label Your Brand</h4>
+              <p class="font-inter text-cream/40 text-xs leading-[1.6]">Clients see your brand — not ours. Keep the relationship. Keep the revenue. Pure margin: 15-20% commission on every prescription, zero overhead.</p>
+            </div>
+            <div class="bg-[#22201E] rounded-xl p-5 border border-cream/5">
+              <h4 class="font-inter text-cream font-semibold text-sm mb-1">Turnkey in 2 Weeks</h4>
+              <p class="font-inter text-cream/40 text-xs leading-[1.6]">No hiring doctors. No dealing with compliance paperwork. NovaMed handles prescribing infrastructure, pharmacy fulfillment, and regulatory guardrails. You focus on your clients.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="rounded-2xl overflow-hidden border border-cream/10 mb-6">
+            <img src="/images/platform/03-programs.png" alt="NovaMed Programs — White-label health programs" class="w-full" loading="lazy" />
+          </div>
+          <div class="grid grid-cols-3 gap-3">
+            <div class="bg-[#22201E] rounded-xl p-3 border border-cream/5 text-center">
+              <p class="font-fraunces text-terracotta text-xl mb-0.5">15-20%</p>
+              <p class="font-inter text-cream/40 text-[10px]">Commission</p>
+            </div>
+            <div class="bg-[#22201E] rounded-xl p-3 border border-cream/5 text-center">
+              <p class="font-fraunces text-terracotta text-xl mb-0.5">$0</p>
+              <p class="font-inter text-cream/40 text-[10px]">Overhead</p>
+            </div>
+            <div class="bg-[#22201E] rounded-xl p-3 border border-cream/5 text-center">
+              <p class="font-fraunces text-terracotta text-xl mb-0.5">2 wks</p>
+              <p class="font-inter text-cream/40 text-[10px]">To go live</p>
             </div>
           </div>
         </div>
@@ -236,21 +264,15 @@
   </div>
 </section>
 
-<!-- Tab Switching Script -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const tabs = document.querySelectorAll('.workflow-tab');
     const panels = document.querySelectorAll('.workflow-panel');
-
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
         const target = tab.getAttribute('data-tab');
-        
-        // Update tabs
         tabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
-        
-        // Update panels
         panels.forEach(p => {
           if (p.getAttribute('data-panel') === target) {
             p.classList.remove('hidden');

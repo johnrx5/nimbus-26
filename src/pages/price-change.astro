@@ -1,0 +1,599 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Nimbus Healthcare - Review Your Updated Plan">
+  <main>
+    <section class="min-h-screen bg-cream pb-20 px-5">
+      <div class="w-full max-w-[960px] mx-auto">
+
+        <!-- Back Button (like get-started style) -->
+        <div class="pt-6 pb-8" data-animate>
+          <a href="/login" class="inline-flex items-center gap-2 font-inter text-dark/50 text-sm font-medium hover:text-dark transition-colors group">
+            <svg class="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            Back
+          </a>
+        </div>
+
+        <!-- Header -->
+        <div class="mb-8" data-animate>
+          <h1 class="font-fraunces text-dark text-[32px] md:text-[44px] leading-[1.1] mb-3">Review your new plan</h1>
+          <p class="font-inter text-dark/50 text-base max-w-[600px]">
+            We've made some important improvements to how your plan works, designed to give you more control, more transparency, and better value.
+          </p>
+        </div>
+
+        <!-- Two-Column Pricing -->
+        <div class="grid md:grid-cols-2 gap-5 mb-8" data-animate data-delay="2">
+
+          <!-- LEFT: Current Cost -->
+          <div class="current-plan-card flex flex-col">
+            <p class="font-inter text-dark text-xs uppercase tracking-wider mb-4 font-bold">Your Old Plan</p>
+            <h3 class="font-fraunces text-dark/40 text-[28px] leading-tight mb-6"><span class="line-through decoration-dark/15">$297</span><span class="text-lg">/mo</span></h3>
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="font-inter text-dark/40 text-sm">Plan</span>
+                <span class="font-inter text-dark/60 text-sm">Charged regardless of engagement</span>
+              </div>
+              <div class="h-px bg-dark/8"></div>
+              <div class="flex justify-between items-center">
+                <span class="font-inter text-dark/40 text-sm">Medication</span>
+                <span class="font-inter text-dark/60 text-sm">Semaglutide</span>
+              </div>
+              <div class="h-px bg-dark/8"></div>
+              <div class="flex justify-between items-center">
+                <span class="font-inter text-dark/40 text-sm">Billing</span>
+                <span class="font-inter text-dark/60 text-sm">Monthly</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: New Pricing Options -->
+          <div class="new-plan-card">
+            <p class="font-inter text-cream text-xs uppercase tracking-wider mb-2 font-bold">Your New Plan</p>
+            <p class="font-inter text-cream text-xs mb-5">Select pricing</p>
+
+            <!-- Pricing Options -->
+            <div class="space-y-2">
+
+              <!-- Monthly -->
+              <label class="pricing-option group" data-option="monthly">
+                <input type="radio" name="plan" value="monthly" class="hidden peer" checked />
+                <div class="option-inner-teal peer-checked:bg-cream/10">
+                  <div class="flex items-center gap-3">
+                    <div class="radio-dot-teal">
+                      <div class="radio-dot-inner-teal"></div>
+                    </div>
+                    <div>
+                      <p class="font-inter text-cream text-sm font-semibold">Monthly</p>
+                      <p class="font-inter text-cream/50 text-xs">Billed every month</p>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <p class="font-fraunces text-cream text-xl">$179<span class="text-sm text-cream/60">/mo</span></p>
+                  </div>
+                </div>
+              </label>
+
+              <!-- 3-Month -->
+              <label class="pricing-option group" data-option="quarterly">
+                <input type="radio" name="plan" value="quarterly" class="hidden peer" />
+                <div class="option-inner-teal peer-checked:bg-cream/10">
+                  <div class="flex items-center gap-3">
+                    <div class="radio-dot-teal">
+                      <div class="radio-dot-inner-teal"></div>
+                    </div>
+                    <div>
+                      <p class="font-inter text-cream text-sm font-semibold">3-Month</p>
+                      <p class="font-inter text-cream/50 text-xs">Billed monthly for 3 months</p>
+                    </div>
+                  </div>
+                  <div class="text-right flex items-center gap-2">
+                    <span class="savings-badge">Save 17%</span>
+                    <p class="font-fraunces text-cream text-xl">$149<span class="text-sm text-cream/60">/mo</span></p>
+                  </div>
+                </div>
+              </label>
+
+              <!-- 6-Month -->
+              <label class="pricing-option group" data-option="biannual">
+                <input type="radio" name="plan" value="biannual" class="hidden peer" />
+                <div class="option-inner-teal peer-checked:bg-cream/10">
+                  <div class="flex items-center gap-3">
+                    <div class="radio-dot-teal">
+                      <div class="radio-dot-inner-teal"></div>
+                    </div>
+                    <div>
+                      <p class="font-inter text-cream text-sm font-semibold">6-Month</p>
+                      <p class="font-inter text-cream/50 text-xs">Billed monthly for 6 months</p>
+                    </div>
+                  </div>
+                  <div class="text-right flex items-center gap-2">
+                    <span class="savings-badge">Save 28%</span>
+                    <p class="font-fraunces text-cream text-xl">$129<span class="text-sm text-cream/60">/mo</span></p>
+                  </div>
+                </div>
+              </label>
+
+            </div>
+
+            <!-- Tirzepatide Toggle -->
+            <div id="tirz-toggle" class="mt-5 pt-4 border-t border-cream/15 w-full flex items-center justify-between cursor-pointer">
+              <div class="flex items-center gap-1.5">
+                <span class="font-inter text-cream text-xs">Interested in Tirzepatide?</span>
+                <div id="tirz-info-btn" class="inline-flex items-center justify-center w-4 h-4 rounded-full border border-cream/30 text-cream/50 hover:text-cream hover:border-cream/60 transition-colors text-[10px] font-bold cursor-pointer">?</div>
+              </div>
+              <svg id="tirz-arrow" class="w-4 h-4 text-cream/40 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+
+            <!-- Tirzepatide Pricing (hidden by default) -->
+            <div id="tirz-pricing" class="hidden mt-3 space-y-2">
+              <!-- Monthly -->
+              <label class="pricing-option group" data-option="tirz-monthly">
+                <input type="radio" name="plan" value="tirz-monthly" class="hidden peer" />
+                <div class="option-inner-teal peer-checked:bg-cream/10">
+                  <div class="flex items-center gap-3">
+                    <div class="radio-dot-teal">
+                      <div class="radio-dot-inner-teal"></div>
+                    </div>
+                    <div>
+                      <p class="font-inter text-cream text-sm font-semibold">Monthly</p>
+                      <p class="font-inter text-cream/50 text-xs">Billed every month</p>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <p class="font-fraunces text-cream text-xl">$299<span class="text-sm text-cream/60">/mo</span></p>
+                  </div>
+                </div>
+              </label>
+
+              <!-- 3-Month -->
+              <label class="pricing-option group" data-option="tirz-quarterly">
+                <input type="radio" name="plan" value="tirz-quarterly" class="hidden peer" />
+                <div class="option-inner-teal peer-checked:bg-cream/10">
+                  <div class="flex items-center gap-3">
+                    <div class="radio-dot-teal">
+                      <div class="radio-dot-inner-teal"></div>
+                    </div>
+                    <div>
+                      <p class="font-inter text-cream text-sm font-semibold">3-Month</p>
+                      <p class="font-inter text-cream/50 text-xs">Billed monthly for 3 months</p>
+                    </div>
+                  </div>
+                  <div class="text-right flex items-center gap-2">
+                    <span class="savings-badge">Save 17%</span>
+                    <p class="font-fraunces text-cream text-xl">$248<span class="text-sm text-cream/60">/mo</span></p>
+                  </div>
+                </div>
+              </label>
+
+              <!-- 6-Month -->
+              <label class="pricing-option group" data-option="tirz-biannual">
+                <input type="radio" name="plan" value="tirz-biannual" class="hidden peer" />
+                <div class="option-inner-teal peer-checked:bg-cream/10">
+                  <div class="flex items-center gap-3">
+                    <div class="radio-dot-teal">
+                      <div class="radio-dot-inner-teal"></div>
+                    </div>
+                    <div>
+                      <p class="font-inter text-cream text-sm font-semibold">6-Month</p>
+                      <p class="font-inter text-cream/50 text-xs">Billed monthly for 6 months</p>
+                    </div>
+                  </div>
+                  <div class="text-right flex items-center gap-2">
+                    <span class="savings-badge">Save 27%</span>
+                    <p class="font-fraunces text-cream text-xl">$219<span class="text-sm text-cream/60">/mo</span></p>
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <!-- Benefits -->
+            <div class="flex flex-wrap gap-x-5 gap-y-2 mt-5 pt-5 border-t border-cream/15">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-teal shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span class="font-inter text-cream/80 text-xs">No surprise charges</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-teal shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span class="font-inter text-cream/80 text-xs">You're in control</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-teal shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span class="font-inter text-cream/80 text-xs">Pause anytime</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- What's New + Plan Summary -->
+        <div class="grid md:grid-cols-2 gap-5 mb-8" data-animate data-delay="3">
+
+          <!-- LEFT: What's New -->
+          <div class="summary-card">
+            <p class="font-inter text-dark text-xs uppercase tracking-wider mb-4 font-bold">What's New</p>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-teal shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <p class="font-inter text-dark/60 text-sm leading-relaxed"><strong class="text-dark">One simple price, every month.</strong> No more varying charges based on medication.</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-teal shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <p class="font-inter text-dark/60 text-sm leading-relaxed"><strong class="text-dark">Automatic payment processing.</strong> Payment is now processed automatically when your provider creates a prescription. No more manual approval each time.</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-teal shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <p class="font-inter text-dark/60 text-sm leading-relaxed"><strong class="text-dark">Pay As You Engage.</strong> You're charged only after check-in + provider review.</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-teal shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <p class="font-inter text-dark/60 text-sm leading-relaxed"><strong class="text-dark">Prepaid balance honored.</strong> If you have time remaining on your prepaid plan, your balance will be honored in full. Your new plan begins when your old plan ends.</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-teal shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <p class="font-inter text-dark/60 text-sm leading-relaxed"><strong class="text-dark">Auto-pause protection.</strong> If you don't engage for 30 days, we'll pause your subscription so you're not charged while inactive.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Updated Plan Summary -->
+          <div class="summary-card">
+            <p class="font-inter text-dark text-xs uppercase tracking-wider mb-1 font-bold">Updated Plan Summary</p>
+          <div class="space-y-3 mt-4">
+            <div class="flex justify-between">
+              <span class="font-inter text-dark/50 text-sm">Plan</span>
+              <span class="font-inter text-dark text-sm font-medium">Pay as you engage</span>
+            </div>
+            <div class="h-px bg-dark/8"></div>
+            <div class="flex justify-between">
+              <span class="font-inter text-dark/50 text-sm">Medication</span>
+              <span class="font-inter text-dark text-sm font-medium" id="summary-medication">Carnisema (Semaglutide)</span>
+            </div>
+            <div class="h-px bg-dark/8"></div>
+            <div class="flex justify-between">
+              <span class="font-inter text-dark/50 text-sm">Rate</span>
+              <span class="font-inter text-dark text-sm font-medium" id="summary-rate">$179/month</span>
+            </div>
+            <div class="h-px bg-dark/8"></div>
+            <div class="flex justify-between">
+              <span class="font-inter text-dark/50 text-sm">Billing</span>
+              <span class="font-inter text-dark text-sm font-medium" id="summary-billing">Billed monthly</span>
+            </div>
+            <div class="h-px bg-dark/8"></div>
+            <div class="flex justify-between">
+              <span class="font-inter text-dark/50 text-sm">Effective</span>
+              <span class="font-inter text-dark text-sm font-medium">April 1, 2026</span>
+            </div>
+          </div>
+          </div>
+        </div>
+
+        <!-- Credit Card on File -->
+        <div class="cc-card mb-8" data-animate data-delay="3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <!-- Visa icon -->
+              <div class="w-12 h-8 flex items-center justify-center rounded-md overflow-hidden bg-white border border-dark/10">
+                <img src="/images/visa-pay-logo.svg" alt="Visa" class="w-9 h-auto" />
+              </div>
+              <div>
+                <p class="font-inter text-dark text-sm font-medium">Visa ending in 4821</p>
+                <p class="font-inter text-dark/40 text-xs">Expires 09/2027</p>
+              </div>
+            </div>
+            <button class="font-inter text-teal text-sm font-medium hover:text-teal/80 transition-colors cursor-pointer">
+              Update
+            </button>
+          </div>
+        </div>
+
+        <!-- Consent -->
+        <div class="mb-8" data-animate data-delay="4">
+          <p class="font-inter text-dark text-base font-medium mb-5">By continuing, I acknowledge:</p>
+
+          <div class="space-y-4">
+            <label class="consent-row">
+              <input type="checkbox" id="consent-1" class="consent-checkbox" />
+              <div class="checkmark">
+                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <span class="font-inter text-dark/60 text-sm leading-relaxed">
+                I understand my plan is changing from <strong class="text-dark">$297/month</strong> to <strong class="text-dark" id="consent-price">$179/month</strong> effective <strong class="text-dark">April 1, 2026</strong>
+              </span>
+            </label>
+
+            <label class="consent-row">
+              <input type="checkbox" id="consent-2" class="consent-checkbox" />
+              <div class="checkmark">
+                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <span class="font-inter text-dark/60 text-sm leading-relaxed">
+                I understand my new monthly rate is <strong class="text-dark" id="consent-new">$179/month</strong> (previously <strong class="text-dark/50">$297/month</strong>)
+              </span>
+            </label>
+
+            <label class="consent-row">
+              <input type="checkbox" id="consent-3" class="consent-checkbox" />
+              <div class="checkmark">
+                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <span class="font-inter text-dark/60 text-sm leading-relaxed">
+                I have read and agree to the updated
+                <a href="#" class="text-teal underline hover:text-teal/80 transition-colors">Terms of Service</a> and
+                <a href="#" class="text-teal underline hover:text-teal/80 transition-colors">Subscription Agreement</a>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Support Callout -->
+        <div class="support-callout mb-8" data-animate data-delay="4">
+          <svg class="w-4 h-4 text-teal shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <p class="font-inter text-dark/50 text-sm">
+            Questions? Chat with <strong class="text-dark/70">Nimy</strong> or contact support at
+            <a href="mailto:support@nimbushealthcare.com" class="text-teal hover:text-teal/80 transition-colors">support@nimbushealthcare.com</a>
+          </p>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex items-center justify-between gap-4" data-animate data-delay="5">
+          <a href="/login" class="font-inter text-dark/40 text-sm font-medium flex items-center gap-2 hover:text-dark transition-colors group">
+            <svg class="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            Back
+          </a>
+          <button id="accept-btn" disabled class="bg-terracotta/40 text-cream/40 font-montserrat font-semibold text-base rounded-full py-4 px-10 transition-all cursor-not-allowed">
+            Accept & Continue
+            <svg class="w-4 h-4 inline-block ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Tirzepatide Info Modal -->
+  <div id="tirz-modal" class="fixed inset-0 z-50 hidden items-center justify-center px-5">
+    <div id="tirz-overlay" class="absolute inset-0 bg-dark/60 backdrop-blur-sm"></div>
+    <div class="relative bg-cream rounded-2xl max-w-[520px] w-full p-8 shadow-2xl">
+      <button id="tirz-modal-close" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-dark/5 transition-colors cursor-pointer">
+        <svg class="w-5 h-5 text-dark/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <p class="font-inter text-dark text-xs uppercase tracking-wider mb-3 font-bold">About Tirzepatide</p>
+      <h3 class="font-fraunces text-dark text-[24px] leading-[1.15] mb-4">A dual-action GLP-1 + GIP medication</h3>
+      <div class="space-y-4">
+        <p class="font-inter text-dark/60 text-sm leading-relaxed">Tirzepatide (the active ingredient in Mounjaro® and Zepbound®) targets both GLP-1 and GIP receptors, offering enhanced metabolic benefits through dual-receptor action for appetite and blood sugar regulation.</p>
+
+        <p class="font-inter text-dark text-xs uppercase tracking-wider font-bold mt-2">Who it's for</p>
+        <div class="space-y-2">
+          <div class="flex items-start gap-3">
+            <svg class="w-4 h-4 text-teal shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <p class="font-inter text-dark/60 text-sm leading-relaxed">Patients who want enhanced metabolic benefits from dual-receptor action</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="w-4 h-4 text-teal shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <p class="font-inter text-dark/60 text-sm leading-relaxed">Patients already familiar with or currently using Mounjaro/Zepbound</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="w-4 h-4 text-teal shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <p class="font-inter text-dark/60 text-sm leading-relaxed">Those who've tried tirzepatide previously and tolerated it well</p>
+          </div>
+        </div>
+
+        <div class="h-px bg-dark/8"></div>
+
+        <div class="space-y-2">
+          <div class="flex items-start gap-3">
+            <svg class="w-4 h-4 text-teal shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <p class="font-inter text-dark/60 text-sm leading-relaxed"><strong class="text-dark">Clinician-guided.</strong> Your provider will determine if tirzepatide is right for you based on your health profile.</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="w-4 h-4 text-teal shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <p class="font-inter text-dark/60 text-sm leading-relaxed"><strong class="text-dark">Same Pay As You Engage model.</strong> You're only charged when you complete your check-in and your provider writes a prescription.</p>
+          </div>
+        </div>
+      </div>
+      <button id="tirz-modal-got-it" class="mt-6 w-full bg-dark text-cream font-montserrat font-semibold text-sm rounded-full py-3 hover:bg-dark/90 transition-colors cursor-pointer">Got it</button>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .current-plan-card {
+    border: 1px solid rgba(26, 24, 22, 0.08);
+    border-radius: 20px;
+    padding: 28px;
+  }
+
+  .new-plan-card {
+    background: #1A1816;
+    border-radius: 20px;
+    padding: 28px;
+  }
+
+  .option-inner-teal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-radius: 14px;
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .option-inner-teal:hover {
+    background: rgba(245, 240, 234, 0.06);
+  }
+
+  .radio-dot-teal {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid rgba(245, 240, 234, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s ease;
+    flex-shrink: 0;
+  }
+  .radio-dot-inner-teal {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: transparent;
+    transition: background 0.2s ease;
+  }
+  .peer:checked ~ .option-inner-teal .radio-dot-teal {
+    border-color: #F5F0EA;
+  }
+  .peer:checked ~ .option-inner-teal .radio-dot-inner-teal {
+    background: #F5F0EA;
+  }
+
+  .savings-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #F5F0EA;
+    background: #B87A5D;
+    border-radius: 9999px;
+    padding: 4px 10px;
+    white-space: nowrap;
+  }
+
+  .cc-card {
+    border: 1px solid rgba(26, 24, 22, 0.08);
+    border-radius: 16px;
+    padding: 20px 24px;
+  }
+
+  .summary-card {
+    border: 1px solid rgba(26, 24, 22, 0.08);
+    border-radius: 20px;
+    padding: 28px;
+  }
+
+  .consent-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    cursor: pointer;
+  }
+  .consent-checkbox {
+    display: none;
+  }
+  .checkmark {
+    width: 22px;
+    height: 22px;
+    border: 1.5px solid rgba(26, 24, 22, 0.2);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: all 0.2s ease;
+    color: transparent;
+  }
+  .consent-checkbox:checked + .checkmark {
+    background: #2a9d8f;
+    border-color: #2a9d8f;
+    color: #F5F0EA;
+  }
+
+  .support-callout {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: rgba(42, 157, 143, 0.06);
+    border: 1px solid rgba(42, 157, 143, 0.12);
+    border-radius: 14px;
+    padding: 16px 20px;
+  }
+</style>
+
+<script>
+  // Plan pricing data
+  const plans: Record<string, { rate: string; billing: string; medication: string }> = {
+    monthly: { rate: '$179/month', billing: 'Billed monthly', medication: 'Carnisema (Semaglutide)' },
+    quarterly: { rate: '$149/month', billing: 'Billed monthly for 3 months ($447)', medication: 'Carnisema (Semaglutide)' },
+    biannual: { rate: '$129/month', billing: 'Billed monthly for 6 months ($774)', medication: 'Carnisema (Semaglutide)' },
+    'tirz-monthly': { rate: '$299/month', billing: 'Billed monthly', medication: 'Tirzepatide' },
+    'tirz-quarterly': { rate: '$248/month', billing: 'Billed monthly for 3 months ($744)', medication: 'Tirzepatide' },
+    'tirz-biannual': { rate: '$219/month', billing: 'Billed monthly for 6 months ($1,314)', medication: 'Tirzepatide' },
+  };
+
+  // Tirzepatide toggle
+  const tirzToggle = document.getElementById('tirz-toggle');
+  const tirzPricing = document.getElementById('tirz-pricing');
+  const tirzArrow = document.getElementById('tirz-arrow');
+
+  function toggleTirz() {
+    tirzPricing?.classList.toggle('hidden');
+    tirzArrow?.classList.toggle('rotate-180');
+  }
+  tirzToggle?.addEventListener('click', toggleTirz);
+
+  // Tirzepatide info modal
+  const tirzInfoBtn = document.getElementById('tirz-info-btn');
+  const tirzModal = document.getElementById('tirz-modal');
+  const tirzOverlay = document.getElementById('tirz-overlay');
+  const tirzModalClose = document.getElementById('tirz-modal-close');
+  const tirzModalGotIt = document.getElementById('tirz-modal-got-it');
+
+  function openTirzModal() {
+    tirzModal?.classList.remove('hidden');
+    tirzModal?.classList.add('flex');
+  }
+  function closeTirzModal() {
+    tirzModal?.classList.add('hidden');
+    tirzModal?.classList.remove('flex');
+  }
+
+  tirzInfoBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    openTirzModal();
+  });
+  tirzOverlay?.addEventListener('click', closeTirzModal);
+  tirzModalClose?.addEventListener('click', closeTirzModal);
+  tirzModalGotIt?.addEventListener('click', closeTirzModal);
+
+  // Update summary + consent when plan changes
+  const radios = document.querySelectorAll<HTMLInputElement>('input[name="plan"]');
+  const summaryRate = document.getElementById('summary-rate');
+  const summaryBilling = document.getElementById('summary-billing');
+  const summaryMedication = document.getElementById('summary-medication');
+  const consentPrice = document.getElementById('consent-price');
+  const consentNew = document.getElementById('consent-new');
+
+  function updatePlan() {
+    const selected = document.querySelector<HTMLInputElement>('input[name="plan"]:checked');
+    if (!selected) return;
+    const plan = plans[selected.value];
+    if (summaryRate) summaryRate.textContent = plan.rate;
+    if (summaryBilling) summaryBilling.textContent = plan.billing;
+    if (summaryMedication) summaryMedication.textContent = plan.medication;
+    if (consentPrice) consentPrice.textContent = plan.rate;
+    if (consentNew) consentNew.textContent = plan.rate;
+  }
+
+  radios.forEach(r => r.addEventListener('change', updatePlan));
+
+  // Consent validation
+  const checkboxes = document.querySelectorAll<HTMLInputElement>('.consent-checkbox');
+  const acceptBtn = document.getElementById('accept-btn') as HTMLButtonElement;
+
+  function validateConsent() {
+    const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+    if (allChecked) {
+      acceptBtn.disabled = false;
+      acceptBtn.classList.remove('bg-terracotta/40', 'text-cream/40', 'cursor-not-allowed');
+      acceptBtn.classList.add('bg-terracotta', 'hover:bg-terracotta-hover', 'text-cream', 'cursor-pointer');
+    } else {
+      acceptBtn.disabled = true;
+      acceptBtn.classList.add('bg-terracotta/40', 'text-cream/40', 'cursor-not-allowed');
+      acceptBtn.classList.remove('bg-terracotta', 'hover:bg-terracotta-hover', 'text-cream', 'cursor-pointer');
+    }
+  }
+
+  checkboxes.forEach(cb => cb.addEventListener('change', validateConsent));
+</script>

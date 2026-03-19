@@ -5,18 +5,15 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Nimbus Healthcare - Review Your Updated Plan">
   <main>
     <section class="min-h-screen bg-cream pb-20 px-5">
-      <div class="w-full max-w-[960px] mx-auto">
+      <div id="page-container" class="w-full max-w-[960px] mx-auto transition-all duration-500">
 
-        <!-- Back Button (like get-started style) -->
-        <div class="pt-6 pb-8" data-animate>
-          <a href="/login" class="inline-flex items-center gap-2 font-inter text-dark/50 text-sm font-medium hover:text-dark transition-colors group">
-            <svg class="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-            Back
-          </a>
+        <!-- Logo -->
+        <div class="pt-14 mb-6" data-animate>
+          <img src="/images/nimbus-logo-dark.png" alt="Nimbus Healthcare" class="h-7 w-auto" />
         </div>
 
         <!-- Header -->
-        <div class="mb-8" data-animate>
+        <div class="mb-6" data-animate>
           <h1 class="font-fraunces text-dark text-[32px] md:text-[44px] leading-[1.1] mb-3">Review your new plan</h1>
           <p class="font-inter text-dark/50 text-base max-w-[600px]">
             We've made some important improvements to how your plan works, designed to give you more control, more transparency, and better value.
@@ -24,7 +21,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <!-- Two-Column Pricing -->
-        <div class="grid md:grid-cols-2 gap-5 mb-8" data-animate data-delay="2">
+        <div class="grid md:grid-cols-2 gap-5 mb-6" data-animate data-delay="2">
 
           <!-- LEFT: Current Cost -->
           <div class="current-plan-card flex flex-col">
@@ -207,7 +204,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <!-- What's New + Plan Summary -->
-        <div class="grid md:grid-cols-2 gap-5 mb-8" data-animate data-delay="3">
+        <div class="grid md:grid-cols-2 gap-5 mb-6" data-animate data-delay="3">
 
           <!-- LEFT: What's New -->
           <div class="summary-card">
@@ -269,7 +266,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <!-- Credit Card on File -->
-        <div class="cc-card mb-8" data-animate data-delay="3">
+        <div class="cc-card mb-6" data-animate data-delay="3">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-4">
               <!-- Visa icon -->
@@ -288,7 +285,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <!-- Consent -->
-        <div class="mb-8" data-animate data-delay="4">
+        <div class="mb-6" data-animate data-delay="4">
           <p class="font-inter text-dark text-base font-medium mb-5">By continuing, I acknowledge:</p>
 
           <div class="space-y-4">
@@ -327,7 +324,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <!-- Support Callout -->
-        <div class="support-callout mb-8" data-animate data-delay="4">
+        <div class="support-callout mb-6" data-animate data-delay="4">
           <svg class="w-4 h-4 text-teal shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           <p class="font-inter text-dark/50 text-sm">
             Questions? Chat with <strong class="text-dark/70">Nimy</strong> or contact support at
@@ -350,6 +347,12 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </section>
   </main>
+
+  <!-- A/B Variant Toggle -->
+  <div class="fixed bottom-6 right-6 z-50 flex items-center gap-0 rounded-full overflow-hidden shadow-lg border border-dark/10">
+    <button id="variant-a" class="variant-toggle-btn active font-inter text-xs font-semibold px-5 py-3 transition-all">A</button>
+    <button id="variant-b" class="variant-toggle-btn font-inter text-xs font-semibold px-5 py-3 transition-all">B</button>
+  </div>
 
   <!-- Tirzepatide Info Modal -->
   <div id="tirz-modal" class="fixed inset-0 z-50 hidden items-center justify-center px-5">
@@ -509,6 +512,26 @@ import Layout from '../layouts/Layout.astro';
     border-radius: 14px;
     padding: 16px 20px;
   }
+
+  /* A/B Toggle */
+  .variant-toggle-btn {
+    background: #F5F0EA;
+    color: rgba(26, 24, 22, 0.4);
+    cursor: pointer;
+    border: none;
+  }
+  .variant-toggle-btn.active {
+    background: #1A1816;
+    color: #F5F0EA;
+  }
+
+  /* Variant B: stacked, narrow */
+  .variant-b {
+    max-width: 620px !important;
+  }
+  .variant-b .grid.md\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+  }
 </style>
 
 <script>
@@ -596,4 +619,21 @@ import Layout from '../layouts/Layout.astro';
   }
 
   checkboxes.forEach(cb => cb.addEventListener('change', validateConsent));
+
+  // A/B variant toggle
+  const variantA = document.getElementById('variant-a');
+  const variantB = document.getElementById('variant-b');
+  const pageContainer = document.getElementById('page-container');
+
+  variantA?.addEventListener('click', () => {
+    pageContainer?.classList.remove('variant-b');
+    variantA.classList.add('active');
+    variantB?.classList.remove('active');
+  });
+
+  variantB?.addEventListener('click', () => {
+    pageContainer?.classList.add('variant-b');
+    variantB.classList.add('active');
+    variantA?.classList.remove('active');
+  });
 </script>

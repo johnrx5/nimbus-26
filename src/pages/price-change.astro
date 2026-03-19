@@ -26,21 +26,49 @@ import Layout from '../layouts/Layout.astro';
           <!-- LEFT: Current Cost -->
           <div class="current-plan-card flex flex-col">
             <p class="font-inter text-dark text-xs uppercase tracking-wider mb-4 font-bold">Your Old Plan</p>
-            <h3 class="font-fraunces text-dark/40 text-[28px] leading-tight mb-6"><span class="line-through decoration-dark/15">$297</span><span class="text-lg">/mo</span></h3>
-            <div class="space-y-3">
-              <div class="flex justify-between items-center">
-                <span class="font-inter text-dark/40 text-sm">Plan</span>
-                <span class="font-inter text-dark/60 text-sm">Charged regardless of engagement</span>
+            <!-- Variant A/B content -->
+            <div id="old-plan-ab">
+              <h3 class="font-fraunces text-dark/40 text-[28px] leading-tight mb-6"><span class="line-through decoration-dark/15">$297</span><span class="text-lg">/mo</span></h3>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="font-inter text-dark/40 text-sm">Plan</span>
+                  <span class="font-inter text-dark/60 text-sm">Charged regardless of engagement</span>
+                </div>
+                <div class="h-px bg-dark/8"></div>
+                <div class="flex justify-between items-center">
+                  <span class="font-inter text-dark/40 text-sm">Medication</span>
+                  <span class="font-inter text-dark/60 text-sm">Semaglutide</span>
+                </div>
+                <div class="h-px bg-dark/8"></div>
+                <div class="flex justify-between items-center">
+                  <span class="font-inter text-dark/40 text-sm">Billing</span>
+                  <span class="font-inter text-dark/60 text-sm">Monthly</span>
+                </div>
               </div>
-              <div class="h-px bg-dark/8"></div>
-              <div class="flex justify-between items-center">
-                <span class="font-inter text-dark/40 text-sm">Medication</span>
-                <span class="font-inter text-dark/60 text-sm">Semaglutide</span>
-              </div>
-              <div class="h-px bg-dark/8"></div>
-              <div class="flex justify-between items-center">
-                <span class="font-inter text-dark/40 text-sm">Billing</span>
-                <span class="font-inter text-dark/60 text-sm">Monthly</span>
+            </div>
+            <!-- Variant C content (prepaid 6-month) -->
+            <div id="old-plan-c" class="hidden">
+              <h3 class="font-fraunces text-dark/40 text-[28px] leading-tight mb-6"><span class="line-through decoration-dark/15">$774</span><span class="text-lg"> / 6 months</span></h3>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="font-inter text-dark/40 text-sm">Plan</span>
+                  <span class="font-inter text-dark/60 text-sm">6-month prepaid</span>
+                </div>
+                <div class="h-px bg-dark/8"></div>
+                <div class="flex justify-between items-center">
+                  <span class="font-inter text-dark/40 text-sm">Medication</span>
+                  <span class="font-inter text-dark/60 text-sm">Semaglutide</span>
+                </div>
+                <div class="h-px bg-dark/8"></div>
+                <div class="flex justify-between items-center">
+                  <span class="font-inter text-dark/40 text-sm">Paid through</span>
+                  <span class="font-inter text-dark/60 text-sm">June 30, 2026</span>
+                </div>
+                <div class="h-px bg-dark/8"></div>
+                <div class="flex justify-between items-center">
+                  <span class="font-inter text-dark/40 text-sm">Remaining</span>
+                  <span class="font-inter text-teal text-sm font-medium">3 months</span>
+                </div>
               </div>
             </div>
           </div>
@@ -236,7 +264,8 @@ import Layout from '../layouts/Layout.astro';
           <!-- RIGHT: Updated Plan Summary -->
           <div class="summary-card">
             <p class="font-inter text-dark text-xs uppercase tracking-wider mb-1 font-bold">Updated Plan Summary</p>
-            <div class="space-y-3 mt-4">
+            <!-- Variant A/B summary -->
+            <div id="summary-ab" class="space-y-3 mt-4">
               <div class="flex justify-between">
                 <span class="font-inter text-dark/50 text-sm">Plan</span>
                 <span class="font-inter text-dark text-sm font-medium">Pay as you engage</span>
@@ -260,6 +289,50 @@ import Layout from '../layouts/Layout.astro';
               <div class="flex justify-between">
                 <span class="font-inter text-dark/50 text-sm">Effective</span>
                 <span class="font-inter text-dark text-sm font-medium">April 1, 2026</span>
+              </div>
+            </div>
+            <!-- Variant C summary (prepaid transition) -->
+            <div id="summary-c" class="hidden mt-4">
+              <!-- Prepaid remaining callout -->
+              <div class="bg-teal/8 rounded-xl p-4 mb-4">
+                <div class="flex items-start gap-3">
+                  <svg class="w-4 h-4 text-teal shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <div>
+                    <p class="font-inter text-dark text-sm font-medium mb-1">Prepaid balance honored</p>
+                    <p class="font-inter text-dark/50 text-xs leading-relaxed">Your remaining 3 months at $175/mo will continue through June 30, 2026. No changes until then.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <div class="flex justify-between">
+                  <span class="font-inter text-dark/50 text-sm">Current rate</span>
+                  <span class="font-inter text-dark text-sm font-medium">$175/mo (prepaid)</span>
+                </div>
+                <div class="h-px bg-dark/8"></div>
+                <div class="flex justify-between">
+                  <span class="font-inter text-dark/50 text-sm">Remaining</span>
+                  <span class="font-inter text-teal text-sm font-medium">3 months (through Jun 30)</span>
+                </div>
+                <div class="h-px bg-dark/8"></div>
+                <div class="flex justify-between">
+                  <span class="font-inter text-dark/50 text-sm">New plan starts</span>
+                  <span class="font-inter text-dark text-sm font-medium">July 1, 2026</span>
+                </div>
+                <div class="h-px bg-dark/8"></div>
+                <div class="flex justify-between">
+                  <span class="font-inter text-dark/50 text-sm">New rate</span>
+                  <span class="font-inter text-dark text-sm font-medium" id="summary-rate-c">$179/month</span>
+                </div>
+                <div class="h-px bg-dark/8"></div>
+                <div class="flex justify-between">
+                  <span class="font-inter text-dark/50 text-sm">New plan</span>
+                  <span class="font-inter text-dark text-sm font-medium">Pay as you engage</span>
+                </div>
+                <div class="h-px bg-dark/8"></div>
+                <div class="flex justify-between">
+                  <span class="font-inter text-dark/50 text-sm">Medication</span>
+                  <span class="font-inter text-dark text-sm font-medium" id="summary-medication-c">Carnisema (Semaglutide)</span>
+                </div>
               </div>
             </div>
           </div>
@@ -295,7 +368,7 @@ import Layout from '../layouts/Layout.astro';
                 <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               </div>
               <span class="font-inter text-dark/60 text-sm leading-relaxed">
-                I understand my plan is changing from <strong class="text-dark">$297/month</strong> to <strong class="text-dark" id="consent-price">$179/month</strong> effective <strong class="text-dark">April 1, 2026</strong>
+                I understand my plan is changing from <strong class="text-dark">$297/month</strong> to <strong class="text-dark" id="consent-price">$179/month</strong> effective <strong class="text-dark" id="consent-date">April 1, 2026</strong>
               </span>
             </label>
 
@@ -352,6 +425,7 @@ import Layout from '../layouts/Layout.astro';
   <div class="fixed bottom-6 right-6 z-50 flex items-center gap-0 rounded-full overflow-hidden shadow-lg border border-dark/10">
     <button id="variant-a" class="variant-toggle-btn active font-inter text-xs font-semibold px-5 py-3 transition-all">A</button>
     <button id="variant-b" class="variant-toggle-btn font-inter text-xs font-semibold px-5 py-3 transition-all">B</button>
+    <button id="variant-c" class="variant-toggle-btn font-inter text-xs font-semibold px-5 py-3 transition-all">C</button>
   </div>
 
   <!-- Tirzepatide Info Modal -->
@@ -587,6 +661,8 @@ import Layout from '../layouts/Layout.astro';
   const summaryMedication = document.getElementById('summary-medication');
   const consentPrice = document.getElementById('consent-price');
   const consentNew = document.getElementById('consent-new');
+  const summaryRateC = document.getElementById('summary-rate-c');
+  const summaryMedicationC = document.getElementById('summary-medication-c');
 
   function updatePlan() {
     const selected = document.querySelector<HTMLInputElement>('input[name="plan"]:checked');
@@ -595,6 +671,8 @@ import Layout from '../layouts/Layout.astro';
     if (summaryRate) summaryRate.textContent = plan.rate;
     if (summaryBilling) summaryBilling.textContent = plan.billing;
     if (summaryMedication) summaryMedication.textContent = plan.medication;
+    if (summaryRateC) summaryRateC.textContent = plan.rate;
+    if (summaryMedicationC) summaryMedicationC.textContent = plan.medication;
     if (consentPrice) consentPrice.textContent = plan.rate;
     if (consentNew) consentNew.textContent = plan.rate;
   }
@@ -620,20 +698,50 @@ import Layout from '../layouts/Layout.astro';
 
   checkboxes.forEach(cb => cb.addEventListener('change', validateConsent));
 
-  // A/B variant toggle
+  // A/B/C variant toggle
   const variantA = document.getElementById('variant-a');
   const variantB = document.getElementById('variant-b');
+  const variantC = document.getElementById('variant-c');
   const pageContainer = document.getElementById('page-container');
+  const oldPlanAB = document.getElementById('old-plan-ab');
+  const oldPlanC = document.getElementById('old-plan-c');
+  const summaryAB = document.getElementById('summary-ab');
+  const summaryCEl = document.getElementById('summary-c');
+  const consentDate = document.getElementById('consent-date');
 
-  variantA?.addEventListener('click', () => {
-    pageContainer?.classList.remove('variant-b');
-    variantA.classList.add('active');
-    variantB?.classList.remove('active');
-  });
-
-  variantB?.addEventListener('click', () => {
-    pageContainer?.classList.add('variant-b');
-    variantB.classList.add('active');
+  function setVariant(variant: string) {
+    // Reset all buttons
     variantA?.classList.remove('active');
-  });
+    variantB?.classList.remove('active');
+    variantC?.classList.remove('active');
+    pageContainer?.classList.remove('variant-b');
+
+    // Show/hide variant-specific content
+    if (variant === 'c') {
+      oldPlanAB?.classList.add('hidden');
+      oldPlanC?.classList.remove('hidden');
+      summaryAB?.classList.add('hidden');
+      summaryCEl?.classList.remove('hidden');
+      if (consentDate) consentDate.textContent = 'July 1, 2026';
+    } else {
+      oldPlanAB?.classList.remove('hidden');
+      oldPlanC?.classList.add('hidden');
+      summaryAB?.classList.remove('hidden');
+      summaryCEl?.classList.add('hidden');
+      if (consentDate) consentDate.textContent = 'April 1, 2026';
+    }
+
+    if (variant === 'a') {
+      variantA?.classList.add('active');
+    } else if (variant === 'b') {
+      variantB?.classList.add('active');
+      pageContainer?.classList.add('variant-b');
+    } else if (variant === 'c') {
+      variantC?.classList.add('active');
+    }
+  }
+
+  variantA?.addEventListener('click', () => setVariant('a'));
+  variantB?.addEventListener('click', () => setVariant('b'));
+  variantC?.addEventListener('click', () => setVariant('c'));
 </script>

@@ -9,12 +9,12 @@ const navLinks = [
   { label: 'Meals', href: 'https://meals.nimbushealthcare.com/', external: true },
   { label: 'Teams', href: '/teams' },
   { label: 'Providers', href: '/providers' },
-  { label: 'Blog', href: '/blog' },
 ];
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
-const darkPages = ['/hormone', '/hair', '/providers', '/get-started', '/login', '/contact', '/privacy', '/terms', '/refund', '/careers', '/dr-john', '/about', '/price-change'];
-const isDarkPage = darkPages.includes(currentPath);
+const darkPages = ['/hormone', '/hair', '/providers', '/get-started', '/login', '/contact', '/privacy', '/terms', '/refund', '/careers', '/dr-john', '/about', '/price-change', '/blog'];
+const isDarkPageOrBlog = darkPages.includes(currentPath) || currentPath.startsWith('/blog');
+const isDarkPage = isDarkPageOrBlog;
 ---
 
 <nav id="main-nav" class="fixed top-[20px] left-1/2 -translate-x-1/2 z-50 w-full max-w-[1340px] px-5" data-scrolled="false" data-dark-page={isDarkPage ? 'true' : undefined}>

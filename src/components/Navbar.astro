@@ -12,7 +12,7 @@ const navLinks = [
 ];
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
-const darkPages = ['/hormone', '/hair', '/providers', '/get-started', '/login', '/contact', '/privacy', '/terms', '/refund', '/careers', '/dr-john', '/about', '/price-change', '/blog'];
+const darkPages = ['/hormone', '/hair', '/providers', '/get-started', '/login', '/contact', '/privacy', '/terms', '/refund', '/careers', '/dr-john', '/about', '/price-change', '/blog', '/telemedicine-consent'];
 const isDarkPageOrBlog = darkPages.includes(currentPath) || currentPath.startsWith('/blog');
 const isDarkPage = isDarkPageOrBlog;
 ---

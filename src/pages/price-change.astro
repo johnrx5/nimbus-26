@@ -409,6 +409,13 @@ import Layout from '../layouts/Layout.astro';
           </button>
         </div>
 
+        <!-- Cancel Plan -->
+        <div class="text-center mt-4">
+          <button id="cancel-plan-btn" class="font-inter text-sm text-dark/60 underline underline-offset-2 hover:text-dark transition-colors cursor-pointer bg-transparent border-none">
+            Cancel Plan
+          </button>
+        </div>
+
       </div>
     </section>
   </main>
@@ -461,6 +468,70 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
       <button id="tirz-modal-got-it" class="mt-6 w-full bg-dark text-cream font-montserrat font-semibold text-sm rounded-full py-3 hover:bg-dark/90 transition-colors cursor-pointer">Got it</button>
+    </div>
+  </div>
+  <!-- Cancel Plan Modal -->
+  <div id="cancel-modal" class="fixed inset-0 z-50 hidden items-center justify-center px-5">
+    <div id="cancel-overlay" class="absolute inset-0 bg-dark/60 backdrop-blur-sm"></div>
+    <div class="relative bg-cream rounded-3xl max-w-[480px] w-full shadow-2xl overflow-hidden cancel-modal-content">
+
+      <!-- Header -->
+      <div class="flex items-center justify-between px-7 pt-6 pb-4">
+        <div class="flex items-center gap-3">
+          <button id="cancel-modal-back" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-dark/5 transition-colors cursor-pointer">
+            <svg class="w-4 h-4 text-dark/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <span class="font-inter text-dark/50 text-sm font-medium">Cancel Plan</span>
+        </div>
+        <button id="cancel-modal-close" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-dark/5 transition-colors cursor-pointer">
+          <svg class="w-5 h-5 text-dark/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="px-7 pb-6">
+        <h2 class="font-fraunces text-dark text-[28px] leading-[1.15] mb-3">Before you go.</h2>
+        <p class="font-inter text-dark/50 text-sm leading-relaxed mb-6">Hey [Patient Name]! We are sorry to see you cancel. To help us improve, we'd love feedback.</p>
+
+        <!-- Reason checkboxes -->
+        <p class="font-inter text-dark text-sm font-semibold mb-3">Why are you cancelling your plan?</p>
+        <div class="space-y-2.5 mb-6">
+          <label class="flex items-center gap-3 cursor-pointer group">
+            <input type="checkbox" class="cancel-reason w-[18px] h-[18px] rounded border-2 border-dark/20 accent-teal cursor-pointer" value="no-longer-need">
+            <span class="font-inter text-dark/70 text-sm group-hover:text-dark transition-colors">I no longer need it</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group">
+            <input type="checkbox" class="cancel-reason w-[18px] h-[18px] rounded border-2 border-dark/20 accent-teal cursor-pointer" value="missing-features">
+            <span class="font-inter text-dark/70 text-sm group-hover:text-dark transition-colors">Features I need are missing</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group">
+            <input type="checkbox" class="cancel-reason w-[18px] h-[18px] rounded border-2 border-dark/20 accent-teal cursor-pointer" value="too-expensive">
+            <span class="font-inter text-dark/70 text-sm group-hover:text-dark transition-colors">Too expensive</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group">
+            <input type="checkbox" class="cancel-reason w-[18px] h-[18px] rounded border-2 border-dark/20 accent-teal cursor-pointer" value="another-service">
+            <span class="font-inter text-dark/70 text-sm group-hover:text-dark transition-colors">I am on another service</span>
+          </label>
+        </div>
+
+        <!-- Additional Comments -->
+        <p class="font-inter text-dark/70 text-sm font-medium mb-2">Additional Comments</p>
+        <textarea id="cancel-comments" placeholder="Add message" rows="3" class="w-full bg-dark/[0.03] border border-dark/10 rounded-xl px-4 py-3 font-inter text-sm text-dark placeholder:text-dark/30 resize-none focus:outline-none focus:border-teal/40 transition-colors mb-5"></textarea>
+
+        <!-- Confirm input -->
+        <p class="font-inter text-dark/70 text-sm font-medium mb-2">Type 'CANCEL' to confirm<span class="text-red-500">*</span></p>
+        <input id="cancel-confirm-input" type="text" placeholder="CANCEL" class="w-full bg-dark/[0.03] border border-dark/10 rounded-xl px-4 py-3 font-inter text-sm text-dark placeholder:text-dark/30 focus:outline-none focus:border-teal/40 transition-colors">
+      </div>
+
+      <!-- Footer buttons -->
+      <div class="flex gap-3 px-7 pb-7 pt-2">
+        <button id="cancel-nevermind" class="flex-1 bg-dark/[0.06] hover:bg-dark/10 text-dark font-montserrat font-semibold text-sm rounded-full py-3.5 transition-colors cursor-pointer">
+          Never mind
+        </button>
+        <button id="cancel-confirm-btn" disabled class="flex-1 bg-dark/20 text-dark/40 font-montserrat font-semibold text-sm rounded-full py-3.5 transition-all cursor-not-allowed">
+          Confirm
+        </button>
+      </div>
     </div>
   </div>
 </Layout>
@@ -716,4 +787,45 @@ import Layout from '../layouts/Layout.astro';
 
   variantA?.addEventListener('click', () => setVariant('a'));
   variantB?.addEventListener('click', () => setVariant('b'));
+
+  // Cancel Plan Modal
+  const cancelBtn = document.getElementById('cancel-plan-btn');
+  const cancelModal = document.getElementById('cancel-modal');
+  const cancelOverlay = document.getElementById('cancel-overlay');
+  const cancelModalClose = document.getElementById('cancel-modal-close');
+  const cancelModalBack = document.getElementById('cancel-modal-back');
+  const cancelNevermind = document.getElementById('cancel-nevermind');
+  const cancelConfirmBtn = document.getElementById('cancel-confirm-btn') as HTMLButtonElement;
+  const cancelConfirmInput = document.getElementById('cancel-confirm-input') as HTMLInputElement;
+
+  function openCancelModal() {
+    cancelModal?.classList.remove('hidden');
+    cancelModal?.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCancelModal() {
+    cancelModal?.classList.add('hidden');
+    cancelModal?.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  cancelBtn?.addEventListener('click', openCancelModal);
+  cancelOverlay?.addEventListener('click', closeCancelModal);
+  cancelModalClose?.addEventListener('click', closeCancelModal);
+  cancelModalBack?.addEventListener('click', closeCancelModal);
+  cancelNevermind?.addEventListener('click', closeCancelModal);
+
+  // Enable confirm button only when user types CANCEL
+  cancelConfirmInput?.addEventListener('input', () => {
+    const match = cancelConfirmInput.value.trim().toUpperCase() === 'CANCEL';
+    if (match) {
+      cancelConfirmBtn.disabled = false;
+      cancelConfirmBtn.classList.remove('bg-dark/20', 'text-dark/40', 'cursor-not-allowed');
+      cancelConfirmBtn.classList.add('bg-terracotta', 'text-cream', 'hover:bg-terracotta-hover', 'cursor-pointer');
+    } else {
+      cancelConfirmBtn.disabled = true;
+      cancelConfirmBtn.classList.add('bg-dark/20', 'text-dark/40', 'cursor-not-allowed');
+      cancelConfirmBtn.classList.remove('bg-terracotta', 'text-cream', 'hover:bg-terracotta-hover', 'cursor-pointer');
+    }
+  });
 </script>

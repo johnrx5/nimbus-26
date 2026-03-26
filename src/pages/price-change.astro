@@ -475,13 +475,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="relative bg-cream rounded-3xl max-w-[480px] w-full shadow-2xl overflow-hidden cancel-modal-content">
 
       <!-- Header -->
-      <div class="flex items-center justify-between px-7 pt-6 pb-4">
-        <div class="flex items-center gap-3">
-          <button id="cancel-modal-back" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-dark/5 transition-colors cursor-pointer">
-            <svg class="w-4 h-4 text-dark/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-          </button>
-          <span class="font-inter text-dark/50 text-sm font-medium">Cancel Plan</span>
-        </div>
+      <div class="flex items-center justify-end px-7 pt-6 pb-4">
         <button id="cancel-modal-close" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-dark/5 transition-colors cursor-pointer">
           <svg class="w-5 h-5 text-dark/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
@@ -798,7 +792,6 @@ import Layout from '../layouts/Layout.astro';
   const cancelModal = document.getElementById('cancel-modal');
   const cancelOverlay = document.getElementById('cancel-overlay');
   const cancelModalClose = document.getElementById('cancel-modal-close');
-  const cancelModalBack = document.getElementById('cancel-modal-back');
   const cancelNevermind = document.getElementById('cancel-nevermind');
   const cancelConfirmBtn = document.getElementById('cancel-confirm-btn') as HTMLButtonElement;
   const cancelConfirmInput = document.getElementById('cancel-confirm-input') as HTMLInputElement;
@@ -817,7 +810,6 @@ import Layout from '../layouts/Layout.astro';
   cancelBtn?.addEventListener('click', openCancelModal);
   cancelOverlay?.addEventListener('click', closeCancelModal);
   cancelModalClose?.addEventListener('click', closeCancelModal);
-  cancelModalBack?.addEventListener('click', closeCancelModal);
   cancelNevermind?.addEventListener('click', closeCancelModal);
 
   // Enable confirm button only when user types CANCEL

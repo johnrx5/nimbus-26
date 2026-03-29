@@ -6,10 +6,10 @@ import logoBlack from '../assets/NB_br_Logo Black/NB_br_Logo Black_0325.png';
 
 <Layout title="Nimbus Providers - Free Trial">
   <main>
-    <section class="bg-[#1A1816] min-h-screen flex flex-col" id="trial-app">
+    <section class="bg-[#1A1816] min-h-screen" id="trial-app">
       <!-- Sticky Top Bar -->
       <div class="px-6 shrink-0 trial-sticky-header">
-        <div class="max-w-[620px] mx-auto relative flex items-center justify-between py-5">
+        <div class="max-w-7xl mx-auto relative flex items-center justify-between py-5">
           <!-- Left: Back -->
           <div class="flex items-center gap-3">
             <a
@@ -48,29 +48,184 @@ import logoBlack from '../assets/NB_br_Logo Black/NB_br_Logo Black_0325.png';
         </div>
       </div>
 
-      <!-- Scrollable Content -->
-      <div class="flex-1 overflow-y-auto px-6 pb-8" id="trial-content">
-        <div class="max-w-[620px] mx-auto">
+      <!-- Section 1: Hero -->
+      <section class="px-6 py-20 md:py-28">
+        <div class="max-w-4xl mx-auto text-center" data-animate>
+          <p class="font-montserrat text-teal text-xs font-semibold tracking-[0.15em] uppercase mb-4">FREE TRIAL</p>
+          <h1 class="font-fraunces text-cream text-[clamp(32px,5vw,56px)] leading-[1.1] tracking-[-0.02em] mb-5">
+            See why 256+ clinics trust Nimbus.
+          </h1>
+          <p class="font-inter text-cream/50 text-lg md:text-xl leading-[1.6] mb-10 max-w-2xl mx-auto">
+            7 days. Full platform access. 8 real patient scenarios. No credit card.
+          </p>
 
-          <!-- Form View -->
-          <div id="trial-form" class="mt-4">
-            <p class="font-montserrat text-teal text-xs font-semibold tracking-[0.15em] uppercase mb-2 intake-label">FREE TRIAL</p>
-            <h1 class="font-fraunces text-cream text-[clamp(28px,4vw,40px)] leading-[1.15] tracking-[-0.02em] mb-4 intake-heading">
-              Try Nimbus Providers free for 7 days
-            </h1>
-            <p class="font-inter text-cream/50 text-base leading-[1.6] mb-6 intake-body">
-              Explore the platform with real sample data. No credit card required. Set up in under 2 minutes.
-            </p>
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8" data-animate data-delay="1">
+            <a
+              href="#signup-form"
+              class="scroll-to-signup w-full sm:w-auto bg-terracotta hover:brightness-110 text-cream font-montserrat font-medium text-base rounded-full px-10 py-4 transition-all cursor-pointer inline-flex items-center justify-center gap-2"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>Start Free Trial</span>
+            </a>
+            <a
+              href="/contact"
+              class="w-full sm:w-auto border border-cream/15 hover:border-cream/30 text-cream font-montserrat font-medium text-base rounded-full px-10 py-4 transition-all cursor-pointer inline-flex items-center justify-center gap-2"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M10 8l6 4-6 4V8z" fill="currentColor"/>
+              </svg>
+              <span>Watch Demo</span>
+            </a>
+          </div>
 
-            <!-- Feature Pills -->
-            <div class="flex flex-wrap gap-3 mb-10">
-              <div class="border border-cream/15 rounded-full px-4 py-2 text-sm font-inter text-cream/60">8 Sample Patients</div>
-              <div class="border border-cream/15 rounded-full px-4 py-2 text-sm font-inter text-cream/60">Full Dashboard Access</div>
-              <div class="border border-cream/15 rounded-full px-4 py-2 text-sm font-inter text-cream/60">IntelliHealth AI</div>
+          <!-- Trust line -->
+          <p class="font-inter text-cream/40 text-sm" data-animate data-delay="2">
+            ✓ No credit card required · ✓ Set up in 2 minutes · ✓ Cancel anytime
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 2: What You Get -->
+      <section class="px-6 py-20 border-t border-cream/5">
+        <div class="max-w-6xl mx-auto">
+          <p class="font-montserrat text-teal text-xs font-semibold tracking-[0.15em] uppercase mb-3 text-center" data-animate>WHAT'S INCLUDED</p>
+          <h2 class="font-fraunces text-cream text-[clamp(28px,4vw,42px)] leading-[1.15] tracking-[-0.02em] mb-16 text-center" data-animate data-delay="1">
+            Everything you need to evaluate Nimbus
+          </h2>
+
+          <div class="grid md:grid-cols-3 gap-8" data-stagger>
+            <!-- Card 1: 8 Sample Patients -->
+            <div class="bg-[#22201E] border border-cream/10 rounded-2xl p-8 hover:border-cream/20 transition-colors">
+              <div class="mb-5">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" class="text-teal">
+                  <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3 class="font-inter font-semibold text-cream text-xl mb-3">8 Sample Patients</h3>
+              <p class="font-inter text-cream/50 text-base leading-[1.6]">
+                Pre-loaded with realistic medical histories, lab results, SOAP notes, and prescriptions. See exactly how the platform handles your workflow.
+              </p>
             </div>
 
+            <!-- Card 2: Full Dashboard Access -->
+            <div class="bg-[#22201E] border border-cream/10 rounded-2xl p-8 hover:border-cream/20 transition-colors">
+              <div class="mb-5">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" class="text-teal">
+                  <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M9 3v18M9 9h12M9 15h12" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <h3 class="font-inter font-semibold text-cream text-xl mb-3">Full Dashboard Access</h3>
+              <p class="font-inter text-cream/50 text-base leading-[1.6]">
+                Every feature unlocked. Prescribing, IntelliHealth AI co-pilot, intake forms, formulary browsing, and clinic management tools.
+              </p>
+            </div>
+
+            <!-- Card 3: IntelliHealth AI -->
+            <div class="bg-[#22201E] border border-cream/10 rounded-2xl p-8 hover:border-cream/20 transition-colors">
+              <div class="mb-5">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" class="text-teal">
+                  <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M12 8v8M8 10v4M16 10v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3 class="font-inter font-semibold text-cream text-xl mb-3">IntelliHealth AI</h3>
+              <p class="font-inter text-cream/50 text-base leading-[1.6]">
+                Experience AI-powered clinical decision support. Drug interaction checks, protocol recommendations, and safety guardrails — all live in your trial.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: How It Works -->
+      <section class="px-6 py-20 border-t border-cream/5">
+        <div class="max-w-5xl mx-auto">
+          <p class="font-montserrat text-teal text-xs font-semibold tracking-[0.15em] uppercase mb-3 text-center" data-animate>HOW IT WORKS</p>
+          <h2 class="font-fraunces text-cream text-[clamp(28px,4vw,42px)] leading-[1.15] tracking-[-0.02em] mb-16 text-center" data-animate data-delay="1">
+            Live in under 2 minutes
+          </h2>
+
+          <div class="grid md:grid-cols-3 gap-12" data-stagger>
+            <!-- Step 1 -->
+            <div class="text-center">
+              <div class="w-16 h-16 rounded-full border-2 border-teal flex items-center justify-center mx-auto mb-6">
+                <span class="font-fraunces text-teal text-2xl font-semibold">1</span>
+              </div>
+              <h3 class="font-inter font-semibold text-cream text-xl mb-3">Create your account</h3>
+              <p class="font-inter text-cream/50 text-base leading-[1.6]">
+                Enter your name, email, and clinic. That's it.
+              </p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="text-center">
+              <div class="w-16 h-16 rounded-full border-2 border-teal flex items-center justify-center mx-auto mb-6">
+                <span class="font-fraunces text-teal text-2xl font-semibold">2</span>
+              </div>
+              <h3 class="font-inter font-semibold text-cream text-xl mb-3">Explore the platform</h3>
+              <p class="font-inter text-cream/50 text-base leading-[1.6]">
+                8 sample patients are waiting. Browse prescriptions, run IntelliHealth, check labs.
+              </p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="text-center">
+              <div class="w-16 h-16 rounded-full border-2 border-teal flex items-center justify-center mx-auto mb-6">
+                <span class="font-fraunces text-teal text-2xl font-semibold">3</span>
+              </div>
+              <h3 class="font-inter font-semibold text-cream text-xl mb-3">Go live when ready</h3>
+              <p class="font-inter text-cream/50 text-base leading-[1.6]">
+                Love it? Complete onboarding to connect your real patients. We'll migrate everything.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Social Proof Stats Bar -->
+      <section class="px-6 py-16 border-t border-cream/5 bg-[#22201E]" data-animate>
+        <div class="max-w-5xl mx-auto">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
+            <div>
+              <div class="font-fraunces text-teal text-4xl md:text-5xl mb-2">256+</div>
+              <div class="font-inter text-cream/40 text-sm uppercase tracking-wider">Clinics</div>
+            </div>
+            <div>
+              <div class="font-fraunces text-teal text-4xl md:text-5xl mb-2">131</div>
+              <div class="font-inter text-cream/40 text-sm uppercase tracking-wider">Compounds</div>
+            </div>
+            <div>
+              <div class="font-fraunces text-teal text-4xl md:text-5xl mb-2">50</div>
+              <div class="font-inter text-cream/40 text-sm uppercase tracking-wider">States</div>
+            </div>
+            <div>
+              <div class="font-fraunces text-teal text-4xl md:text-5xl mb-2">7 days</div>
+              <div class="font-inter text-cream/40 text-sm uppercase tracking-wider">To Go Live</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Signup Form -->
+      <section class="px-6 py-20 border-t border-cream/5" id="signup-form">
+        <div class="max-w-[620px] mx-auto">
+          <!-- Form View -->
+          <div id="trial-form">
+            <p class="font-montserrat text-teal text-xs font-semibold tracking-[0.15em] uppercase mb-2 intake-label" data-animate>START YOUR TRIAL</p>
+            <h2 class="font-fraunces text-cream text-[clamp(28px,4vw,40px)] leading-[1.15] tracking-[-0.02em] mb-4 intake-heading" data-animate data-delay="1">
+              Ready? Let's set you up.
+            </h2>
+            <p class="font-inter text-cream/50 text-base leading-[1.6] mb-10 intake-body" data-animate data-delay="2">
+              No credit card required. Full platform access starts immediately.
+            </p>
+
             <!-- Form Fields -->
-            <form id="trial-signup-form">
+            <form id="trial-signup-form" data-animate data-delay="3">
               <!-- First Name + Last Name -->
               <div class="grid grid-cols-2 gap-4 mb-6">
                 <div>
@@ -183,12 +338,83 @@ import logoBlack from '../assets/NB_br_Logo Black/NB_br_Logo Black_0325.png';
               Go to Dashboard
             </a>
           </div>
-
         </div>
-      </div>
+      </section>
 
-      <!-- Bottom Trust Badges -->
-      <div class="flex items-center justify-center gap-8 py-5 border-t border-cream/5 intake-border">
+      <!-- Section 6: FAQ -->
+      <section class="px-6 py-20 border-t border-cream/5">
+        <div class="max-w-3xl mx-auto">
+          <p class="font-montserrat text-teal text-xs font-semibold tracking-[0.15em] uppercase mb-3 text-center" data-animate>QUESTIONS</p>
+          <h2 class="font-fraunces text-cream text-[clamp(28px,4vw,42px)] leading-[1.15] tracking-[-0.02em] mb-12 text-center" data-animate data-delay="1">
+            Frequently Asked Questions
+          </h2>
+
+          <div class="space-y-4" data-stagger>
+            <!-- FAQ 1 -->
+            <div class="faq-item border border-cream/10 rounded-2xl overflow-hidden">
+              <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between hover:bg-cream/5 transition-colors cursor-pointer">
+                <span class="font-inter font-semibold text-cream text-lg pr-4">What happens when my trial ends?</span>
+                <svg class="faq-chevron w-5 h-5 text-cream/50 transition-transform flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="faq-answer hidden px-6 pb-5">
+                <p class="font-inter text-cream/50 text-base leading-[1.6]">
+                  Your account stays active but in read-only mode. No data is lost. Complete onboarding anytime to unlock full access.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item border border-cream/10 rounded-2xl overflow-hidden">
+              <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between hover:bg-cream/5 transition-colors cursor-pointer">
+                <span class="font-inter font-semibold text-cream text-lg pr-4">Is there really no credit card required?</span>
+                <svg class="faq-chevron w-5 h-5 text-cream/50 transition-transform flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="faq-answer hidden px-6 pb-5">
+                <p class="font-inter text-cream/50 text-base leading-[1.6]">
+                  None. The trial is completely free. We only ask for payment information during full onboarding.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item border border-cream/10 rounded-2xl overflow-hidden">
+              <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between hover:bg-cream/5 transition-colors cursor-pointer">
+                <span class="font-inter font-semibold text-cream text-lg pr-4">Can I use my real patients during the trial?</span>
+                <svg class="faq-chevron w-5 h-5 text-cream/50 transition-transform flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="faq-answer hidden px-6 pb-5">
+                <p class="font-inter text-cream/50 text-base leading-[1.6]">
+                  The trial uses sample data to protect patient privacy. Once you complete onboarding, you can start adding real patients immediately.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item border border-cream/10 rounded-2xl overflow-hidden">
+              <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between hover:bg-cream/5 transition-colors cursor-pointer">
+                <span class="font-inter font-semibold text-cream text-lg pr-4">What if I need help during my trial?</span>
+                <svg class="faq-chevron w-5 h-5 text-cream/50 transition-transform flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div class="faq-answer hidden px-6 pb-5">
+                <p class="font-inter text-cream/50 text-base leading-[1.6]">
+                  Our team is available via email and chat. We also offer a guided onboarding call if you'd like a walkthrough.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer: Trust + Badges -->
+      <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 py-8 border-t border-cream/5 px-6">
         <div class="flex items-center gap-2 text-cream/30 intake-badge">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M8 1.33L2 4v4c0 3.47 2.56 6.71 6 7.33 3.44-.62 6-3.86 6-7.33V4L8 1.33z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -204,6 +430,12 @@ import logoBlack from '../assets/NB_br_Logo Black/NB_br_Logo Black_0325.png';
         </div>
       </div>
 
+      <div class="text-center pb-12 px-6">
+        <p class="font-inter text-cream/40 text-xs max-w-2xl mx-auto">
+          Powered by Lake Hills Pharmacy — NABP-accredited 503A/503B compounding facility
+        </p>
+      </div>
+
     </section>
   </main>
 </Layout>
@@ -212,6 +444,14 @@ import logoBlack from '../assets/NB_br_Logo Black/NB_br_Logo Black_0325.png';
   /* Trial Page Styles */
   .trial-sticky-header {
     background: #1a1816;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
   }
 
   .step-enter {
@@ -243,6 +483,21 @@ import logoBlack from '../assets/NB_br_Logo Black/NB_br_Logo Black_0325.png';
 
   @keyframes spin {
     to { transform: rotate(360deg); }
+  }
+
+  /* FAQ Accordion */
+  .faq-item.open .faq-chevron {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .faq-item.open .faq-answer {
+    max-height: 500px;
   }
 
   /* Light Mode */
@@ -316,6 +571,39 @@ import logoBlack from '../assets/NB_br_Logo Black/NB_br_Logo Black_0325.png';
     logoBlack?.classList.toggle('hidden');
     iconSun?.classList.toggle('hidden');
     iconMoon?.classList.toggle('hidden');
+  });
+
+  // Smooth scroll to signup form
+  document.querySelectorAll('.scroll-to-signup').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.querySelector('#signup-form');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const item = this.closest('.faq-item');
+      const wasOpen = item?.classList.contains('open');
+
+      // Close all items
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        const answer = i.querySelector('.faq-answer');
+        if (answer) answer.classList.add('hidden');
+      });
+
+      // Toggle current item
+      if (!wasOpen && item) {
+        item.classList.add('open');
+        const answer = item.querySelector('.faq-answer');
+        if (answer) answer.classList.remove('hidden');
+      }
+    });
   });
 
   // Password visibility toggles
@@ -395,9 +683,7 @@ import logoBlack from '../assets/NB_br_Logo Black/NB_br_Logo Black_0325.png';
 
     // Show loading state
     if (submitBtn) {
-      const btnText = submitBtn.querySelector('span');
-      if (btnText) btnText.textContent = 'Creating your trial...';
-      submitBtn.innerHTML = '<div class="spinner"></div> Creating your trial...';
+      submitBtn.innerHTML = '<div class="spinner"></div> <span>Creating your trial...</span>';
       submitBtn.setAttribute('disabled', 'true');
     }
 

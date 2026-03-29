@@ -3,21 +3,64 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import ProvidersHero from '../components/ProvidersHero.astro';
 import ProvidersPlatform from '../components/ProvidersPlatform.astro';
-import ProvidersSteps from '../components/ProvidersSteps.astro';
+import ProvidersPillars from '../components/v2/ProvidersPillars.astro';
+import ProvidersPainPoints from '../components/ProvidersPainPoints.astro';
+import ProvidersDifferentiators from '../components/v2/ProvidersDifferentiators.astro';
+import ProvidersFeatures from '../components/v2/ProvidersFeatures.astro';
+import ProvidersWorkflows from '../components/v2/ProvidersWorkflows.astro';
+import ProvidersAuthority from '../components/v2/ProvidersAuthority.astro';
 import ProvidersTestimonial from '../components/ProvidersTestimonial.astro';
 import ProvidersClinics from '../components/ProvidersClinics.astro';
+import ProvidersTiers from '../components/v2/ProvidersTiers.astro';
+import ProvidersAntiPersonas from '../components/v2/ProvidersAntiPersonas.astro';
+import ProvidersFAQ from '../components/v2/ProvidersFAQ.astro';
 import ProvidersBottomCTA from '../components/ProvidersBottomCTA.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Nimbus Healthcare - Providers">
+<Layout title="NovaMed — The Clinic-to-Pharmacy Operating System | Nimbus Healthcare">
   <Navbar />
   <main>
+    <!-- 1. Hero: Lance's original cinematic video hero -->
     <ProvidersHero />
+
+    <!-- 2. Platform Overview -->
     <ProvidersPlatform />
-    <ProvidersSteps />
+
+    <!-- 3. Three Pillars: Clinics / Patients / Pharmacy -->
+    <ProvidersPillars />
+
+    <!-- 4. Pain Points: Why current tools fail -->
+    <ProvidersPainPoints />
+
+    <!-- 5. Differentiators: EMR vs NovaMed comparison -->
+    <ProvidersDifferentiators />
+
+    <!-- 6. Guided Workflows: 4 personas (Marcus, Sofia, James, Kim) -->
+    <ProvidersWorkflows />
+
+    <!-- 7. Platform Capabilities: 9-feature grid -->
+    <ProvidersFeatures />
+
+    <!-- 8. Testimonial -->
     <ProvidersTestimonial />
+
+    <!-- 9. Authority: JJ's credentials + Lake Hills -->
+    <ProvidersAuthority />
+
+    <!-- 10. Clinic types served -->
     <ProvidersClinics />
+
+    <!-- 11. Pricing Tiers: Explore / Launch / Scale -->
+    <ProvidersTiers />
+
+    <!-- 12. Not ideal for (transparency) -->
+    <ProvidersAntiPersonas />
+
+    <!-- 13. FAQ -->
+    <ProvidersFAQ />
+
+    <!-- 14. Bottom CTA -->
     <ProvidersBottomCTA />
   </main>
   <div class="bg-[#1A1816] pb-[10px] px-[10px]">

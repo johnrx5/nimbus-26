@@ -1,0 +1,1558 @@
+---
+import Layout from '../layouts/Layout.astro';
+import logoWhite from '../assets/NB_br_Logo White/NB_br_Logo White_0325.png';
+import logoBlack from '../assets/NB_br_Logo Black/NB_br_Logo Black_0325.png';
+---
+
+<Layout title="Nimbus Healthcare - Provider Intake">
+  <main>
+    <section class="bg-[#1A1816] h-screen flex flex-col overflow-hidden" id="intake-app">
+      <!-- Progress Bar -->
+      <div class="w-full h-[3px] bg-cream/5 intake-progress-track shrink-0">
+        <div class="h-full bg-teal transition-all duration-500 ease-out" id="progress-bar" style="width: 10%"></div>
+      </div>
+
+      <!-- Sticky Top Bar -->
+      <div class="px-6 shrink-0 intake-sticky-header">
+        <div class="max-w-[620px] mx-auto relative flex items-center justify-between py-5">
+          <!-- Left: Back -->
+          <div class="flex items-center gap-3">
+            <button
+              id="intake-back"
+              class="w-10 h-10 rounded-full border border-cream/15 flex items-center justify-center text-cream/50 hover:text-cream hover:border-cream/30 transition-colors cursor-pointer intake-back-btn"
+              aria-label="Go back"
+            >
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <span class="font-montserrat text-cream/50 text-xs font-semibold tracking-[0.15em] uppercase intake-muted" id="intake-phase">Back</span>
+          </div>
+
+          <!-- Center: Logo -->
+          <div class="absolute left-1/2 -translate-x-1/2">
+            <img src={logoWhite.src} alt="Nimbus Healthcare" class="h-[30px]" id="logo-white" />
+            <img src={logoBlack.src} alt="Nimbus Healthcare" class="h-[30px] hidden" id="logo-black" />
+          </div>
+
+          <!-- Right: Counter + Theme -->
+          <div class="flex items-center gap-4">
+            <span class="font-inter text-cream/40 text-sm intake-muted" id="intake-counter">10%</span>
+            <button
+              id="theme-toggle"
+              class="w-10 h-10 rounded-full border border-cream/15 flex items-center justify-center text-cream/50 hover:text-cream hover:border-cream/30 transition-colors cursor-pointer intake-back-btn"
+              aria-label="Toggle light mode"
+            >
+              <svg id="icon-sun" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <circle cx="9" cy="9" r="3.5" stroke="currentColor" stroke-width="1.3"/>
+                <path d="M9 2v1.5M9 14.5V16M2 9h1.5M14.5 9H16M4.05 4.05l1.06 1.06M12.89 12.89l1.06 1.06M4.05 13.95l1.06-1.06M12.89 5.11l1.06-1.06" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+              </svg>
+              <svg id="icon-moon" width="18" height="18" viewBox="0 0 18 18" fill="none" class="hidden">
+                <path d="M15.36 10.68A6.5 6.5 0 017.32 2.64a7.5 7.5 0 108.04 8.04z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scrollable Content -->
+      <div class="flex-1 overflow-y-auto px-6 pb-8" id="intake-content">
+        <div class="max-w-[620px] mx-auto">
+
+          <!-- ========== STEP 1: Welcome / Clinical Setup ========== -->
+          <!-- Step 1: Active -->
+          <div id="step-1-active" class="mt-4">
+            <p class="font-montserrat text-teal text-xs font-semibold tracking-[0.15em] uppercase mb-2 intake-label">Clinic Onboarding</p>
+            <h1 class="font-fraunces text-cream text-[clamp(28px,4vw,40px)] leading-[1.15] tracking-[-0.02em] mb-4 intake-heading">
+              Welcome — let's get your clinic set up with Nimbus
+            </h1>
+            <p class="font-inter text-cream/50 text-base leading-[1.6] mb-5 intake-body">
+              We'll walk you through everything step by step. This should take about 10 minutes. Here's what to expect:
+            </p>
+
+            <div class="rounded-2xl border border-cream/10 bg-cream/[0.03] px-5 py-5 mb-8">
+              <ol class="space-y-3">
+                <li class="font-inter text-cream/60 text-sm flex items-start gap-3 intake-body">
+                  <span class="text-teal font-semibold shrink-0">1.</span>
+                  Enter clinic and admin information
+                </li>
+                <li class="font-inter text-cream/60 text-sm flex items-start gap-3 intake-body">
+                  <span class="text-teal font-semibold shrink-0">2.</span>
+                  Acknowledge the program agreement
+                </li>
+                <li class="font-inter text-cream/60 text-sm flex items-start gap-3 intake-body">
+                  <span class="text-teal font-semibold shrink-0">3.</span>
+                  Add a payment method
+                </li>
+                <li class="font-inter text-cream/60 text-sm flex items-start gap-3 intake-body">
+                  <span class="text-teal font-semibold shrink-0">4.</span>
+                  Set up payment receiving
+                </li>
+                <li class="font-inter text-cream/60 text-sm flex items-start gap-3 intake-body">
+                  <span class="text-teal font-semibold shrink-0">5.</span>
+                  You're all set
+                </li>
+              </ol>
+            </div>
+
+            <p class="font-inter text-cream font-semibold text-base intake-bold mb-5">
+              First — how does your clinic handle prescribing?
+            </p>
+
+            <div class="flex flex-col gap-4" id="clinical-setup-options">
+              <button class="option-btn" data-value="direct">Yes — we have in-house prescribers</button>
+              <button class="option-btn" data-value="guided">No — we'd like Nimbus to provide clinical oversight</button>
+              <button class="option-btn" data-value="hybrid">Both — we use a hybrid model</button>
+            </div>
+          </div>
+
+          <!-- Step 1: Collapsed -->
+          <div id="step-1-collapsed" class="hidden">
+            <div class="flex items-center justify-between py-2">
+              <div>
+                <p class="font-montserrat text-teal text-[10px] font-semibold tracking-[0.15em] uppercase mb-1 intake-label">Clinic Onboarding</p>
+                <p class="font-inter text-cream/50 text-sm intake-body">Welcome — let's get your clinic set up</p>
+              </div>
+              <button class="edit-step-btn flex items-center gap-2 border border-cream/15 rounded-full px-4 py-2 text-cream text-sm font-inter font-medium hover:border-cream/30 transition-colors cursor-pointer intake-back-btn intake-heading" data-edit-step="1">
+                <span id="step-1-answer">—</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M10.08 1.92a1.5 1.5 0 012.12 0l.38.38a1.5 1.5 0 010 2.12L5.5 11.5 2 12.5l1-3.5 7.08-7.08z" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="border-t border-cream/10 mt-4 intake-border"></div>
+          </div>
+
+          <!-- ========== STEP 2: Clinic Information ========== -->
+          <div id="step-2-active" class="hidden mt-8">
+            <p class="font-montserrat text-teal text-xs font-semibold tracking-[0.15em] uppercase mb-2 intake-label">Clinic Info</p>
+            <h2 class="font-fraunces text-cream text-[clamp(28px,4vw,40px)] leading-[1.15] tracking-[-0.02em] mb-4 intake-heading">
+              Tell us about your clinic
+            </h2>
+            <p class="font-inter text-cream/50 text-base leading-[1.6] mb-10 intake-body">
+              Basic details so we can set up your account.
+            </p>
+
+            <!-- Clinic Name -->
+            <div class="mb-6">
+              <label class="font-inter text-cream font-semibold text-base block mb-3 intake-bold">Clinic Name <span class="text-red-400 text-sm">*</span></label>
+              <input type="text" id="clinic-name" placeholder="Enter clinic name" class="w-full bg-transparent border border-cream/15 rounded-2xl px-5 py-4 font-inter text-cream text-base placeholder:text-cream/25 focus:outline-none focus:border-cream/40 transition-colors intake-input">
+            </div>
+
+            <!-- NPI -->
+            <div class="mb-6">
+              <label class="font-inter text-cream font-semibold text-base block mb-3 intake-bold">NPI</label>
+              <div class="flex gap-3">
+                <input type="text" id="clinic-npi" placeholder="NPI (optional)" class="flex-1 bg-transparent border border-cream/15 rounded-2xl px-5 py-4 font-inter text-cream text-base placeholder:text-cream/25 focus:outline-none focus:border-cream/40 transition-colors intake-input">
+                <button class="flex items-center gap-2 border border-teal/40 text-teal font-inter text-sm font-medium rounded-2xl px-5 py-4 hover:bg-teal/5 transition-colors cursor-pointer whitespace-nowrap" id="npi-lookup-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                    <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                  Lookup
+                </button>
+              </div>
+            </div>
+
+            <!-- Clinic Description -->
+            <div class="mb-8">
+              <label class="font-inter text-cream font-semibold text-base block mb-3 intake-bold">Clinic Description <span class="text-red-400 text-sm">*</span></label>
+              <textarea id="clinic-desc" placeholder="Describe your clinic, services, and specialties..." rows="4" class="w-full bg-transparent border border-cream/15 rounded-2xl px-5 py-4 font-inter text-cream text-base placeholder:text-cream/25 focus:outline-none focus:border-cream/40 transition-colors resize-vertical min-h-[100px] intake-input"></textarea>
+            </div>
+
+            <button id="step-2-continue" class="w-full bg-terracotta hover:brightness-110 text-cream font-montserrat font-medium text-base rounded-full px-10 py-4 transition-all cursor-pointer">
+              Continue
+            </button>
+          </div>
+
+          <!-- Step 2: Collapsed -->
+          <div id="step-2-collapsed" class="hidden">
+            <div class="flex items-center justify-between py-2">
+              <div>
+                <p class="font-montserrat text-teal text-[10px] font-semibold tracking-[0.15em] uppercase mb-1 intake-label">Clinic Info</p>
+                <p class="font-inter text-cream/50 text-sm intake-body">Tell us about your clinic</p>
+              </div>
+              <button class="edit-step-btn flex items-center gap-2 border border-cream/15 rounded-full px-4 py-2 text-cream text-sm font-inter font-medium hover:border-cream/30 transition-colors cursor-pointer intake-back-btn intake-heading" data-edit-step="2">
+                <span id="step-2-answer">—</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M10.08 1.92a1.5 1.5 0 012.12 0l.38.38a1.5 1.5 0 010 2.12L5.5 11.5 2 12.5l1-3.5 7.08-7.08z" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="border-t border-cream/10 mt-4 intake-border"></div>
+          </div>
+
+          <!-- ========== STEP 3: Clinic Address ========== -->
+          <div id="step-3-active" class="hidden mt-8">
+            <p class="font-montserrat text-teal text-xs font-semibold tracking-[0.15em] uppercase mb-2 intake-label">Clinic Info</p>
+            <h2 class="font-fraunces text-cream text-[clamp(28px,4vw,40px)] leading-[1.15] tracking-[-0.02em] mb-4 intake-heading">
+              Where is your clinic located?
+            </h2>
+            <p class="font-inter text-cream/50 text-base leading-[1.6] mb-10 intake-body">
+              We need your physical address for compliance and shipping.
+            </p>
+
+            <div class="flex flex-col gap-4 mb-8">
+              <div>
+                <label class="font-inter text-cream font-semibold text-base block mb-3 intake-bold">Address Line 1 <span class="text-red-400 text-sm">*</span></label>
+                <input type="text" id="addr-line1" placeholder="Street address" class="w-full bg-transparent border border-cream/15 rounded-2xl px-5 py-4 font-inter text-cream text-base placeholder:text-cream/25 focus:outline-none focus:border-cream/40 transition-colors intake-input">
+              </div>
+
+              <div>
+                <label class="font-inter text-cream font-semibold text-base block mb-3 intake-bold">Address Line 2</label>
+                <input type="text" id="addr-line2" placeholder="Building, floor, suite (optional)" class="w-full bg-transparent border border-cream/15 rounded-2xl px-5 py-4 font-inter text-cream text-base placeholder:text-cream/25 focus:outline-none focus:border-cream/40 transition-colors intake-input">
+              </div>
+
+              <div class="grid grid-cols-3 gap-3">
+                <div>
+                  <label class="font-inter text-cream font-semibold text-base block mb-3 intake-bold">City <span class="text-red-400 text-sm">*</span></label>
+                  <input type="text" id="addr-city" placeholder="City" class="w-full bg-transparent border border-cream/15 rounded-2xl px-5 py-4 font-inter text-cream text-base placeholder:text-cream/25 focus:outline-none focus:border-cream/40 transition-colors intake-input">
+                </div>
+
+                <div>
+                  <label class="font-inter text-cream font-semibold text-base block mb-3 intake-bold">State <span class="text-red-400 text-sm">*</span></label>
+                  <select id="addr-state" class="w-full bg-transparent border border-cream/15 rounded-2xl px-5 py-4 font-inter text-cream text-base focus:outline-none focus:border-cream/40 transition-colors intake-input provider-select">
+                    <option value="" disabled selected>State</option>
+                    <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option>
+                    <option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option>
+                    <option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option>
+                    <option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option>
+                    <option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option>
+                    <option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
+                    <option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option>
+                    <option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option>
+                    <option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
+                    <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option>
+                    <option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option>
+                    <option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option>
+                    <option>Wisconsin</option><option>Wyoming</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="font-inter text-cream font-semibold text-base block mb-3 intake-bold">ZIP <span class="text-red-400 text-sm">*</span></label>
+                  <input type="text" id="addr-zip" placeholder="ZIP" inputmode="numeric" maxlength="10" class="w-full bg-transparent border border-cream/15 rounded-2xl px-5 py-4 font-inter text-cream text-base placeholder:text-cream/25 focus:outline-none focus:border-cream/40 transition-colors intake-input">
+                </div>
+              </div>
+            </div>
+
+            <button id="step-3-continue" class="w-full bg-terracotta hover:brightness-110 text-cream font-montserrat font-medium text-base rounded-full px-10 py-4 transition-all cursor-pointer">
+              Continue
+            </button>
+          </div>
+
+          <!-- Step 3: Collapsed -->
+          <div id="step-3-collapsed" class="hidden">
+            <div class="flex items-center justify-between py-2">
+              <div>
+                <p class="font-montserrat text-teal text-[10px] font-semibold tracking-[0.15em] uppercase mb-1 intake-label">Clinic Info</p>
+                <p class="font-inter text-cream/50 text-sm intake-body">Where is your clinic located?</p>
+              </div>
+              <button class="edit-step-btn flex items-center gap-2 border border-cream/15 rounded-full px-4 py-2 text-cream text-sm font-inter font-medium hover:border-cream/30 transition-colors cursor-pointer intake-back-btn intake-heading" data-edit-step="3">
+                <span id="step-3-answer">—</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M10.08 1.92a1.5 1.5 0 012.12 0l.38.38a1.5 1.5 0 010 2.12L5.5 11.5 2 12.5l1-3.5 7.08-7.08z" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="border-t border-cream/10 mt-4 intake-border"></div>
+          </div>
+
+          <!-- ========== STEP 4: Contact ========== -->
+          <div id="step-4-active" class="hidden mt-8">
+            <p class="font-montserrat text-teal text-xs font-semibold tracking-[0.15em] uppercase mb-2 intake-label">Clinic Info</p>
+            <h2 class="font-fraunces text-cream text-[clamp(28px,4vw,40px)] leading-[1.15] tracking-[-0.02em] mb-4 intake-heading">
+              How can we reach your clinic?
+            </h2>
+            <p class="font-inter text-cream/50 text-base leading-[1.6] mb-10 intake-body">
+              We'll use this for order confirmations and clinical coordination.
+            </p>
+
+            <div class="mb-6">
+              <label class="font-inter text-cream font-semibold text-base block mb-3 intake-bold">Primary Phone <span class="text-red-400 text-sm">*</span></label>
+              <div class="flex items-center gap-0">
+                <div class="flex items-center gap-2 border border-cream/15 border-r-0 rounded-l-2xl px-4 py-4 intake-phone-prefix">
+                  <span class="text-sm">🇺🇸</span>
+                  <span class="font-inter text-cream/50 text-base intake-muted">+1</span>
+                </div>
+                <input type="tel" id="contact-phone" placeholder="(555) 555-5522" class="flex-1 bg-transparent border border-cream/15 rounded-r-2xl px-5 py-4 font-inter text-cream text-base placeholder:text-cream/25 focus:outline-none focus:border-cream/40 transition-colors intake-input">
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <label class="font-inter text-cream font-semibold text-base block mb-3 intake-bold">Fax</label>
+              <div class="flex items-center gap-0">
+                <div class="flex items-center gap-2 border border-cream/15 border-r-0 rounded-l-2xl px-4 py-4 intake-phone-prefix">
+                  <span class="text-sm">🇺🇸</span>
+                  <span class="font-inter text-cream/50 text-base intake-muted">+1</span>
+                </div>
+                <input type="tel" id="contact-fax" placeholder="(optional)" class="flex-1 bg-transparent border border-cream/15 rounded-r-2xl px-5 py-4 font-inter text-cream text-base placeholder:text-cream/25 focus:outline-none focus:border-cream/40 transition-colors intake-input">
+              </div>
+            </div>
+
+            <div class="mb-8">
+              <label class="font-inter text-cream font-semibold text-base block mb-3 intake-bold">Email <span class="text-red-400 text-sm">*</span></label>
+              <input type="email" id="contact-email" placeholder="clinic@example.com" class="w-full bg-transparent border border-cream/15 rounded-2xl px-5 py-4 font-inter text-cream text-base placeholder:text-cream/25 focus:outline-none focus:border-cream/40 transition-colors intake-input">
+            </div>
+
+            <button id="step-4-continue" class="w-full bg-terracotta hover:brightness-110 text-cream font-montserrat font-medium text-base rounded-full px-10 py-4 transition-all cursor-pointer">
+              Continue
+            </button>
+          </div>
+
+          <!-- Step 4: Collapsed -->
+          <div id="step-4-collapsed" class="hidden">
+            <div class="flex items-center justify-between py-2">
+              <div>
+                <p class="font-montserrat text-teal text-[10px] font-semibold tracking-[0.15em] uppercase mb-1 intake-label">Clinic Info</p>
+                <p class="font-inter text-cream/50 text-sm intake-body">How can we reach your clinic?</p>
+              </div>
+              <button class="edit-step-btn flex items-center gap-2 border border-cream/15 rounded-full px-4 py-2 text-cream text-sm font-inter font-medium hover:border-cream/30 transition-colors cursor-pointer intake-back-btn intake-heading" data-edit-step="4">
+                <span id="step-4-answer">—</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M10.08 1.92a1.5 1.5 0 012.12 0l.38.38a1.5 1.5 0 010 2.12L5.5 11.5 2 12.5l1-3.5 7.08-7.08z" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="border-t border-cream/10 mt-4 intake-border"></div>
+          </div>
+
+          <!-- ========== STEP 5: Admin Account ========== -->
+          <div id="step-5-active" class="hidden mt-8">
+            <p class="font-montserrat text-teal text-xs font-semibold tracking-[0.15em] uppercase mb-2 intake-label">Admin Account</p>
+            <h2 class="font-fraunces text-cream text-[clamp(28px,4vw,40px)] leading-[1.15] tracking-[-0.02em] mb-4 intake-heading">
+              Create your admin account
+            </h2>
+            <p class="font-inter text-cream/50 text-base leading-[1.6] mb-10 intake-body">
+              This will be your login to manage your clinic on the Nimbus platform.
+            </p>
+
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <div>
+                <label class="font-inter text-cream font-semibold text-base block mb-3 intake-bold">First Name <span class="text-red-400 text-sm">*</span></label>
+                <input type="text" id="admin-first" placeholder="Enter your first name" class="w-full bg-transparent border border-cream/15 rounded-2xl px-5 py-4 font-inter text-cream text-base placeholder:text-cream/25 focus:outline-none focus:border-cream/40 transition-colors intake-input">
+              </div>
+
+              <div>
+                <label class="font-inter text-cream font-semibold text-base block mb-3 intake-bold">Last Name <span class="text-red-400 text-sm">*</span></label>
+                <input type="text" id="admin-last" placeholder="Enter your last name" class="w-full bg-transparent border border-cream/15 rounded-2xl px-5 py-4 font-inter text-cream text-base placeholder:text-cream/25 focus:outline-none focus:border-cream/40 transition-colors intake-input">
+              </div>
+            </div>
+
+            <div class="mb-2">
+              <label class="font-inter text-cream font-semibold text-base block mb-3 intake-bold">
+                <span class="inline-flex items-center gap-2">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-cream/40">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  Email <span class="text-red-400 text-sm">*</span>
+                </span>
+              </label>
+              <input type="email" id="admin-email" placeholder="you@example.com" class="w-full bg-transparent border border-cream/15 rounded-2xl px-5 py-4 font-inter text-cream text-base placeholder:text-cream/25 focus:outline-none focus:border-cream/40 transition-colors intake-input">
+            </div>
+            <p class="font-inter text-cream/30 text-xs mb-6 intake-body">This is the email from your invitation and will be used for login.</p>
+
+            <div class="grid grid-cols-2 gap-4 mb-2">
+              <div>
+                <label class="font-inter text-cream font-semibold text-base block mb-3 intake-bold">
+                  <span class="inline-flex items-center gap-2">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-cream/40">
+                      <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                      <path d="M7 11V7a5 5 0 0110 0v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    Password <span class="text-red-400 text-sm">*</span>
+                  </span>
+                </label>
+                <div class="relative">
+                  <input type="password" id="admin-password" placeholder="Create a password" class="w-full bg-transparent border border-cream/15 rounded-2xl px-5 py-4 pr-12 font-inter text-cream text-base placeholder:text-cream/25 focus:outline-none focus:border-cream/40 transition-colors intake-input">
+                  <button class="pw-toggle absolute right-4 top-1/2 -translate-y-1/2 text-cream/30 hover:text-cream/60 transition-colors cursor-pointer" data-target="admin-password">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="1.5"/>
+                      <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label class="font-inter text-cream font-semibold text-base block mb-3 intake-bold">
+                  <span class="inline-flex items-center gap-2">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-cream/40">
+                      <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                      <path d="M7 11V7a5 5 0 0110 0v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    Confirm Password <span class="text-red-400 text-sm">*</span>
+                  </span>
+                </label>
+                <div class="relative">
+                  <input type="password" id="admin-password-confirm" placeholder="Confirm your password" class="w-full bg-transparent border border-cream/15 rounded-2xl px-5 py-4 pr-12 font-inter text-cream text-base placeholder:text-cream/25 focus:outline-none focus:border-cream/40 transition-colors intake-input">
+                  <button class="pw-toggle absolute right-4 top-1/2 -translate-y-1/2 text-cream/30 hover:text-cream/60 transition-colors cursor-pointer" data-target="admin-password-confirm">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="1.5"/>
+                      <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <p class="font-inter text-cream/30 text-xs mb-8 intake-body">Password must be at least 8 characters and include uppercase, lowercase, number, and special character.</p>
+
+            <button id="step-5-continue" class="w-full bg-terracotta hover:brightness-110 text-cream font-montserrat font-medium text-base rounded-full px-10 py-4 transition-all cursor-pointer">
+              Continue
+            </button>
+          </div>
+
+          <!-- Step 5: Collapsed -->
+          <div id="step-5-collapsed" class="hidden">
+            <div class="flex items-center justify-between py-2">
+              <div>
+                <p class="font-montserrat text-teal text-[10px] font-semibold tracking-[0.15em] uppercase mb-1 intake-label">Admin Account</p>
+                <p class="font-inter text-cream/50 text-sm intake-body">Create your admin account</p>
+              </div>
+              <button class="edit-step-btn flex items-center gap-2 border border-cream/15 rounded-full px-4 py-2 text-cream text-sm font-inter font-medium hover:border-cream/30 transition-colors cursor-pointer intake-back-btn intake-heading" data-edit-step="5">
+                <span id="step-5-answer">—</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M10.08 1.92a1.5 1.5 0 012.12 0l.38.38a1.5 1.5 0 010 2.12L5.5 11.5 2 12.5l1-3.5 7.08-7.08z" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="border-t border-cream/10 mt-4 intake-border"></div>
+          </div>
+
+          <!-- ========== STEP 6: Agreement ========== -->
+          <div id="step-6-active" class="hidden mt-8 pb-4">
+            <p class="font-montserrat text-teal text-xs font-semibold tracking-[0.15em] uppercase mb-2 intake-label">Agreement</p>
+            <h2 class="font-fraunces text-cream text-[clamp(28px,4vw,40px)] leading-[1.15] tracking-[-0.02em] mb-4 intake-heading">
+              Review the program agreement
+            </h2>
+            <p class="font-inter text-cream/50 text-base leading-[1.6] mb-8 intake-body">
+              Please read the full agreement before continuing.
+            </p>
+
+            <div class="rounded-2xl border border-cream/10 bg-cream/[0.03] overflow-hidden mb-4">
+              <div class="flex items-center gap-3 px-6 py-4 border-b border-cream/10">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="text-teal shrink-0">
+                  <rect x="4" y="2" width="16" height="20" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M8 6h8M8 10h8M8 14h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span class="font-inter text-cream font-semibold text-sm intake-bold" id="agreement-title">Guided Clinic Program Agreement</span>
+              </div>
+
+              <div id="agreement-scroll" class="px-6 py-5 max-h-[320px] overflow-y-auto">
+                <div class="font-inter text-cream/50 text-sm leading-[1.8] space-y-4 intake-body" id="agreement-content">
+                  <!-- Content will be dynamically updated based on clinic model -->
+                </div>
+              </div>
+            </div>
+
+            <p id="scroll-hint" class="font-inter text-cream/30 text-xs text-center mb-6 intake-body">Please scroll to the bottom of the document to continue.</p>
+
+            <button id="agreement-acknowledge-btn" class="w-full bg-teal/40 text-cream/50 font-montserrat font-medium text-base rounded-full px-10 py-4 transition-all cursor-not-allowed flex items-center justify-center gap-2 mb-8 pointer-events-none">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              I Acknowledge & Agree
+            </button>
+
+            <button id="step-6-continue" class="w-full bg-terracotta hover:brightness-110 text-cream font-montserrat font-medium text-base rounded-full px-10 py-4 transition-all cursor-pointer opacity-40 pointer-events-none hidden" disabled>
+              Continue
+            </button>
+          </div>
+
+          <!-- Step 6: Collapsed -->
+          <div id="step-6-collapsed" class="hidden">
+            <div class="flex items-center justify-between py-2">
+              <div>
+                <p class="font-montserrat text-teal text-[10px] font-semibold tracking-[0.15em] uppercase mb-1 intake-label">Agreement</p>
+                <p class="font-inter text-cream/50 text-sm intake-body">Review the program agreement</p>
+              </div>
+              <button class="edit-step-btn flex items-center gap-2 border border-cream/15 rounded-full px-4 py-2 text-cream text-sm font-inter font-medium hover:border-cream/30 transition-colors cursor-pointer intake-back-btn intake-heading" data-edit-step="6">
+                <span id="step-6-answer">Agreed</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M10.08 1.92a1.5 1.5 0 012.12 0l.38.38a1.5 1.5 0 010 2.12L5.5 11.5 2 12.5l1-3.5 7.08-7.08z" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="border-t border-cream/10 mt-4 intake-border"></div>
+          </div>
+
+          <!-- ========== STEP 7: Payment / Monthly Billing ========== -->
+          <div id="step-7-active" class="hidden mt-8">
+            <p class="font-montserrat text-teal text-xs font-semibold tracking-[0.15em] uppercase mb-2 intake-label">Card Details</p>
+            <h2 class="font-fraunces text-cream text-[clamp(28px,4vw,40px)] leading-[1.15] tracking-[-0.02em] mb-4 intake-heading">
+              Set Up Monthly Billing
+            </h2>
+            <p class="font-inter text-cream/50 text-base leading-[1.6] mb-8 intake-body">
+              Usage-based billing — you only pay for services rendered.
+            </p>
+
+            <!-- Service Pricing Accordion -->
+            <div class="rounded-2xl border border-cream/10 bg-cream/[0.03] overflow-hidden mb-8">
+              <button id="pricing-toggle" class="w-full flex items-center justify-between px-5 py-4 cursor-pointer group">
+                <div>
+                  <p class="font-inter text-cream font-semibold text-sm intake-bold">Service Pricing</p>
+                  <p class="font-inter text-cream/40 text-xs mt-0.5 intake-body">Usage-based pricing — platform fee included. Click to view details.</p>
+                </div>
+                <svg id="pricing-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" class="text-cream/40 transition-transform">
+                  <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <div id="pricing-details" class="hidden border-t border-cream/10">
+                <div class="flex items-center justify-between px-5 py-4 border-b border-cream/5">
+                  <div>
+                    <p class="font-inter text-cream text-sm font-medium intake-bold">MDI Visit</p>
+                    <p class="font-inter text-cream/40 text-xs intake-body">Medical Director Involvement</p>
+                  </div>
+                  <span class="font-inter text-teal text-xs font-semibold bg-teal/10 rounded-full px-3 py-1">$50/visit</span>
+                </div>
+
+                <div class="flex items-center justify-between px-5 py-4 border-b border-cream/5">
+                  <div>
+                    <p class="font-inter text-cream text-sm font-medium intake-bold">Consulting Visit</p>
+                    <p class="font-inter text-cream/40 text-xs intake-body">Consulting physician visit</p>
+                  </div>
+                  <span class="font-inter text-teal text-xs font-semibold bg-teal/10 rounded-full px-3 py-1">$75/visit</span>
+                </div>
+
+                <div class="flex items-center justify-between px-5 py-4 border-b border-cream/5">
+                  <div>
+                    <p class="font-inter text-cream text-sm font-medium intake-bold">Lab Order</p>
+                    <p class="font-inter text-cream/40 text-xs intake-body">Lab order processing fee</p>
+                  </div>
+                  <span class="font-inter text-teal text-xs font-semibold bg-teal/10 rounded-full px-3 py-1">$150/order</span>
+                </div>
+
+                <div class="flex items-center justify-between px-5 py-4">
+                  <div>
+                    <p class="font-inter text-cream text-sm font-medium intake-bold">Platform Fee</p>
+                    <p class="font-inter text-cream/40 text-xs intake-body">Nimbus platform access</p>
+                  </div>
+                  <span class="font-inter text-teal text-xs font-semibold bg-teal/10 rounded-full px-3 py-1">Included</span>
+                </div>
+              </div>
+
+              <div class="px-5 py-3 border-t border-cream/10">
+                <p class="font-inter text-cream/30 text-xs intake-body">Invoiced on the 1st of each month for services used in the prior month.</p>
+              </div>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="mb-4">
+              <p class="font-inter text-cream font-semibold text-base mb-4 intake-bold">Payment Method</p>
+              <p class="font-inter text-cream/40 text-sm mb-5 intake-body">Your card will be charged monthly for services used.</p>
+            </div>
+
+            <!-- Stripe-style Card Form -->
+            <div class="rounded-2xl border border-cream/10 bg-white/[0.03] p-5 mb-3">
+              <div class="flex items-center gap-2 mb-4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-teal">
+                  <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M7 11V7a5 5 0 0110 0v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span class="font-inter text-teal text-sm font-medium">Secure, fast checkout with Link</span>
+                <svg width="10" height="10" viewBox="0 0 16 16" fill="none" class="text-teal">
+                  <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+
+              <div class="flex flex-col gap-3">
+                <div>
+                  <label class="font-inter text-cream/50 text-xs block mb-1.5 intake-body">Card number</label>
+                  <div class="relative">
+                    <input type="text" id="card-number" placeholder="1234 1234 1234 1234" inputmode="numeric" maxlength="19" class="w-full bg-white rounded-lg px-4 py-3 font-inter text-dark text-sm placeholder:text-dark/30 focus:outline-none focus:ring-2 focus:ring-teal/30 border border-cream/10">
+                    <div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
+                      <div class="w-7 h-4.5 bg-[#1A1F71] rounded-[3px] flex items-center justify-center"><span class="text-white text-[6px] font-bold">VISA</span></div>
+                      <div class="w-7 h-4.5 bg-[#EB001B] rounded-full relative overflow-hidden flex items-center justify-center"><div class="w-3.5 h-4.5 bg-[#F79E1B] rounded-full absolute right-0"></div></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <label class="font-inter text-cream/50 text-xs block mb-1.5 intake-body">Expiration date</label>
+                    <input type="text" id="card-expiry" placeholder="MM / YY" maxlength="7" class="w-full bg-white rounded-lg px-4 py-3 font-inter text-dark text-sm placeholder:text-dark/30 focus:outline-none focus:ring-2 focus:ring-teal/30 border border-cream/10">
+                  </div>
+
+                  <div>
+                    <label class="font-inter text-cream/50 text-xs block mb-1.5 intake-body">Security code</label>
+                    <input type="text" id="card-cvc" placeholder="CVC" maxlength="4" inputmode="numeric" class="w-full bg-white rounded-lg px-4 py-3 font-inter text-dark text-sm placeholder:text-dark/30 focus:outline-none focus:ring-2 focus:ring-teal/30 border border-cream/10">
+                  </div>
+                </div>
+
+                <div>
+                  <label class="font-inter text-cream/50 text-xs block mb-1.5 intake-body">Country</label>
+                  <select id="card-country" class="w-full bg-white rounded-lg px-4 py-3 font-inter text-dark text-sm focus:outline-none focus:ring-2 focus:ring-teal/30 border border-cream/10">
+                    <option selected>United States</option>
+                    <option>Canada</option>
+                    <option>United Kingdom</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="font-inter text-cream/50 text-xs block mb-1.5 intake-body">ZIP code</label>
+                  <input type="text" id="card-zip" placeholder="12345" inputmode="numeric" maxlength="10" class="w-full bg-white rounded-lg px-4 py-3 font-inter text-dark text-sm placeholder:text-dark/30 focus:outline-none focus:ring-2 focus:ring-teal/30 border border-cream/10">
+                </div>
+              </div>
+
+              <p class="font-inter text-cream/30 text-xs leading-[1.6] mt-4 intake-body">
+                By providing your card information, you allow Nimbus Healthcare Corp to charge your card for future payments in accordance with their terms.
+              </p>
+            </div>
+
+            <!-- Billing Agreement Checkbox -->
+            <button class="flex items-start gap-4 text-left cursor-pointer group w-full mb-8 mt-6" id="billing-agree-btn">
+              <div class="w-6 h-6 rounded-full border-2 border-cream/20 flex items-center justify-center shrink-0 mt-0.5 transition-all group-hover:border-cream/40 billing-checkbox">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="hidden billing-check-icon">
+                  <path d="M11.5 3.5L5.5 10L2.5 7" stroke="#2A9D8F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <span class="font-inter text-cream/70 text-sm leading-[1.6] intake-body">
+                I agree to the <span class="text-teal">Nimbus Billing Terms</span> and authorize monthly charges to the card above for services rendered by my clinic.
+              </span>
+            </button>
+
+            <button id="step-7-continue" class="w-full bg-teal text-cream font-montserrat font-medium text-base rounded-full px-10 py-4 transition-all cursor-pointer flex items-center justify-center gap-2 opacity-40 pointer-events-none" disabled>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Save Card & Continue
+            </button>
+
+            <p id="step-7-skip" class="font-inter text-cream/30 text-sm text-center mt-5 cursor-pointer hover:text-cream/50 transition-colors underline intake-subtle">
+              Skip for now — set up within 7 days
+            </p>
+          </div>
+
+          <!-- Step 7: Collapsed -->
+          <div id="step-7-collapsed" class="hidden">
+            <div class="flex items-center justify-between py-2">
+              <div>
+                <p class="font-montserrat text-teal text-[10px] font-semibold tracking-[0.15em] uppercase mb-1 intake-label">Card Details</p>
+                <p class="font-inter text-cream/50 text-sm intake-body">Set Up Monthly Billing</p>
+              </div>
+              <button class="edit-step-btn flex items-center gap-2 border border-cream/15 rounded-full px-4 py-2 text-cream text-sm font-inter font-medium hover:border-cream/30 transition-colors cursor-pointer intake-back-btn intake-heading" data-edit-step="7">
+                <span id="step-7-answer">—</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M10.08 1.92a1.5 1.5 0 012.12 0l.38.38a1.5 1.5 0 010 2.12L5.5 11.5 2 12.5l1-3.5 7.08-7.08z" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="border-t border-cream/10 mt-4 intake-border"></div>
+          </div>
+
+          <!-- ========== STEP 8: Stripe Connect ========== -->
+          <div id="step-8-active" class="hidden mt-8">
+            <p class="font-montserrat text-teal text-xs font-semibold tracking-[0.15em] uppercase mb-2 intake-label">Stripe Setup</p>
+            <h2 class="font-fraunces text-cream text-[clamp(28px,4vw,40px)] leading-[1.15] tracking-[-0.02em] mb-4 intake-heading">
+              Set Up Payment Receiving
+            </h2>
+            <p class="font-inter text-cream/50 text-base leading-[1.6] mb-10 intake-body">
+              Complete Stripe Connect so your clinic can receive payments. This step is secure and can be finished later from Settings.
+            </p>
+
+            <!-- Stripe Connect Card -->
+            <div class="rounded-2xl border border-cream/10 bg-cream/[0.03] p-8 text-center mb-8">
+              <p class="font-inter text-cream font-semibold text-base mb-2 intake-bold">Stripe Connect</p>
+              <p class="font-inter text-cream/40 text-sm mb-8 intake-body">Enter your business and banking details in the form below.</p>
+
+              <div class="rounded-2xl border border-cream/10 bg-cream/[0.03] px-6 py-8 mb-6">
+                <!-- Bank Icon -->
+                <div class="flex justify-center mb-5">
+                  <div class="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-teal">
+                      <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v4M12 14v4M16 14v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </div>
+
+                <p class="font-inter text-cream font-semibold text-sm mb-2 intake-bold">Add information to start accepting money</p>
+                <p class="font-inter text-cream/40 text-xs leading-[1.6] mb-6 max-w-[340px] mx-auto intake-body">
+                  Nimbus Healthcare partners with Stripe to help you receive payments and keep your personal bank and details secure.
+                </p>
+
+                <button id="stripe-connect-btn" class="inline-flex items-center justify-center bg-teal hover:brightness-110 text-cream font-inter font-medium text-sm rounded-lg px-6 py-3 transition-all cursor-pointer">
+                  Add information
+                </button>
+              </div>
+            </div>
+
+            <button id="step-8-continue" class="w-full bg-terracotta hover:brightness-110 text-cream font-montserrat font-medium text-base rounded-full px-10 py-4 transition-all cursor-pointer">
+              Continue
+            </button>
+
+            <p id="step-8-skip" class="font-inter text-cream/30 text-sm text-center mt-5 cursor-pointer hover:text-cream/50 transition-colors underline intake-subtle">
+              Skip for now — complete later in Settings
+            </p>
+          </div>
+
+          <!-- Step 8: Collapsed -->
+          <div id="step-8-collapsed" class="hidden">
+            <div class="flex items-center justify-between py-2">
+              <div>
+                <p class="font-montserrat text-teal text-[10px] font-semibold tracking-[0.15em] uppercase mb-1 intake-label">Stripe Setup</p>
+                <p class="font-inter text-cream/50 text-sm intake-body">Set Up Payment Receiving</p>
+              </div>
+              <button class="edit-step-btn flex items-center gap-2 border border-cream/15 rounded-full px-4 py-2 text-cream text-sm font-inter font-medium hover:border-cream/30 transition-colors cursor-pointer intake-back-btn intake-heading" data-edit-step="8">
+                <span id="step-8-answer">—</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M10.08 1.92a1.5 1.5 0 012.12 0l.38.38a1.5 1.5 0 010 2.12L5.5 11.5 2 12.5l1-3.5 7.08-7.08z" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="border-t border-cream/10 mt-4 intake-border"></div>
+          </div>
+
+          <!-- ========== STEP 9: Review & Submit ========== -->
+          <div id="step-9-active" class="hidden mt-8">
+            <p class="font-montserrat text-teal text-xs font-semibold tracking-[0.15em] uppercase mb-2 intake-label">Review</p>
+            <h2 class="font-fraunces text-cream text-[clamp(28px,4vw,40px)] leading-[1.15] tracking-[-0.02em] mb-4 intake-heading">
+              Review & Submit
+            </h2>
+            <p class="font-inter text-cream/50 text-base leading-[1.6] mb-8 intake-body">
+              Please review your information below before submitting.
+            </p>
+
+            <!-- Business Type -->
+            <div class="mb-6">
+              <p class="font-inter text-cream/40 text-xs font-semibold uppercase tracking-wider mb-3 intake-body">Business type</p>
+              <div class="rounded-2xl border border-cream/10 bg-cream/[0.03] px-5 py-4 review-card">
+                <div class="flex items-center justify-between mb-2">
+                  <p class="font-inter text-cream font-semibold text-sm intake-bold" id="review-clinic-model">Guided Clinic</p>
+                  <button class="font-inter text-cream/40 text-xs border border-cream/15 rounded-lg px-3 py-1.5 hover:border-cream/30 transition-colors cursor-pointer intake-back-btn" data-edit-step="1">Edit</button>
+                </div>
+                <div class="grid grid-cols-2 gap-y-1.5">
+                  <p class="font-inter text-cream/40 text-sm intake-body">Clinical model</p>
+                  <p class="font-inter text-cream/70 text-sm intake-body" id="review-model-desc">Nimbus provides prescribers</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Business Details -->
+            <div class="mb-6">
+              <p class="font-inter text-cream/40 text-xs font-semibold uppercase tracking-wider mb-3 intake-body">Business details</p>
+              <div class="rounded-2xl border border-cream/10 bg-cream/[0.03] px-5 py-4 review-card">
+                <div class="flex items-center justify-between mb-2">
+                  <p class="font-inter text-cream font-semibold text-sm intake-bold" id="review-clinic-name">—</p>
+                  <button class="font-inter text-cream/40 text-xs border border-cream/15 rounded-lg px-3 py-1.5 hover:border-cream/30 transition-colors cursor-pointer intake-back-btn" data-edit-step="2">Edit</button>
+                </div>
+                <div class="grid grid-cols-2 gap-y-1.5">
+                  <p class="font-inter text-cream/40 text-sm intake-body">Address</p>
+                  <p class="font-inter text-cream/70 text-sm intake-body" id="review-address">—</p>
+                  <p class="font-inter text-cream/40 text-sm intake-body">Contact</p>
+                  <p class="font-inter text-cream/70 text-sm intake-body" id="review-contact">—</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Admin Account -->
+            <div class="mb-8">
+              <p class="font-inter text-cream/40 text-xs font-semibold uppercase tracking-wider mb-3 intake-body">Admin account</p>
+              <div class="rounded-2xl border border-cream/10 bg-cream/[0.03] px-5 py-4 review-card">
+                <div class="flex items-center justify-between mb-2">
+                  <p class="font-inter text-cream font-semibold text-sm intake-bold" id="review-admin-name">—</p>
+                  <button class="font-inter text-cream/40 text-xs border border-cream/15 rounded-lg px-3 py-1.5 hover:border-cream/30 transition-colors cursor-pointer intake-back-btn" data-edit-step="5">Edit</button>
+                </div>
+                <div class="grid grid-cols-2 gap-y-1.5">
+                  <p class="font-inter text-cream/40 text-sm intake-body">Email</p>
+                  <p class="font-inter text-cream/70 text-sm intake-body" id="review-admin-email">—</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Agreement Text -->
+            <p class="font-inter text-cream/30 text-xs leading-[1.7] mb-8 intake-body">
+              By clicking Agree and submit, you agree to the <span class="underline cursor-pointer text-cream/40">Nimbus Providers Agreement</span>, to receiving autodialed text messages, and you certify that the information you have provided is complete and correct.
+            </p>
+
+            <button id="step-9-continue" class="w-full bg-teal hover:brightness-110 text-cream font-montserrat font-medium text-base rounded-full px-10 py-4 transition-all cursor-pointer flex items-center justify-center gap-2">
+              Agree and submit
+            </button>
+          </div>
+
+          <!-- Step 9: Collapsed -->
+          <div id="step-9-collapsed" class="hidden">
+            <div class="flex items-center justify-between py-2">
+              <div>
+                <p class="font-montserrat text-teal text-[10px] font-semibold tracking-[0.15em] uppercase mb-1 intake-label">Review</p>
+                <p class="font-inter text-cream/50 text-sm intake-body">Review & Submit</p>
+              </div>
+              <button class="edit-step-btn flex items-center gap-2 border border-cream/15 rounded-full px-4 py-2 text-cream text-sm font-inter font-medium hover:border-cream/30 transition-colors cursor-pointer intake-back-btn intake-heading" data-edit-step="9">
+                <span id="step-9-answer">Submitted</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M10.08 1.92a1.5 1.5 0 012.12 0l.38.38a1.5 1.5 0 010 2.12L5.5 11.5 2 12.5l1-3.5 7.08-7.08z" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="border-t border-cream/10 mt-4 intake-border"></div>
+          </div>
+
+          <!-- ========== STEP 10: Confirmation ========== -->
+          <div id="step-10-active" class="hidden mt-10 pb-10">
+            <!-- Checkmark Icon -->
+            <div class="flex justify-center mb-7 mt-2">
+              <svg width="76" height="76" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg" class="confirm-check-svg">
+                <circle cx="38" cy="38" r="35" stroke="#F5F0EA" stroke-width="2"/>
+                <path d="M23 38l12 12 19-21" stroke="#F5F0EA" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+
+            <h2 class="font-fraunces text-cream text-[clamp(38px,8vw,58px)] leading-[1.1] tracking-[-0.02em] text-center mb-5 intake-heading">
+              You're all set!
+            </h2>
+
+            <p class="font-inter text-cream/55 text-base leading-[1.7] text-center mb-8 mx-auto max-w-[380px] intake-body">
+              Your clinic onboarding is complete. Our team will review your information and activate your account.
+            </p>
+
+            <div class="confirm-next-card w-full rounded-2xl border border-cream/15 px-6 py-7">
+              <p class="font-inter text-cream font-bold text-base mb-5 intake-bold">What happens next?</p>
+
+              <ol class="flex flex-col gap-5">
+                <li class="flex items-start gap-4">
+                  <span class="font-inter font-bold text-sm text-cream shrink-0 w-4 intake-bold" style="line-height:1.6">1</span>
+                  <span class="font-inter text-cream/80 text-base leading-[1.6] intake-body">Our team reviews your clinic details</span>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="font-inter font-bold text-sm text-cream shrink-0 w-4 intake-bold" style="line-height:1.6">2</span>
+                  <span class="font-inter text-cream/80 text-base leading-[1.6] intake-body">You'll receive an activation email within 24 hours</span>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="font-inter font-bold text-sm text-cream shrink-0 w-4 intake-bold" style="line-height:1.6">3</span>
+                  <span class="font-inter text-cream/80 text-base leading-[1.6] intake-body">Log in to start ordering for your patients</span>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="font-inter font-bold text-sm text-cream shrink-0 w-4 intake-bold" style="line-height:1.6">4</span>
+                  <span class="font-inter text-cream/80 text-base leading-[1.6] intake-body">Ongoing clinical and operational support from our team</span>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Exit Confirmation Modal -->
+      <div id="exit-modal" class="fixed inset-0 z-50 hidden items-center justify-center">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" id="exit-modal-overlay"></div>
+        <div class="relative bg-[#22201E] rounded-2xl p-8 max-w-[380px] w-[calc(100%-48px)] mx-auto exit-modal-box">
+          <h3 class="font-fraunces text-cream text-xl leading-[1.2] mb-3 exit-modal-heading">Are you sure you want to leave?</h3>
+          <p class="font-inter text-cream/50 text-sm leading-[1.6] mb-6 exit-modal-body">Your progress will be lost and you'll need to start over.</p>
+
+          <div class="flex flex-col gap-3">
+            <button id="exit-modal-leave" class="w-full border border-cream/15 text-cream font-montserrat font-medium text-sm rounded-full py-3 hover:border-cream/30 transition-colors cursor-pointer exit-modal-btn">Leave onboarding</button>
+            <button id="exit-modal-stay" class="w-full bg-terracotta hover:brightness-110 text-cream font-montserrat font-medium text-sm rounded-full py-3 transition-all cursor-pointer">Keep going</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Trust Badges -->
+      <div class="flex items-center justify-center gap-8 py-5 border-t border-cream/5 intake-border">
+        <div class="flex items-center gap-2 text-cream/30 intake-badge">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 1.33L2 4v4c0 3.47 2.56 6.71 6 7.33 3.44-.62 6-3.86 6-7.33V4L8 1.33z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="font-montserrat text-[11px] font-semibold tracking-[0.1em] uppercase">HIPAA Compliant</span>
+        </div>
+
+        <div class="flex items-center gap-2 text-cream/30 intake-badge">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M13.33 4L6 11.33 2.67 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="font-montserrat text-[11px] font-semibold tracking-[0.1em] uppercase">Secure & Confidential</span>
+        </div>
+      </div>
+
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Provider Intake Styles */
+  .state-btn {
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #f5f0ea;
+    border: 1px solid rgba(245, 240, 234, 0.15);
+    border-radius: 9999px;
+    padding: 12px 8px;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-align: center;
+  }
+
+  .state-btn:hover {
+    border-color: rgba(245, 240, 234, 0.4);
+    background: rgba(245, 240, 234, 0.05);
+  }
+
+  .state-btn.selected {
+    border-color: #2a9d8f;
+    background: rgba(42, 157, 143, 0.1);
+    color: #2a9d8f;
+  }
+
+  .option-btn {
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #f5f0ea;
+    border: 1px solid rgba(245, 240, 234, 0.15);
+    border-radius: 16px;
+    padding: 20px 24px;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-align: left;
+  }
+
+  .option-btn:hover {
+    border-color: rgba(245, 240, 234, 0.35);
+    background: rgba(245, 240, 234, 0.03);
+  }
+
+  .option-btn.selected {
+    border-color: #2a9d8f;
+    background: rgba(42, 157, 143, 0.1);
+    color: #2a9d8f;
+  }
+
+  .provider-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' stroke='rgba(245,240,234,0.4)' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+
+  .provider-select option {
+    background: #1a1816;
+    color: #f5f0ea;
+  }
+
+  .step-enter {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  .step-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.28s ease, transform 0.28s ease;
+  }
+
+  .step-exit {
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+
+  .collapsed-enter {
+    opacity: 0;
+  }
+
+  .collapsed-visible {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+  }
+
+  /* Light Mode */
+  .light-mode {
+    background-color: #f5f0ea !important;
+  }
+
+  .light-mode .intake-heading {
+    color: #1a1816;
+  }
+
+  .light-mode .intake-body {
+    color: rgba(26, 24, 22, 0.55);
+  }
+
+  .light-mode .intake-bold {
+    color: #1a1816;
+  }
+
+  .light-mode .intake-muted {
+    color: rgba(26, 24, 22, 0.4);
+  }
+
+  .light-mode .intake-back-btn {
+    border-color: rgba(26, 24, 22, 0.15);
+    color: rgba(26, 24, 22, 0.5);
+  }
+
+  .light-mode .intake-back-btn:hover {
+    border-color: rgba(26, 24, 22, 0.3);
+    color: #1a1816;
+  }
+
+  .light-mode .intake-label {
+    color: #2a9d8f;
+  }
+
+  .light-mode .intake-input {
+    color: #1a1816;
+    border-color: rgba(26, 24, 22, 0.15);
+  }
+
+  .light-mode .intake-input::placeholder {
+    color: rgba(26, 24, 22, 0.25);
+  }
+
+  .light-mode .intake-input:focus {
+    border-color: rgba(26, 24, 22, 0.35);
+  }
+
+  .light-mode .state-btn {
+    color: #1a1816;
+    border-color: rgba(26, 24, 22, 0.15);
+  }
+
+  .light-mode .state-btn:hover {
+    border-color: rgba(26, 24, 22, 0.35);
+    background: rgba(26, 24, 22, 0.03);
+  }
+
+  .light-mode .state-btn.selected {
+    border-color: #2a9d8f;
+    background: rgba(42, 157, 143, 0.08);
+    color: #2a9d8f;
+  }
+
+  .light-mode .option-btn {
+    color: #1a1816;
+    border-color: rgba(26, 24, 22, 0.15);
+  }
+
+  .light-mode .option-btn:hover {
+    border-color: rgba(26, 24, 22, 0.35);
+    background: rgba(26, 24, 22, 0.03);
+  }
+
+  .light-mode .option-btn.selected {
+    border-color: #2a9d8f;
+    background: rgba(42, 157, 143, 0.08);
+    color: #2a9d8f;
+  }
+
+  .light-mode .intake-subtle {
+    color: rgba(26, 24, 22, 0.25);
+  }
+
+  .light-mode .intake-subtle:hover {
+    color: rgba(26, 24, 22, 0.5);
+  }
+
+  .light-mode .intake-sticky-header {
+    background: #f5f0ea;
+  }
+
+  .light-mode .intake-progress-track {
+    background: rgba(26, 24, 22, 0.06);
+  }
+
+  .light-mode .intake-badge {
+    color: rgba(26, 24, 22, 0.3);
+  }
+
+  .light-mode .intake-border {
+    border-color: rgba(26, 24, 22, 0.08);
+  }
+
+  .light-mode .intake-phone-prefix {
+    border-color: rgba(26, 24, 22, 0.15);
+  }
+
+  .light-mode .intake-phone-prefix span {
+    color: rgba(26, 24, 22, 0.5);
+  }
+
+  .light-mode .exit-modal-box {
+    background: #f5f0ea;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  }
+
+  .light-mode .exit-modal-heading {
+    color: #1a1816;
+  }
+
+  .light-mode .exit-modal-body {
+    color: rgba(26, 24, 22, 0.55);
+  }
+
+  .light-mode .exit-modal-btn {
+    border-color: rgba(26, 24, 22, 0.15);
+    color: #1a1816;
+  }
+
+  .light-mode .exit-modal-btn:hover {
+    border-color: rgba(26, 24, 22, 0.3);
+  }
+
+  .light-mode .review-card {
+    background: rgba(26, 24, 22, 0.03);
+    border-color: rgba(26, 24, 22, 0.1);
+  }
+
+  .light-mode .provider-select {
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' stroke='rgba(26,24,22,0.4)' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  }
+
+  .light-mode .provider-select option {
+    background: #f5f0ea;
+    color: #1a1816;
+  }
+
+  .intake-sticky-header {
+    background: #1a1816;
+  }
+
+  .practitioner-entry {
+    border: 1px solid rgba(245, 240, 234, 0.07);
+    border-radius: 16px;
+    padding: 20px;
+    background: rgba(245, 240, 234, 0.02);
+  }
+
+  .light-mode .practitioner-entry {
+    border-color: rgba(26, 24, 22, 0.12);
+    background: rgba(26, 24, 22, 0.02);
+  }
+
+  .confirm-next-card {
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .light-mode .confirm-next-card {
+    background: rgba(26, 24, 22, 0.04);
+    border-color: rgba(26, 24, 22, 0.1);
+  }
+</style>
+
+<script>
+  // Provider Intake JavaScript
+  const TOTAL_STEPS = 10;
+  let currentStep = 1;
+  let clinicModel = ''; // 'direct', 'guided', or 'hybrid'
+
+  // Agreement text for each clinic model
+  const agreements = {
+    guided: {
+      title: 'Guided Clinic Program Agreement',
+      content: `
+        <p class="text-cream/40 text-xs uppercase tracking-wide font-semibold">NIMBUS PROVIDERS — GUIDED CLINIC PROGRAM AGREEMENT</p>
+        <p>This Program Acknowledgement ("Agreement") governs the relationship between the undersigned clinic ("Clinic") and Nimbus Healthcare, Inc. ("Nimbus") for participation in the Nimbus Providers Guided Clinic Program.</p>
+        <p><strong class="text-cream/70 intake-heading">1. PROGRAM STRUCTURE</strong></p>
+        <p>The Clinic participates as a Guided clinic on the Nimbus Providers platform. Under this model:</p>
+        <p class="pl-4">a. The Clinic does not employ or contract with prescribers for the purpose of Nimbus program orders. All prescribing decisions are made independently by Nimbus-affiliated licensed healthcare providers ("Nimbus Providers").</p>
+        <p class="pl-4">b. The Clinic's role is limited to patient education, program presentation, intake facilitation, and follow-up coordination — collectively referred to as "Facilitation Services."</p>
+        <p class="pl-4">c. Patients select from program options at published program prices. The Clinic does not recommend, suggest, or direct specific medications or treatment protocols.</p>
+        <p><strong class="text-cream/70 intake-heading">2. COMPLIANCE</strong></p>
+        <p>Provider agrees to comply with all applicable federal and state regulations regarding the prescribing and dispensing of compounded medications.</p>
+        <p><strong class="text-cream/70 intake-heading">3. PATIENT SAFETY</strong></p>
+        <p>Provider acknowledges responsibility for clinical decision-making and patient safety within their scope of practice.</p>
+        <p><strong class="text-cream/70 intake-heading">4. CONFIDENTIALITY</strong></p>
+        <p>Both parties agree to maintain the confidentiality of patient information in accordance with HIPAA regulations.</p>
+        <p><strong class="text-cream/70 intake-heading">5. FEES & BILLING</strong></p>
+        <p>Provider agrees to the fee schedule outlined during onboarding. Nimbus reserves the right to update pricing with 30 days notice.</p>
+        <p><strong class="text-cream/70 intake-heading">6. TERM & TERMINATION</strong></p>
+        <p>This agreement remains in effect until terminated by either party with 30 days written notice.</p>
+      `
+    },
+    direct: {
+      title: 'Direct Clinic Program Agreement',
+      content: `
+        <p class="text-cream/40 text-xs uppercase tracking-wide font-semibold">NIMBUS PROVIDERS — DIRECT CLINIC PROGRAM AGREEMENT</p>
+        <p>This Program Acknowledgement ("Agreement") governs the relationship between the undersigned clinic ("Clinic") and Nimbus Healthcare, Inc. ("Nimbus") for participation in the Nimbus Providers Direct Clinic Program.</p>
+        <p><strong class="text-cream/70 intake-heading">1. PROGRAM STRUCTURE</strong></p>
+        <p>The Clinic participates as a Direct clinic on the Nimbus Providers platform. Under this model:</p>
+        <p class="pl-4">a. The Clinic employs or contracts with its own licensed healthcare providers who are responsible for all prescribing decisions.</p>
+        <p class="pl-4">b. The Clinic maintains full clinical and legal responsibility for patient care, including diagnosis, treatment selection, and ongoing monitoring.</p>
+        <p class="pl-4">c. Nimbus provides platform access, pharmacy fulfillment, and operational support but does not provide clinical oversight or prescribing services.</p>
+        <p><strong class="text-cream/70 intake-heading">2. COMPLIANCE</strong></p>
+        <p>Clinic agrees to comply with all applicable federal and state regulations regarding the prescribing and dispensing of compounded medications.</p>
+        <p><strong class="text-cream/70 intake-heading">3. CLINICAL RESPONSIBILITY</strong></p>
+        <p>Clinic acknowledges sole responsibility for all clinical decision-making, patient safety, and medical malpractice liability.</p>
+        <p><strong class="text-cream/70 intake-heading">4. CONFIDENTIALITY</strong></p>
+        <p>Both parties agree to maintain the confidentiality of patient information in accordance with HIPAA regulations.</p>
+        <p><strong class="text-cream/70 intake-heading">5. FEES & BILLING</strong></p>
+        <p>Clinic agrees to the platform fee schedule outlined during onboarding. Nimbus reserves the right to update pricing with 30 days notice.</p>
+        <p><strong class="text-cream/70 intake-heading">6. TERM & TERMINATION</strong></p>
+        <p>This agreement remains in effect until terminated by either party with 30 days written notice.</p>
+      `
+    },
+    hybrid: {
+      title: 'Hybrid Clinic Program Agreement',
+      content: `
+        <p class="text-cream/40 text-xs uppercase tracking-wide font-semibold">NIMBUS PROVIDERS — HYBRID CLINIC PROGRAM AGREEMENT</p>
+        <p>This Program Acknowledgement ("Agreement") governs the relationship between the undersigned clinic ("Clinic") and Nimbus Healthcare, Inc. ("Nimbus") for participation in the Nimbus Providers Hybrid Clinic Program.</p>
+        <p><strong class="text-cream/70 intake-heading">1. PROGRAM STRUCTURE</strong></p>
+        <p>The Clinic participates as a Hybrid clinic on the Nimbus Providers platform. Under this model:</p>
+        <p class="pl-4">a. The Clinic may utilize both in-house prescribers and Nimbus-affiliated providers depending on patient needs and clinic capacity.</p>
+        <p class="pl-4">b. For patients seen by clinic prescribers, the Clinic maintains full clinical and legal responsibility. For patients seen by Nimbus providers, Nimbus assumes prescribing responsibility.</p>
+        <p class="pl-4">c. The Clinic and Nimbus will coordinate to ensure clear assignment of clinical responsibility for each patient encounter.</p>
+        <p><strong class="text-cream/70 intake-heading">2. COMPLIANCE</strong></p>
+        <p>Both parties agree to comply with all applicable federal and state regulations regarding the prescribing and dispensing of compounded medications.</p>
+        <p><strong class="text-cream/70 intake-heading">3. CLINICAL RESPONSIBILITY</strong></p>
+        <p>Clinical responsibility is determined on a per-patient basis. Clear documentation of the responsible provider is required for each encounter.</p>
+        <p><strong class="text-cream/70 intake-heading">4. CONFIDENTIALITY</strong></p>
+        <p>Both parties agree to maintain the confidentiality of patient information in accordance with HIPAA regulations.</p>
+        <p><strong class="text-cream/70 intake-heading">5. FEES & BILLING</strong></p>
+        <p>Hybrid clinics are billed based on actual services rendered. Fee schedule outlined during onboarding applies. Nimbus reserves the right to update pricing with 30 days notice.</p>
+        <p><strong class="text-cream/70 intake-heading">6. TERM & TERMINATION</strong></p>
+        <p>This agreement remains in effect until terminated by either party with 30 days written notice.</p>
+      `
+    }
+  };
+
+  // Update progress bar
+  function updateProgress() {
+    const percentage = (currentStep / TOTAL_STEPS) * 100;
+    const progressBar = document.getElementById('progress-bar');
+    const counter = document.getElementById('intake-counter');
+    if (progressBar) progressBar.style.width = `${percentage}%`;
+    if (counter) counter.textContent = `${Math.round(percentage)}%`;
+  }
+
+  // Go to a specific step with transition
+  function goToStep(step) {
+    if (step < 1 || step > TOTAL_STEPS) return;
+
+    const currentActive = document.getElementById(`step-${currentStep}-active`);
+    const currentCollapsed = document.getElementById(`step-${currentStep}-collapsed`);
+
+    if (currentActive) {
+      currentActive.classList.add('step-exit');
+      setTimeout(() => {
+        currentActive.classList.add('hidden');
+        currentActive.classList.remove('step-exit');
+      }, 150);
+    }
+
+    if (step > currentStep && currentCollapsed) {
+      setTimeout(() => {
+        currentCollapsed.classList.remove('hidden');
+        currentCollapsed.classList.add('collapsed-enter');
+        setTimeout(() => currentCollapsed.classList.add('collapsed-visible'), 10);
+      }, 150);
+    }
+
+    currentStep = step;
+    updateProgress();
+
+    setTimeout(() => {
+      const newActive = document.getElementById(`step-${step}-active`);
+      if (newActive) {
+        newActive.classList.remove('hidden');
+        newActive.classList.add('step-enter');
+        setTimeout(() => {
+          newActive.classList.remove('step-enter');
+          newActive.classList.add('step-visible');
+        }, 10);
+      }
+
+      const newCollapsed = document.getElementById(`step-${step}-collapsed`);
+      if (newCollapsed && !newCollapsed.classList.contains('hidden')) {
+        newCollapsed.classList.add('hidden');
+        newCollapsed.classList.remove('collapsed-enter', 'collapsed-visible');
+      }
+
+      document.getElementById('intake-content')?.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 200);
+  }
+
+  // Back button handler
+  document.getElementById('intake-back')?.addEventListener('click', () => {
+    if (currentStep === 1) {
+      document.getElementById('exit-modal')?.classList.remove('hidden');
+      document.getElementById('exit-modal')?.classList.add('flex');
+    } else {
+      goToStep(currentStep - 1);
+    }
+  });
+
+  // Exit modal handlers
+  document.getElementById('exit-modal-stay')?.addEventListener('click', () => {
+    document.getElementById('exit-modal')?.classList.add('hidden');
+    document.getElementById('exit-modal')?.classList.remove('flex');
+  });
+
+  document.getElementById('exit-modal-leave')?.addEventListener('click', () => {
+    window.location.href = '/providers';
+  });
+
+  document.getElementById('exit-modal-overlay')?.addEventListener('click', () => {
+    document.getElementById('exit-modal')?.classList.add('hidden');
+    document.getElementById('exit-modal')?.classList.remove('flex');
+  });
+
+  // Theme toggle
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    const app = document.getElementById('intake-app');
+    const logoWhite = document.getElementById('logo-white');
+    const logoBlack = document.getElementById('logo-black');
+    const iconSun = document.getElementById('icon-sun');
+    const iconMoon = document.getElementById('icon-moon');
+
+    app?.classList.toggle('light-mode');
+    logoWhite?.classList.toggle('hidden');
+    logoBlack?.classList.toggle('hidden');
+    iconSun?.classList.toggle('hidden');
+    iconMoon?.classList.toggle('hidden');
+  });
+
+  // Step 1: Clinical setup option selection
+  document.querySelectorAll('#clinical-setup-options .option-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('#clinical-setup-options .option-btn').forEach(b => b.classList.remove('selected'));
+      this.classList.add('selected');
+      clinicModel = this.dataset.value || '';
+      
+      const answer = document.getElementById('step-1-answer');
+      if (answer) {
+        if (clinicModel === 'direct') answer.textContent = 'In-house prescribers';
+        else if (clinicModel === 'guided') answer.textContent = 'Nimbus oversight';
+        else if (clinicModel === 'hybrid') answer.textContent = 'Hybrid model';
+      }
+
+      setTimeout(() => goToStep(2), 300);
+    });
+  });
+
+  // Step 2: Clinic info continue
+  document.getElementById('step-2-continue')?.addEventListener('click', () => {
+    const clinicName = (document.getElementById('clinic-name') as HTMLInputElement)?.value;
+    const answer = document.getElementById('step-2-answer');
+    if (answer && clinicName) answer.textContent = clinicName;
+    goToStep(3);
+  });
+
+  // Step 3: Address continue
+  document.getElementById('step-3-continue')?.addEventListener('click', () => {
+    const city = (document.getElementById('addr-city') as HTMLInputElement)?.value;
+    const state = (document.getElementById('addr-state') as HTMLSelectElement)?.value;
+    const answer = document.getElementById('step-3-answer');
+    if (answer && city && state) answer.textContent = `${city}, ${state}`;
+    goToStep(4);
+  });
+
+  // Step 4: Contact continue
+  document.getElementById('step-4-continue')?.addEventListener('click', () => {
+    const email = (document.getElementById('contact-email') as HTMLInputElement)?.value;
+    const answer = document.getElementById('step-4-answer');
+    if (answer && email) answer.textContent = email;
+    goToStep(5);
+  });
+
+  // Step 5: Admin account continue
+  document.getElementById('step-5-continue')?.addEventListener('click', () => {
+    const firstName = (document.getElementById('admin-first') as HTMLInputElement)?.value;
+    const lastName = (document.getElementById('admin-last') as HTMLInputElement)?.value;
+    const answer = document.getElementById('step-5-answer');
+    if (answer && firstName && lastName) answer.textContent = `${firstName} ${lastName}`;
+    goToStep(6);
+  });
+
+  // Password visibility toggles
+  document.querySelectorAll('.pw-toggle').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const targetId = this.dataset.target || '';
+      const input = document.getElementById(targetId) as HTMLInputElement;
+      if (input) {
+        input.type = input.type === 'password' ? 'text' : 'password';
+      }
+    });
+  });
+
+  // Step 6: Agreement scroll detection
+  const agreementScroll = document.getElementById('agreement-scroll');
+  const agreementBtn = document.getElementById('agreement-acknowledge-btn');
+  const scrollHint = document.getElementById('scroll-hint');
+  const step6Continue = document.getElementById('step-6-continue');
+
+  // Update agreement content when entering step 6
+  function updateAgreementContent() {
+    const agreementTitle = document.getElementById('agreement-title');
+    const agreementContent = document.getElementById('agreement-content');
+    
+    if (clinicModel && agreements[clinicModel]) {
+      if (agreementTitle) agreementTitle.textContent = agreements[clinicModel].title;
+      if (agreementContent) agreementContent.innerHTML = agreements[clinicModel].content;
+    }
+  }
+
+  // Watch for when step 6 becomes active
+  const observer = new MutationObserver(() => {
+    const step6Active = document.getElementById('step-6-active');
+    if (step6Active && !step6Active.classList.contains('hidden')) {
+      updateAgreementContent();
+    }
+  });
+
+  const step6Active = document.getElementById('step-6-active');
+  if (step6Active) {
+    observer.observe(step6Active, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  agreementScroll?.addEventListener('scroll', () => {
+    const scrolledToBottom = agreementScroll.scrollTop + agreementScroll.clientHeight >= agreementScroll.scrollHeight - 5;
+    
+    if (scrolledToBottom && agreementBtn) {
+      agreementBtn.classList.remove('bg-teal/40', 'text-cream/50', 'cursor-not-allowed', 'pointer-events-none');
+      agreementBtn.classList.add('bg-teal', 'hover:brightness-110', 'cursor-pointer');
+      if (scrollHint) scrollHint.classList.add('hidden');
+    }
+  });
+
+  agreementBtn?.addEventListener('click', () => {
+    if (!agreementBtn.classList.contains('pointer-events-none')) {
+      agreementBtn.classList.add('hidden');
+      step6Continue?.classList.remove('hidden', 'opacity-40', 'pointer-events-none');
+      step6Continue?.removeAttribute('disabled');
+    }
+  });
+
+  step6Continue?.addEventListener('click', () => {
+    goToStep(7);
+  });
+
+  // Step 7: Pricing accordion
+  document.getElementById('pricing-toggle')?.addEventListener('click', () => {
+    const details = document.getElementById('pricing-details');
+    const chevron = document.getElementById('pricing-chevron');
+    details?.classList.toggle('hidden');
+    chevron?.classList.toggle('rotate-180');
+  });
+
+  // Step 7: Billing agreement checkbox
+  let billingAgreed = false;
+  document.getElementById('billing-agree-btn')?.addEventListener('click', () => {
+    billingAgreed = !billingAgreed;
+    const checkbox = document.querySelector('.billing-checkbox');
+    const checkIcon = document.querySelector('.billing-check-icon');
+    const continueBtn = document.getElementById('step-7-continue');
+
+    if (billingAgreed) {
+      checkbox?.classList.add('bg-teal/10', 'border-teal');
+      checkIcon?.classList.remove('hidden');
+      continueBtn?.classList.remove('opacity-40', 'pointer-events-none');
+      continueBtn?.removeAttribute('disabled');
+    } else {
+      checkbox?.classList.remove('bg-teal/10', 'border-teal');
+      checkIcon?.classList.add('hidden');
+      continueBtn?.classList.add('opacity-40', 'pointer-events-none');
+      continueBtn?.setAttribute('disabled', '');
+    }
+  });
+
+  document.getElementById('step-7-continue')?.addEventListener('click', () => {
+    const lastFour = (document.getElementById('card-number') as HTMLInputElement)?.value.slice(-4) || '••••';
+    const answer = document.getElementById('step-7-answer');
+    if (answer) answer.textContent = `Card ending ${lastFour}`;
+    goToStep(8);
+  });
+
+  document.getElementById('step-7-skip')?.addEventListener('click', () => {
+    const answer = document.getElementById('step-7-answer');
+    if (answer) answer.textContent = 'Skipped';
+    goToStep(8);
+  });
+
+  // Step 8: Stripe Connect
+  document.getElementById('step-8-continue')?.addEventListener('click', () => {
+    goToStep(9);
+  });
+
+  document.getElementById('step-8-skip')?.addEventListener('click', () => {
+    const answer = document.getElementById('step-8-answer');
+    if (answer) answer.textContent = 'Skipped';
+    goToStep(9);
+  });
+
+  // Step 9: Populate review data
+  function populateReview() {
+    // Business type
+    const reviewClinicModel = document.getElementById('review-clinic-model');
+    const reviewModelDesc = document.getElementById('review-model-desc');
+    if (clinicModel === 'direct') {
+      if (reviewClinicModel) reviewClinicModel.textContent = 'Direct Clinic';
+      if (reviewModelDesc) reviewModelDesc.textContent = 'In-house prescribers';
+    } else if (clinicModel === 'guided') {
+      if (reviewClinicModel) reviewClinicModel.textContent = 'Guided Clinic';
+      if (reviewModelDesc) reviewModelDesc.textContent = 'Nimbus provides prescribers';
+    } else if (clinicModel === 'hybrid') {
+      if (reviewClinicModel) reviewClinicModel.textContent = 'Hybrid Clinic';
+      if (reviewModelDesc) reviewModelDesc.textContent = 'Both in-house and Nimbus prescribers';
+    }
+
+    // Business details
+    const clinicName = (document.getElementById('clinic-name') as HTMLInputElement)?.value;
+    if (clinicName) {
+      const reviewClinicName = document.getElementById('review-clinic-name');
+      if (reviewClinicName) reviewClinicName.textContent = clinicName;
+    }
+
+    const addrLine1 = (document.getElementById('addr-line1') as HTMLInputElement)?.value;
+    const city = (document.getElementById('addr-city') as HTMLInputElement)?.value;
+    const state = (document.getElementById('addr-state') as HTMLSelectElement)?.value;
+    const zip = (document.getElementById('addr-zip') as HTMLInputElement)?.value;
+    if (addrLine1 && city && state && zip) {
+      const reviewAddress = document.getElementById('review-address');
+      if (reviewAddress) reviewAddress.innerHTML = `${addrLine1}<br>${city}, ${state} ${zip}`;
+    }
+
+    const phone = (document.getElementById('contact-phone') as HTMLInputElement)?.value;
+    const email = (document.getElementById('contact-email') as HTMLInputElement)?.value;
+    if (phone && email) {
+      const reviewContact = document.getElementById('review-contact');
+      if (reviewContact) reviewContact.textContent = email;
+    }
+
+    // Admin account
+    const firstName = (document.getElementById('admin-first') as HTMLInputElement)?.value;
+    const lastName = (document.getElementById('admin-last') as HTMLInputElement)?.value;
+    const adminEmail = (document.getElementById('admin-email') as HTMLInputElement)?.value;
+    if (firstName && lastName) {
+      const reviewAdminName = document.getElementById('review-admin-name');
+      if (reviewAdminName) reviewAdminName.textContent = `${firstName} ${lastName}`;
+    }
+    if (adminEmail) {
+      const reviewAdminEmail = document.getElementById('review-admin-email');
+      if (reviewAdminEmail) reviewAdminEmail.textContent = adminEmail;
+    }
+  }
+
+  // Watch for step 9 becoming active
+  const observerStep9 = new MutationObserver(() => {
+    const step9Active = document.getElementById('step-9-active');
+    if (step9Active && !step9Active.classList.contains('hidden')) {
+      populateReview();
+    }
+  });
+
+  const step9Active = document.getElementById('step-9-active');
+  if (step9Active) {
+    observerStep9.observe(step9Active, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  document.getElementById('step-9-continue')?.addEventListener('click', () => {
+    goToStep(10);
+  });
+
+  // Edit step buttons
+  document.querySelectorAll('.edit-step-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const stepNum = parseInt(this.dataset.editStep || '0');
+      if (stepNum > 0) goToStep(stepNum);
+    });
+  });
+
+  // Initialize
+  updateProgress();
+</script>
+</Layout>

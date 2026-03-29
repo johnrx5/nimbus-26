@@ -1,7 +1,4 @@
 ---
-import photo1 from '../assets/[4] Product Imagery & Video/iStock-1337452483123123 1 (1).png';
-import photo2 from '../assets/[4] Product Imagery & Video/iStock-2203624688.jpg';
-import photo3 from '../assets/[4] Product Imagery & Video/iStock-2210163746.jpg';
 ---
 
 <section class="pb-24 px-[10px]">
@@ -22,17 +19,16 @@ import photo3 from '../assets/[4] Product Imagery & Video/iStock-2210163746.jpg'
       </div>
     </div>
 
-    <!-- Image Grid -->
-    <div class="grid grid-cols-3 gap-4" data-animate data-delay="1">
-      <div class="rounded-2xl overflow-hidden">
-        <img src={photo1.src} alt="Mother and child" class="w-full aspect-[4/5] object-cover" loading="lazy" />
-      </div>
-      <div class="rounded-2xl overflow-hidden">
-        <img src={photo2.src} alt="Woman smiling" class="w-full aspect-[4/5] object-cover" loading="lazy" />
-      </div>
-      <div class="rounded-2xl overflow-hidden">
-        <img src={photo3.src} alt="Father and son" class="w-full aspect-[4/5] object-cover" loading="lazy" />
-      </div>
+    <!-- Video -->
+    <div class="rounded-2xl overflow-hidden" data-animate data-delay="1">
+      <video
+        src="/videos/Yoga_Slow.mp4"
+        class="w-full object-cover"
+        autoplay
+        loop
+        muted
+        playsinline
+      ></video>
     </div>
   </div>
 </section>

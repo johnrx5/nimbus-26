@@ -12,8 +12,9 @@ const navLinks = [
 ];
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
-const darkPages = ['/hormone', '/hair', '/providers', '/get-started', '/login', '/contact', '/privacy', '/terms', '/refund', '/careers', '/dr-john', '/about'];
-const isDarkPage = darkPages.includes(currentPath);
+const darkPages = ['/hormone', '/hair', '/providers', '/get-started', '/login', '/contact', '/privacy', '/terms', '/refund', '/careers', '/dr-john', '/about', '/price-change', '/blog', '/telemedicine-consent', '/media'];
+const isDarkPageOrBlog = darkPages.includes(currentPath) || currentPath.startsWith('/blog');
+const isDarkPage = isDarkPageOrBlog;
 ---
 
 <nav id="main-nav" class="fixed top-[20px] left-1/2 -translate-x-1/2 z-50 w-full max-w-[1340px] px-5" data-scrolled="false" data-dark-page={isDarkPage ? 'true' : undefined}>
@@ -39,7 +40,7 @@ const isDarkPage = darkPages.includes(currentPath);
     <!-- CTA area -->
     <div class="flex items-center gap-3 shrink-0">
       <a href="/login" class="hidden md:block nav-link text-base hover:opacity-70 transition-colors duration-300 text-cream mr-5" id="nav-login-link">Login</a>
-      <a href="/get-started" class="hidden md:flex bg-teal text-cream text-sm font-medium rounded-full h-[50px] px-7 items-center hover:opacity-90 transition-opacity shrink-0">
+      <a href="/get-started" class="hidden md:flex bg-teal text-cream text-sm font-medium rounded-full h-[50px] px-7 items-center hover:bg-teal/80 transition-colors shrink-0">
         Get Started
       </a>
 
@@ -82,7 +83,7 @@ const isDarkPage = darkPages.includes(currentPath);
         <!-- Get Started button -->
         <a
           href="/get-started"
-          class="menu-link inline-flex items-center justify-center bg-teal hover:opacity-90 text-cream font-montserrat font-medium text-base rounded-full px-10 py-4.5 mt-4 transition-opacity w-fit"
+          class="menu-link inline-flex items-center justify-center bg-teal hover:bg-teal/80 text-cream font-montserrat font-medium text-base rounded-full px-10 py-4.5 mt-4 transition-colors w-fit"
         >
           Get Started
         </a>

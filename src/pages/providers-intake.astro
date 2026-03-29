@@ -1376,6 +1376,8 @@ import logoBlack from '../assets/NB_br_Logo Black/NB_br_Logo Black_0325.png';
   const step6Continue = document.getElementById('step-6-continue');
 
   // Update agreement content when entering step 6
+  let agreementAcknowledged = false;
+
   function updateAgreementContent() {
     const agreementTitle = document.getElementById('agreement-title');
     const agreementContent = document.getElementById('agreement-content');
@@ -1384,6 +1386,21 @@ import logoBlack from '../assets/NB_br_Logo Black/NB_br_Logo Black_0325.png';
       if (agreementTitle) agreementTitle.textContent = agreements[clinicModel].title;
       if (agreementContent) agreementContent.innerHTML = agreements[clinicModel].content;
     }
+
+    // After content injection, check if scroll is needed
+    setTimeout(() => {
+      if (agreementScroll && !agreementAcknowledged) {
+        const needsScroll = agreementScroll.scrollHeight > agreementScroll.clientHeight + 10;
+        if (!needsScroll) {
+          // Content fits without scrolling — enable acknowledge immediately
+          if (agreementBtn) {
+            agreementBtn.classList.remove('bg-teal/40', 'text-cream/50', 'cursor-not-allowed', 'pointer-events-none');
+            agreementBtn.classList.add('bg-teal', 'hover:brightness-110', 'cursor-pointer');
+          }
+          if (scrollHint) scrollHint.classList.add('hidden');
+        }
+      }
+    }, 100);
   }
 
   // Watch for when step 6 becomes active
@@ -1411,9 +1428,11 @@ import logoBlack from '../assets/NB_br_Logo Black/NB_br_Logo Black_0325.png';
 
   agreementBtn?.addEventListener('click', () => {
     if (!agreementBtn.classList.contains('pointer-events-none')) {
+      agreementAcknowledged = true;
       agreementBtn.classList.add('hidden');
       step6Continue?.classList.remove('hidden', 'opacity-40', 'pointer-events-none');
       step6Continue?.removeAttribute('disabled');
+      document.getElementById('step-6-answer').textContent = 'Agreed';
     }
   });
 

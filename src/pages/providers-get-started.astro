@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Nimbus Healthcare - Clinic Onboarding">
+  <main>
+    <section class="bg-[#1A1816] min-h-screen p-[10px] relative">
+      <!-- Back Button -->
+      <a
+        href="/providers"
+        class="absolute top-8 left-8 z-20 flex items-center gap-2 text-cream/60 hover:text-cream transition-colors group bg-[#22201E]/80 backdrop-blur-xl rounded-full px-4 py-2"
+      >
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="transition-transform group-hover:-translate-x-0.5">
+          <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="font-inter text-sm">Back</span>
+      </a>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 h-[calc(100vh-20px)] rounded-3xl overflow-hidden">
+        <!-- Left: Video -->
+        <div class="relative h-full hidden lg:block">
+          <video autoplay muted loop playsinline class="w-full h-full object-cover">
+            <source src="/videos/Pharmacy Protocols.mp4" type="video/mp4">
+          </video>
+          <div class="absolute inset-0 bg-dark/30"></div>
+        </div>
+
+        <!-- Right: Content -->
+        <div class="flex flex-col items-center justify-center px-8 md:px-16 lg:px-20 py-20 bg-[#22201E]">
+          <div class="max-w-[480px] w-full">
+            <div class="flex items-center gap-3 mb-6" data-animate>
+              <div class="w-12 h-[2px] bg-teal"></div>
+              <span class="font-montserrat text-teal text-sm font-semibold tracking-[0.15em] uppercase">Clinic Onboarding</span>
+              <div class="w-12 h-[2px] bg-teal"></div>
+            </div>
+
+            <h1
+              class="font-fraunces text-cream text-[clamp(36px,4vw,56px)] leading-[1.1] tracking-[-0.02em] mb-6"
+              data-animate
+              data-delay="1"
+            >
+              Set up your clinic<br>with Nimbus.
+            </h1>
+
+            <p
+              class="font-inter text-cream/50 text-base leading-[1.6] mb-10"
+              data-animate
+              data-delay="2"
+            >
+              Complete your clinic onboarding to start offering compounded GLP-1 therapy to your patients. We'll walk you through everything step by step.
+            </p>
+
+            <a
+              href="/providers-intake"
+              class="block w-full bg-terracotta hover:bg-terracotta-hover text-cream font-montserrat font-medium text-base rounded-full px-10 py-4.5 transition-colors text-center"
+              data-animate
+              data-delay="4"
+            >
+              Begin onboarding
+            </a>
+
+            <p
+              class="font-inter text-cream text-xs text-center mt-4"
+              data-animate
+              data-delay="4"
+            >
+              Takes about 10 minutes. Have your clinic details and NPI ready.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
